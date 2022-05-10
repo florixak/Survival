@@ -1,0 +1,67 @@
+# Slots of the GUI
+slots: 27
+
+# Title of the GUI
+title: "Amount"
+
+# Automatically update open inventories.
+# This can be used to update placeholders in the GUI.
+refresh:
+  enabled: false
+  rate: 40
+
+# The items inside the GUI can be listed here
+items:
+  filler:
+    material: GRAY_STAINED_GLASS_PANE
+    slot: -1 # Setting the slot to -1 will fill every empty slot, you can also do "slots: [0, 1, 2]"
+  back:
+    material: RED_BED
+    slot: 18
+    amount: 1
+    glow: false
+    display_name: '&cZpět'
+    lore:
+    actions:
+      - '[CLOSE]'
+      - "[MENU] shop"
+  1:
+    material: ANVIL
+    slot: 10
+    amount: 1
+    glow: false
+    display_name: '&f1x'
+    lore:
+      - '&6Cena: %cena% peněz'
+    actions:
+      - '[AMOUNT]'
+  2:
+    material: ANVIL
+    slot: 12
+    amount: 16
+    glow: false
+    display_name: '&f16x'
+    lore:
+      - '&6Cena: %cena_16% peněz'
+    actions:
+      - '[AMOUNT]'
+  3:
+    material: ANVIL
+    slot: 14
+    amount: 32
+    glow: false
+    display_name: '&f32x'
+    lore:
+      - '&6Cena: %cena_32% peněz'
+    actions:
+      - '[AMOUNT]'
+  4:
+    material: ANVIL
+    slot: 16
+    amount: 64
+    glow: false
+    display_name: '&f64x'
+    lore:
+      - '&6Cena: %cena_64% peněz'
+    actions:
+      - '[AMOUNT]'

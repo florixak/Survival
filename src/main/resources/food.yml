@@ -1,0 +1,336 @@
+# Slots of the GUI
+slots: 54
+
+# Title of the GUI
+title: "Jídlo"
+
+# Automatically update open inventories.
+# This can be used to update placeholders in the GUI.
+refresh:
+  enabled: false
+  rate: 40
+
+# The items inside the GUI can be listed here
+items:
+  filler:
+    material: GRAY_STAINED_GLASS_PANE
+    slot: -1 # Setting the slot to -1 will fill every empty slot, you can also do "slots: [0, 1, 2]"
+    display_name: ' '
+  back:
+    material: RED_BED
+    slot: 45
+    amount: 1
+    glow: false
+    display_name: '&cZpět'
+    lore:
+    actions:
+      - '[CLOSE]'
+      - "[MENU] shop"
+  1:
+    material: APPLE
+    slot: 10
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 5 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 5"
+  2:
+    material: MUSHROOM_STEW
+    slot: 11
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 15 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 15"
+  3:
+    material: BREAD
+    slot: 12
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 10 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 10"
+  4:
+    material: PORKCHOP
+    slot: 13
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 5 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 5"
+  5:
+    material: COOKED_PORKCHOP
+    slot: 14
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 15 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 15"
+  6:
+    material: GOLDEN_APPLE
+    slot: 15
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 50 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 50"
+  7:
+    material: ENCHANTED_GOLDEN_APPLE
+    slot: 16
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 500 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 500"
+  8:
+    material: COD
+    slot: 19
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 5 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 5"
+  9:
+    material: SALMON
+    slot: 20
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 5 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 5"
+  10:
+    material: GLOW_BERRIES
+    slot: 21
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 15 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 15"
+  11:
+    material: BEETROOT_SOUP
+    slot: 22
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 15 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 15"
+  12:
+    material: COOKED_COD
+    slot: 23
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 15 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 15"
+  13:
+    material: COOKED_SALMON
+    slot: 24
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 15 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 15"
+  14:
+    material: CAKE
+    slot: 25
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 30 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 30"
+  15:
+    material: COOKIE
+    slot: 28
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 10 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 10"
+  16:
+    material: MELON_SLICE
+    slot: 29
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 10 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 10"
+  17:
+    material: BEEF
+    slot: 30
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 5 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 5"
+  18:
+    material: COOKED_BEEF
+    slot: 31
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 15 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 15"
+  19:
+    material: RAW_CHICKEN
+    slot: 32
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 5 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 5"
+  20:
+    material: COOKED_CHICKEN
+    slot: 33
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 15 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 15"
+  21:
+    material: CARROT
+    slot: 34
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 8 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 8"
+  22:
+    material: POTATO
+    slot: 37
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 8 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 8"
+  23:
+    material: BAKED_POTATO
+    slot: 38
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 15 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 15"
+  24:
+    material: RABBIT
+    slot: 39
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 5 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 5"
+  25:
+    material: COOKED_RABBIT
+    slot: 40
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 15 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 15"
+  26:
+    material: MUTTON
+    slot: 41
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 5 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 5"
+  27:
+    material: COOKED_MUTTON
+    slot: 42
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 15 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 15"
+  28:
+    material: RABBIT_STEW
+    slot: 43
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 15 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 15"

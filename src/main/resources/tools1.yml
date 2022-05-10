@@ -1,0 +1,258 @@
+# Slots of the GUI
+slots: 54
+
+# Title of the GUI
+title: "Nástroje - 1"
+
+# Automatically update open inventories.
+# This can be used to update placeholders in the GUI.
+refresh:
+  enabled: false
+  rate: 40
+
+# The items inside the GUI can be listed here
+items:
+  filler:
+    material: GRAY_STAINED_GLASS_PANE
+    slot: -1 # Setting the slot to -1 will fill every empty slot, you can also do "slots: [0, 1, 2]"
+    display_name: ' '
+  back:
+    material: RED_BED
+    slot: 45
+    amount: 1
+    glow: false
+    display_name: '&cZpět'
+    lore:
+    actions:
+      - '[CLOSE]'
+      - "[MENU] shop"
+  next:
+    material: LIME_BED
+    slot: 53
+    amount: 1
+    glow: false
+    display_name: '&aDalší'
+    lore:
+    actions:
+      - '[CLOSE]'
+      - "[MENU] tools2"
+  1:
+    material: WOODEN_SWORD
+    slot: 11
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 15 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 15"
+  2:
+    material: STONE_SWORD
+    slot: 12
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 35 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 35"
+  3:
+    material: GOLDEN_SWORD
+    slot: 13
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 75 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 75"
+  4:
+    material: IRON_SWORD
+    slot: 14
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 100 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 100"
+  5:
+    material: DIAMOND_SWORD
+    slot: 15
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 150 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 150"
+  6:
+    material: WOODEN_PICKAXE
+    slot: 20
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 15 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 15"
+  7:
+    material: STONE_PICKAXE
+    slot: 21
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 35 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 35"
+  8:
+    material: GOLDEN_PICKAXE
+    slot: 22
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 75 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 75"
+  9:
+    material: IRON_PICKAXE
+    slot: 23
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 100 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 100"
+  10:
+    material: DIAMOND_PICKAXE
+    slot: 24
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 150 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 150"
+  11:
+    material: WOODEN_AXE
+    slot: 29
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 15 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 15"
+  12:
+    material: STONE_AXE
+    slot: 30
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 35 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 35"
+  13:
+    material: GOLDEN_AXE
+    slot: 31
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 75 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 75"
+  14:
+    material: IRON_AXE
+    slot: 32
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 100 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 100"
+  15:
+    material: DIAMOND_AXE
+    slot: 33
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 150 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 150"
+  16:
+    material: WOODEN_SHOVEL
+    slot: 38
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 15 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 15"
+  17:
+    material: STONE_SHOVEL
+    slot: 39
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 35 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 35"
+  18:
+    material: GOLDEN_SHOVEL
+    slot: 40
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 75 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 75"
+  19:
+    material: IRON_SHOVEL
+    slot: 41
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 100 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 100"
+  20:
+    material: DIAMOND_SHOVEL
+    slot: 42
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 150 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 150"

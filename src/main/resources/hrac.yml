@@ -1,0 +1,85 @@
+#---------------------------------------------------------------------#
+#  |\     /|(  ____ )(  ____ \  ( \      (  ___  )( (    /|(  __  \   #
+#  | )   ( || (    )|| (    \/  | (      | (   ) ||  \  ( || (  \  )  #
+#  | (___) || (____)|| (_____   | |      | (___) ||   \ | || |   ) |  #
+#  |  ___  ||  _____)(_____  )  | |      |  ___  || (\ \) || |   | |  #
+#  | (   ) || (            ) |  | |      | (   ) || | \   || |   ) |  #
+#  | )   ( || )      /\____) |  | (____/\| )   ( || )  \  || (__/  )  #
+#  |/     \||/       \_______)  (_______/|/     \||/    )_)(______/   #
+#---------------------------------------------------------------------#
+
+#----------------#
+#      Kits      #
+#----------------#
+slots: 27
+
+# Title of the GUI
+title: "Kity - Hráč"
+
+# Automatically update open inventories.
+# This can be used to update placeholders in the GUI.
+refresh:
+  enabled: false
+  rate: 40
+
+# The items inside the GUI can be listed here
+items:
+  filler:
+    material: GRAY_STAINED_GLASS_PANE
+    slot: -1 # Setting the slot to -1 will fill every empty slot, you can also do "slots: [0, 1, 2]"
+    display_name: ' '
+  back:
+    material: RED_BED
+    slot: 18
+    amount: 1
+    glow: false
+    display_name: '&fZpět'
+    lore:
+    actions:
+      - '[CLOSE]'
+      - "[MENU] kits"
+  0:
+    material: STONE_PICKAXE
+    slot: 10
+    amount: 1
+    glow: false
+    display_name: '&fStarter'
+    lore:
+      - '&f'
+      - '&fCooldown: %starter_cooldown%'
+      - '&f'
+      - '&8» &fStone Sword'
+      - '&8» &fStone Pickaxe'
+      - '&8» &fStone Axe'
+      - '&8» &fStone Shovel'
+      - '&8» &f16x Bread'
+      - '&8» &fLeather Helmet'
+      - '&8» &fLeather Chestplate'
+      - '&8» &fLeather Leggings'
+      - '&8» &fLeather Boots'
+    actions:
+      - '[CLOSE]'
+      - "[KITS] starter"
+  1:
+    material: STONE_HOE
+    slot: 11
+    amount: 1
+    glow: false
+    display_name: '&fFarmář'
+    lore:
+      - '&f'
+      - '&fCooldown: %farmer_cooldown%'
+      - '&f'
+      - '&8» &fStone Axe'
+      - '&8» &fStone Hoe'
+      - '&8» &fStone Shovel'
+      - '&8» &f32x Wheat'
+      - '&8» &f16x Carrot'
+      - '&8» &f16x Potato'
+      - '&8» &fLeather Helmet'
+      - '&8» &fLeather Chestplate'
+      - '&8» &fLeather Leggings'
+      - '&8» &fLeather Boots'
+    actions:
+      - '[CLOSE]'
+      - "[KITS] farmer"

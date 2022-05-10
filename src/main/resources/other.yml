@@ -1,0 +1,336 @@
+# Slots of the GUI
+slots: 54
+
+# Title of the GUI
+title: "Jiné"
+
+# Automatically update open inventories.
+# This can be used to update placeholders in the GUI.
+refresh:
+  enabled: false
+  rate: 40
+
+# The items inside the GUI can be listed here
+items:
+  filler:
+    material: GRAY_STAINED_GLASS_PANE
+    slot: -1 # Setting the slot to -1 will fill every empty slot, you can also do "slots: [0, 1, 2]"
+    display_name: ' '
+  back:
+    material: RED_BED
+    slot: 45
+    amount: 1
+    glow: false
+    display_name: '&cZpět'
+    lore:
+    actions:
+      - '[CLOSE]'
+      - "[MENU] shop"
+  1:
+    material: SADDLE
+    slot: 10
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 200 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 200"
+  2:
+    material: ELYTRA
+    slot: 11
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 10000 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 10000"
+  3:
+    material: NAME_TAG
+    slot: 12
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 150 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 150"
+  4:
+    material: BUCKET
+    slot: 13
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 50 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 50"
+  5:
+    material: WATER_BUCKET
+    slot: 14
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 75 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 75"
+  6:
+    material: LAVA_BUCKET
+    slot: 15
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 75 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 75"
+  7:
+    material: LEAD
+    slot: 16
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 75 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 75"
+  8:
+    material: SPYGLASS
+    slot: 19
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 500 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 500"
+  9:
+    material: CHEST
+    slot: 20
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 30 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 30"
+  10:
+    material: CRAFTING_TABLE
+    slot: 21
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 15 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 15"
+  11:
+    material: FURNACE
+    slot: 22
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 20 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 20"
+  12:
+    material: BLAST_FURNACE
+    slot: 23
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 100 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 100"
+  13:
+    material: ENCHANTING_TABLE
+    slot: 24
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 250 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 250"
+  14:
+    material: END_PORTAL_FRAME
+    slot: 25
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 600000000 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 600000000"
+  15:
+    material: ANVIL
+    slot: 28
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 200 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 200"
+  16:
+    material: SHULKER_BOX
+    slot: 29
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 1000 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 1000"
+  17:
+    material: END_CRYSTAL
+    slot: 30
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 5000 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 5000"
+  18:
+    material: CANDLE
+    slot: 31
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 30 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 30"
+  19:
+    material: LOOM
+    slot: 32
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 50 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 50"
+  20:
+    material: COMPOSTER
+    slot: 33
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 50 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 50"
+  21:
+    material: BARREL
+    slot: 34
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 35 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 35"
+  22:
+    material: SMOKER
+    slot: 37
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 50 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 50"
+  23:
+    material: CARTOGRAPHY_TABLE
+    slot: 38
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 50 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 50"
+  24:
+    material: FLETCHING_TABLE
+    slot: 39
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 50 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 50"
+  25:
+    material: GRINDSTONE
+    slot: 40
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 50 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 50"
+  26:
+    material: SMITHING_TABLE
+    slot: 41
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 75 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 75"
+  27:
+    material: STONECUTTER
+    slot: 42
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 50 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 50"
+  28:
+    material: BEACON
+    slot: 43
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 7500 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 7500"

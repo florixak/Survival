@@ -1,0 +1,318 @@
+# Slots of the GUI
+slots: 54
+
+# Title of the GUI
+title: "Bloky - 2"
+
+# Automatically update open inventories.
+# This can be used to update placeholders in the GUI.
+refresh:
+  enabled: false
+  rate: 40
+
+# The items inside the GUI can be listed here
+items:
+  filler:
+    material: GRAY_STAINED_GLASS_PANE
+    slot: -1 # Setting the slot to -1 will fill every empty slot, you can also do "slots: [0, 1, 2]"
+    display_name: ' '
+  back:
+    material: RED_BED
+    slot: 45
+    amount: 1
+    glow: false
+    display_name: '&cZpět'
+    lore:
+    actions:
+      - '[CLOSE]'
+      - "[MENU] blocks1"
+  next:
+    material: LIME_BED
+    slot: 53
+    amount: 1
+    glow: false
+    display_name: '&aDalší'
+    lore:
+    actions:
+      - '[CLOSE]'
+      - "[MENU] blocks3"
+  29:
+    material: BRICKS
+    slot: 10
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 10 peněz'
+    actions:
+      - "[SHOP] 10"
+  30:
+    material: BASALT
+    slot: 11
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 6 peněz'
+    actions:
+      - "[SHOP] 6"
+  31:
+    material: COBBLESTONE
+    slot: 12
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 2 peněz'
+    actions:
+      - "[SHOP] 2"
+  32:
+    material: MOSSY_COBBLESTONE
+    slot: 13
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 6 peněz'
+    actions:
+      - "[SHOP] 6"
+  33:
+    material: BLACK_CONCRETE
+    slot: 14
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  34:
+    material: BLUE_CONCRETE
+    slot: 15
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  35:
+    material: BROWN_CONCRETE
+    slot: 16
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  36:
+    material: CYAN_CONCRETE
+    slot: 19
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  37:
+    material: GRAY_CONCRETE
+    slot: 20
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  38:
+    material: GREEN_CONCRETE
+    slot: 21
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  39:
+    material: LIGHT_BLUE_CONCRETE
+    slot: 22
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  40:
+    material: LIGHT_GRAY_CONCRETE
+    slot: 23
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  41:
+    material: LIME_CONCRETE
+    slot: 24
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  42:
+    material: MAGENTA_CONCRETE
+    slot: 25
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  43:
+    material: ORANGE_CONCRETE
+    slot: 28
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  44:
+    material: PINK_CONCRETE
+    slot: 29
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  45:
+    material: PURPLE_CONCRETE
+    slot: 30
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  46:
+    material: RED_CONCRETE
+    slot: 31
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  47:
+    material: WHITE_CONCRETE
+    slot: 32
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  48:
+    material: YELLOW_CONCRETE
+    slot: 33
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  49:
+    material: OXIDIZED_COPPER
+    slot: 34
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 20 peněz'
+    actions:
+      - "[SHOP] 20"
+  50:
+    material: WAXED_COPPER_BLOCK
+    slot: 37
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 20 peněz'
+    actions:
+      - "[SHOP] 20"
+  51:
+    material: WAXED_CUT_COPPER
+    slot: 38
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 22 peněz'
+    actions:
+      - "[SHOP] 22"
+  52:
+    material: WAXED_CUT_COPPER_SLAB
+    slot: 39
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 22 peněz'
+    actions:
+      - "[SHOP] 22"
+  53:
+    material: WAXED_CUT_COPPER_STAIRS
+    slot: 40
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 22 peněz'
+    actions:
+      - "[SHOP] 22"
+  54:
+    material: WAXED_EXPOSED_COPPER
+    slot: 41
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 20 peněz'
+    actions:
+      - "[SHOP] 22"
+  55:
+    material: WAXED_EXPOSED_CUT_COPPER
+    slot: 42
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 22 peněz'
+    actions:
+      - "[SHOP] 22"
+  56:
+    material: WAXED_EXPOSED_CUT_COPPER_SLAB
+    slot: 43
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 22 peněz'
+    actions:
+      - "[SHOP] 22"

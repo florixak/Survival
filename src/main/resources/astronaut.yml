@@ -1,0 +1,83 @@
+#---------------------------------------------------------------------#
+#  |\     /|(  ____ )(  ____ \  ( \      (  ___  )( (    /|(  __  \   #
+#  | )   ( || (    )|| (    \/  | (      | (   ) ||  \  ( || (  \  )  #
+#  | (___) || (____)|| (_____   | |      | (___) ||   \ | || |   ) |  #
+#  |  ___  ||  _____)(_____  )  | |      |  ___  || (\ \) || |   | |  #
+#  | (   ) || (            ) |  | |      | (   ) || | \   || |   ) |  #
+#  | )   ( || )      /\____) |  | (____/\| )   ( || )  \  || (__/  )  #
+#  |/     \||/       \_______)  (_______/|/     \||/    )_)(______/   #
+#---------------------------------------------------------------------#
+
+#----------------#
+#      Kits      #
+#----------------#
+slots: 27
+
+# Title of the GUI
+title: "Kity - Astronaut"
+
+# Automatically update open inventories.
+# This can be used to update placeholders in the GUI.
+refresh:
+  enabled: false
+  rate: 40
+
+# The items inside the GUI can be listed here
+items:
+  filler:
+    material: GRAY_STAINED_GLASS_PANE
+    slot: -1 # Setting the slot to -1 will fill every empty slot, you can also do "slots: [0, 1, 2]"
+    display_name: ' '
+  back:
+    material: RED_BED
+    slot: 18
+    amount: 1
+    glow: false
+    display_name: '&fZpět'
+    lore:
+    actions:
+      - '[CLOSE]'
+      - "[MENU] kits"
+  0:
+    material: IRON_SWORD
+    slot: 10
+    amount: 1
+    glow: false
+    display_name: '&fRytíř'
+    lore:
+      - '&f'
+      - '&fCooldown: %knight_cooldown%'
+      - '&f'
+      - '&8» &fIron Sword &7(Sh2,Unb2)'
+      - '&8» &fIron Pickaxe &7(Effi2,Unb2)'
+      - '&8» &fIron Axe &7(Effi2,Unb2)'
+      - '&8» &fIron Shovel &7(Effi2,Unb2)'
+      - '&8» &f16x Bread'
+      - '&8» &f3x Golden Apple'
+      - '&8» &fIron Helmet &7(Prot1,Unb2)'
+      - '&8» &fIron Chestplate &7(Prot1,Unb2)'
+      - '&8» &fIron Leggings &7(Prot1,Unb2)'
+      - '&8» &fIron Boots &7(Prot1,Unb2)'
+    actions:
+      - '[CLOSE]'
+      - "[KITS] knight"
+  1:
+    material: ENCHANTED_BOOK
+    slot: 11
+    amount: 1
+    glow: false
+    display_name: '&fKouzelník'
+    lore:
+      - '&f'
+      - '&fCooldown: %enchanter_cooldown%'
+      - '&f'
+      - '&8» &fEnchanted Book &7(Sh2)'
+      - '&8» &fEnchanted Book &7(Eff2)'
+      - '&8» &fEnchanted Book &7(Prot2)'
+      - '&8» &f32x Exp Bottle'
+      - '&8» &f16x Bookshelf'
+      - '&8» &fEnchanting Table'
+      - '&8» &f48x Lapis Lazuli'
+    actions:
+      - '[CLOSE]'
+      - "[KITS] enchanter"

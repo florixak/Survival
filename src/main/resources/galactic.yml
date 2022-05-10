@@ -1,0 +1,64 @@
+#---------------------------------------------------------------------#
+#  |\     /|(  ____ )(  ____ \  ( \      (  ___  )( (    /|(  __  \   #
+#  | )   ( || (    )|| (    \/  | (      | (   ) ||  \  ( || (  \  )  #
+#  | (___) || (____)|| (_____   | |      | (___) ||   \ | || |   ) |  #
+#  |  ___  ||  _____)(_____  )  | |      |  ___  || (\ \) || |   | |  #
+#  | (   ) || (            ) |  | |      | (   ) || | \   || |   ) |  #
+#  | )   ( || )      /\____) |  | (____/\| )   ( || )  \  || (__/  )  #
+#  |/     \||/       \_______)  (_______/|/     \||/    )_)(______/   #
+#---------------------------------------------------------------------#
+
+#----------------#
+#      Kits      #
+#----------------#
+slots: 27
+
+# Title of the GUI
+title: "Kity - Galactic"
+
+# Automatically update open inventories.
+# This can be used to update placeholders in the GUI.
+refresh:
+  enabled: false
+  rate: 40
+
+# The items inside the GUI can be listed here
+items:
+  filler:
+    material: GRAY_STAINED_GLASS_PANE
+    slot: -1 # Setting the slot to -1 will fill every empty slot, you can also do "slots: [0, 1, 2]"
+    display_name: ' '
+  back:
+    material: RED_BED
+    slot: 18
+    amount: 1
+    glow: false
+    display_name: '&fZpět'
+    lore:
+    actions:
+      - '[CLOSE]'
+      - "[MENU] kits"
+  0:
+    material: GOLDEN_HELMET
+    slot: 10
+    amount: 1
+    glow: false
+    display_name: '&fKrál'
+    lore:
+      - '&f'
+      - '&fCooldown: %king_cooldown%'
+      - '&f'
+      - '&8» &fDiamond Sword &7(Sh2,Unb2)'
+      - '&8» &fDiamond Pickaxe &7(Effi2,Unb2)'
+      - '&8» &fDiamond Axe &7(Effi2,Unb2)'
+      - '&8» &fDiamond Shovel &7(Effi2,Unb2)'
+      - '&8» &f16x Bread'
+      - '&8» &f6x Golden Apple'
+      - '&8» &f1x Enchanted Golden Apple'
+      - '&8» &fGolden Helmet &7(Prot5,Unb3)'
+      - '&8» &fGolden Chestplate &7(Prot5,Unb3)'
+      - '&8» &fGolden Leggings &7(Prot5,Unb3)'
+      - '&8» &fGolden Boots &7(Prot5,Unb3)'
+    actions:
+      - '[CLOSE]'
+      - "[KITS] king"

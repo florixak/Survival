@@ -1,0 +1,126 @@
+#---------------------------------------------------------------------#
+#  |\     /|(  ____ )(  ____ \  ( \      (  ___  )( (    /|(  __  \   #
+#  | )   ( || (    )|| (    \/  | (      | (   ) ||  \  ( || (  \  )  #
+#  | (___) || (____)|| (_____   | |      | (___) ||   \ | || |   ) |  #
+#  |  ___  ||  _____)(_____  )  | |      |  ___  || (\ \) || |   | |  #
+#  | (   ) || (            ) |  | |      | (   ) || | \   || |   ) |  #
+#  | )   ( || )      /\____) |  | (____/\| )   ( || )  \  || (__/  )  #
+#  |/     \||/       \_______)  (_______/|/     \||/    )_)(______/   #
+#---------------------------------------------------------------------#
+
+#----------------#
+#      Jobs      #
+#----------------#
+slots: 45
+
+# Title of the GUI
+title: "Úřad práce"
+
+# Automatically update open inventories.
+# This can be used to update placeholders in the GUI.
+refresh:
+  enabled: false
+  rate: 40
+
+# The items inside the GUI can be listed here
+items:
+  filler:
+    material: GRAY_STAINED_GLASS_PANE
+    slot: -1 # Setting the slot to -1 will fill every empty slot, you can also do "slots: [0, 1, 2]"
+    display_name: ' '
+  vypoved:
+    material: WOODEN_DOOR
+    slot: 44
+    amount: 1
+    glow: false
+    display_name: '&cDát výpověď'
+    lore:
+      - ' '
+      - '&fZaměstnán v: %job%'
+    actions:
+      - '[CLOSE]'
+      - "[JOBS] leave"
+  0:
+    material: WOODEN_PICKAXE
+    slot: 10
+    amount: 1
+    glow: false
+    display_name: '&fHorník'
+    lore:
+      - ' '
+      - '&fZaměstnán v: %job%'
+    actions:
+      - '[CLOSE]'
+      - "[JOBS] miner"
+  1:
+    material: WOODEN_SWORD
+    slot: 12
+    amount: 1
+    glow: false
+    display_name: '&fZabiják'
+    lore:
+      - ' '
+      - '&fZaměstnán v: %job%'
+    actions:
+      - '[CLOSE]'
+      - "[JOBS] killer"
+  2:
+    material: WOODEN_SHOVEL
+    slot: 14
+    amount: 1
+    glow: false
+    display_name: '&fKopáč'
+    lore:
+      - ' '
+      - '&fZaměstnán v: %job%'
+    actions:
+      - '[CLOSE]'
+      - "[JOBS] digger"
+  3:
+    material: WOODEN_AXE
+    slot: 16
+    amount: 1
+    glow: false
+    display_name: '&fDřevorubec'
+    lore:
+      - ' '
+      - '&fZaměstnán v: %job%'
+    actions:
+      - '[CLOSE]'
+      - "[JOBS] woodcutter"
+  4:
+    material: CRAFTING_TABLE
+    slot: 29
+    amount: 1
+    glow: false
+    display_name: '&fŘemeslník'
+    lore:
+      - ' '
+      - '&fZaměstnán v: %job%'
+    actions:
+      - '[CLOSE]'
+      - "[JOBS] crafter"
+  5:
+    material: OAK_PLANKS
+    slot: 31
+    amount: 1
+    glow: false
+    display_name: '&fStavitel'
+    lore:
+      - ' '
+      - '&fZaměstnán v: %job%'
+    actions:
+      - '[CLOSE]'
+      - "[JOBS] builder"
+  6:
+    material: WOODEN_HOE
+    slot: 33
+    amount: 1
+    glow: false
+    display_name: '&fFarmář'
+    lore:
+      - ' '
+      - '&fZaměstnán v: %job%'
+    actions:
+      - '[CLOSE]'
+      - "[JOBS] farmer"

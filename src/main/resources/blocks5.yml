@@ -1,0 +1,318 @@
+# Slots of the GUI
+slots: 54
+
+# Title of the GUI
+title: "Bloky - 5"
+
+# Automatically update open inventories.
+# This can be used to update placeholders in the GUI.
+refresh:
+  enabled: false
+  rate: 40
+
+# The items inside the GUI can be listed here
+items:
+  filler:
+    material: GRAY_STAINED_GLASS_PANE
+    slot: -1 # Setting the slot to -1 will fill every empty slot, you can also do "slots: [0, 1, 2]"
+    display_name: ' '
+  back:
+    material: RED_BED
+    slot: 45
+    amount: 1
+    glow: false
+    display_name: '&cZpět'
+    lore:
+    actions:
+      - '[CLOSE]'
+      - "[MENU] blocks4"
+  next:
+    material: LIME_BED
+    slot: 53
+    amount: 1
+    glow: false
+    display_name: '&aDalší'
+    lore:
+    actions:
+      - '[CLOSE]'
+      - "[MENU] blocks6"
+  113:
+    material: DARK_PRISMARINE_STAIRS
+    slot: 10
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 50 peněz'
+    actions:
+      - "[SHOP] 50"
+  114:
+    material: PURPUR_BLOCK
+    slot: 11
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 45 peněz'
+    actions:
+      - "[SHOP] 45"
+  115:
+    material: PURPUR_SLAB
+    slot: 12
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 50 peněz'
+    actions:
+      - "[SHOP] 50"
+  116:
+    material: PURPUR_STAIRS
+    slot: 13
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 50 peněz'
+    actions:
+      - "[SHOP] 50"
+  117:
+    material: QUARTZ_BRICKS
+    slot: 14
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 25 peněz'
+    actions:
+      - "[SHOP] 25"
+  118:
+    material: QUARTZ_SLAB
+    slot: 15
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 30 peněz'
+    actions:
+      - "[SHOP] 30"
+  119:
+    material: QUARTZ_STAIRS
+    slot: 16
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 30 peněz'
+    actions:
+      - "[SHOP] 30"
+  120:
+    material: RED_SAND
+    slot: 19
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 4 peněz'
+    actions:
+      - "[SHOP] 4"
+  121:
+    material: SAND
+    slot: 20
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 4 peněz'
+    actions:
+      - "[SHOP] 4"
+  122:
+    material: SANDSTONE
+    slot: 21
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 6 peněz'
+    actions:
+      - "[SHOP] 6"
+  123:
+    material: SANDSTONE_SLAB
+    slot: 22
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 8 peněz'
+    actions:
+      - "[SHOP] 8"
+  124:
+    material: SANDSTONE_STAIRS
+    slot: 23
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 8 peněz'
+    actions:
+      - "[SHOP] 8"
+  125:
+    material: SMOOTH_SANDSTONE
+    slot: 24
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 8 peněz'
+    actions:
+      - "[SHOP] 8"
+  126:
+    material: SMOOTH_SANDSTONE_SLAB
+    slot: 25
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 8 peněz'
+    actions:
+      - "[SHOP] 8"
+  127:
+    material: SMOOTH_SANDSTONE_STAIRS
+    slot: 28
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 8 peněz'
+    actions:
+      - "[SHOP] 8"
+  128:
+    material: RED_SANDSTONE
+    slot: 29
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 8 peněz'
+    actions:
+      - "[SHOP] 8"
+  129:
+    material: RED_SANDSTONE_SLAB
+    slot: 30
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 8 peněz'
+    actions:
+      - "[SHOP] 8"
+  130:
+    material: RED_SANDSTONE_STAIRS
+    slot: 31
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 8 peněz'
+    actions:
+      - "[SHOP] 8"
+  131:
+    material: SMOOTH_RED_SANDSTONE
+    slot: 32
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 8 peněz'
+    actions:
+      - "[SHOP] 8"
+  132:
+    material: SMOOTH_RED_SANDSTONE_SLAB
+    slot: 33
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 8 peněz'
+    actions:
+      - "[SHOP] 8"
+  133:
+    material: SMOOTH_RED_SANDSTONE_STAIRS
+    slot: 34
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 8 peněz'
+    actions:
+      - "[SHOP] 8"
+  134:
+    material: STONE_BRICK_SLAB
+    slot: 37
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 15 peněz'
+    actions:
+      - "[SHOP] 15"
+  135:
+    material: STONE_BRICK_STAIRS
+    slot: 38
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 15 peněz'
+    actions:
+      - "[SHOP] 15"
+  136:
+    material: STONE_BRICKS
+    slot: 39
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 10 peněz'
+    actions:
+      - "[SHOP] 10"
+  137:
+    material: MOSSY_STONE_BRICK_SLAB
+    slot: 40
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 20 peněz'
+    actions:
+      - "[SHOP] 20"
+  138:
+    material: MOSSY_STONE_BRICK_STAIRS
+    slot: 41
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 20 peněz'
+    actions:
+      - "[SHOP] 20"
+  139:
+    material: MOSSY_STONE_BRICKS
+    slot: 42
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 20 peněz'
+    actions:
+      - "[SHOP] 20"
+  140:
+    material: TERRACOTTA
+    slot: 43
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 20 peněz'
+    actions:
+      - "[SHOP] 20"

@@ -1,0 +1,78 @@
+#---------------------------------------------------------------------#
+#  |\     /|(  ____ )(  ____ \  ( \      (  ___  )( (    /|(  __  \   #
+#  | )   ( || (    )|| (    \/  | (      | (   ) ||  \  ( || (  \  )  #
+#  | (___) || (____)|| (_____   | |      | (___) ||   \ | || |   ) |  #
+#  |  ___  ||  _____)(_____  )  | |      |  ___  || (\ \) || |   | |  #
+#  | (   ) || (            ) |  | |      | (   ) || | \   || |   ) |  #
+#  | )   ( || )      /\____) |  | (____/\| )   ( || )  \  || (__/  )  #
+#  |/     \||/       \_______)  (_______/|/     \||/    )_)(______/   #
+#---------------------------------------------------------------------#
+
+#----------------#
+#      Kits      #
+#----------------#
+slots: 27
+
+# Title of the GUI
+title: "Kity"
+
+# Automatically update open inventories.
+# This can be used to update placeholders in the GUI.
+refresh:
+  enabled: false
+  rate: 40
+
+# The items inside the GUI can be listed here
+items:
+  filler:
+    material: GRAY_STAINED_GLASS_PANE
+    slot: -1 # Setting the slot to -1 will fill every empty slot, you can also do "slots: [0, 1, 2]"
+    display_name: ' '
+  0:
+    material: LEATHER_HELMET
+    slot: 10
+    amount: 1
+    glow: false
+    display_name: '&fKity pro hráče'
+    lore:
+      - '&f'
+      - '&fDostupný: %canUseHrac%'
+    actions:
+      - '[CLOSE]'
+      - "[MENU] hrac"
+  1:
+    material: IRON_HELMET
+    slot: 12
+    amount: 1
+    glow: false
+    display_name: '&fKity pro Astronauty'
+    lore:
+      - '&f'
+      - '&fDostupný: %canUseAstronaut%'
+    actions:
+      - '[CLOSE]'
+      - "[MENU] astronaut"
+  2:
+    material: DIAMOND_HELMET
+    slot: 14
+    amount: 1
+    glow: false
+    display_name: '&fKity pro Galactic'
+    lore:
+      - '&f'
+      - '&fDostupný: %canUseGalactic%'
+    actions:
+      - '[CLOSE]'
+      - "[MENU] galactic"
+  3:
+    material: NETHERITE_HELMET
+    slot: 16
+    amount: 1
+    glow: false
+    display_name: '&fKity pro BlackHole'
+    lore:
+      - '&f'
+      - '&fDostupný: %canUseBlackHole%'
+    actions:
+      - '[CLOSE]'
+      - "[MENU] blackhole"

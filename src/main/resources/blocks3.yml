@@ -1,0 +1,318 @@
+# Slots of the GUI
+slots: 54
+
+# Title of the GUI
+title: "Bloky - 3"
+
+# Automatically update open inventories.
+# This can be used to update placeholders in the GUI.
+refresh:
+  enabled: false
+  rate: 40
+
+# The items inside the GUI can be listed here
+items:
+  filler:
+    material: GRAY_STAINED_GLASS_PANE
+    slot: -1 # Setting the slot to -1 will fill every empty slot, you can also do "slots: [0, 1, 2]"
+    display_name: ' '
+  back:
+    material: RED_BED
+    slot: 45
+    amount: 1
+    glow: false
+    display_name: '&cZpět'
+    lore:
+    actions:
+      - '[CLOSE]'
+      - "[MENU] blocks2"
+  next:
+    material: LIME_BED
+    slot: 53
+    amount: 1
+    glow: false
+    display_name: '&aDalší'
+    lore:
+    actions:
+      - '[CLOSE]'
+      - "[MENU] blocks4"
+  57:
+    material: WAXED_EXPOSED_CUT_COPPER_STAIRS
+    slot: 10
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 22 peněz'
+    actions:
+      - "[SHOP] 22"
+  58:
+    material: WAXED_OXIDIZED_COPPER
+    slot: 11
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 20 peněz'
+    actions:
+      - "[SHOP] 20"
+  59:
+    material: WAXED_OXIDIZED_CUT_COPPER
+    slot: 12
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 22 peněz'
+    actions:
+      - "[SHOP] 22"
+  60:
+    material: WAXED_OXIDIZED_CUT_COPPER_SLAB
+    slot: 13
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 22 peněz'
+    actions:
+      - "[SHOP] 22"
+  61:
+    material: WAXED_OXIDIZED_CUT_COPPER_STAIRS
+    slot: 14
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 22 peněz'
+    actions:
+      - "[SHOP] 22"
+  62:
+    material: WAXED_WEATHERED_COPPER
+    slot: 15
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 20 peněz'
+    actions:
+      - "[SHOP] 20"
+  63:
+    material: WAXED_WEATHERED_CUT_COPPER
+    slot: 16
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 22 peněz'
+    actions:
+      - "[SHOP] 22"
+  64:
+    material: WAXED_WEATHERED_CUT_COPPER_SLAB
+    slot: 19
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 22 peněz'
+    actions:
+      - "[SHOP] 22"
+  65:
+    material: WAXED_WEATHERED_CUT_COPPER_STAIRS
+    slot: 20
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 22 peněz'
+    actions:
+      - "[SHOP] 22"
+  66:
+    material: COBBLED_DEEPSLATE
+    slot: 21
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 2 peněz'
+    actions:
+      - "[SHOP] 2"
+  67:
+    material: COBBLED_DEEPSLATE_SLAB
+    slot: 22
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 4 peněz'
+    actions:
+      - "[SHOP] 4"
+  68:
+    material: COBBLED_DEEPSLATE_STAIRS
+    slot: 23
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 6 peněz'
+    actions:
+      - "[SHOP] 6"
+  69:
+    material: DEEPSLATE
+    slot: 24
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 4 peněz'
+    actions:
+      - "[SHOP] 4"
+  70:
+    material: DEEPSLATE_TILE_SLAB
+    slot: 25
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 8 peněz'
+    actions:
+      - "[SHOP] 8"
+  71:
+    material: DEEPSLATE_TILE_STAIRS
+    slot: 28
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 8 peněz'
+    actions:
+      - "[SHOP] 8"
+  72:
+    material: DEEPSLATE_TILES
+    slot: 29
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 8 peněz'
+    actions:
+      - "[SHOP] 8"
+  73:
+    material: DIORITE
+    slot: 30
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 2 peněz'
+    actions:
+      - "[SHOP] 2"
+  74:
+    material: POLISHED_DIORITE
+    slot: 31
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 6 peněz'
+    actions:
+      - "[SHOP] 6"
+  75:
+    material: POLISHED_DIORITE_SLAB
+    slot: 32
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 6 peněz'
+    actions:
+      - "[SHOP] 6"
+  76:
+    material: POLISHED_DIORITE_STAIRS
+    slot: 33
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 6 peněz'
+    actions:
+      - "[SHOP] 6"
+  77:
+    material: CLAY
+    slot: 34
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 8 peněz'
+    actions:
+      - "[SHOP] 8"
+  78:
+    material: CRIMSON_NYLIUM
+    slot: 37
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 25 peněz'
+    actions:
+      - "[SHOP] 25"
+  79:
+    material: DIRT
+    slot: 38
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 2 peněz'
+    actions:
+      - "[SHOP] 2"
+  80:
+    material: GRASS_BLOCK
+    slot: 39
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 4 peněz'
+    actions:
+      - "[SHOP] 4"
+  81:
+    material: GRAVEL
+    slot: 40
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 4 peněz'
+    actions:
+      - "[SHOP] 4"
+  82:
+    material: MYCELIUM
+    slot: 41
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 25 peněz'
+    actions:
+      - "[SHOP] 25"
+  83:
+    material: PODZOL
+    slot: 42
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 6 peněz'
+    actions:
+      - "[SHOP] 6"
+  84:
+    material: WARPED_NYLIUM
+    slot: 43
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 25 peněz'
+    actions:
+      - "[SHOP] 25"

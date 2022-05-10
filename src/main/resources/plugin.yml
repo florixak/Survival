@@ -1,0 +1,211 @@
+name: Survival
+version: '${project.version}'
+main: cz.florixak.survival.Survival
+api-version: 1.18
+authors: [ FloriXak ]
+
+commands:
+  clear:
+    description: clear
+    usage: /<command>
+    permission:
+
+  game:
+    description: gamemode
+    usage: /<command>
+    permission:
+
+  survival:
+    description: reload
+    usage: /<command>
+    permission:
+
+  heal:
+    description: heal
+    usage: /<command>
+    permission:
+
+  home:
+    description: home
+    usage: /<command>
+    permission:
+
+  sethome:
+    description: home
+    usage: /<command>
+    permission:
+
+  delhome:
+    description: home
+    usage: /<command>
+    permission:
+
+  homes:
+    description: home
+    usage: /<command>
+    permission:
+
+  anvil:
+    description: anvil
+    usage: /<command>
+    permission:
+
+  wb:
+    description: workbench
+    usage: /<command>
+    permission:
+
+  ec:
+    description: enderchest
+    usage: /<command>
+    permission:
+
+  jobs:
+    description: jobs
+    usage: /<command>
+    permission:
+
+  prace:
+    description: prace
+    usage: /<command>
+    permission:
+
+  kit:
+    description: kit
+    usage: /<command>
+    permission:
+
+  kits:
+    description: kits
+    usage: /<command>
+    permission:
+
+  money:
+    description: money
+    usage: /<command>
+    permission:
+
+  coins:
+    description: coins
+    usage: /<command>
+    permission:
+
+  cash:
+    description: cash
+    usage: /<command>
+    permission:
+
+  balance:
+    description: balance
+    usage: /<command>
+    permission:
+
+  pvparena:
+    description: pvparena
+    usage: /<command>
+    permission:
+
+  shop:
+    description: shop
+    usage: /<command>
+    permission:
+
+  obchod:
+    description: obchod
+    usage: /<command>
+    permission:
+
+  spawn:
+    description: spawn
+    usage: /<command>
+    permission:
+
+  setspawn:
+    description: setspawn
+    usage: /<command>
+    permission:
+
+  delspawn:
+    description: delspawn
+    usage: /<command>
+    permission:
+
+  warp:
+    description: warp
+    usage: /<command>
+    permission:
+
+  warps:
+    description: warps
+    usage: /<command>
+    permission:
+
+  setwarp:
+    description: setwarp
+    usage: /<command>
+    permission:
+
+  delwarp:
+    description: delwarp
+    usage: /<command>
+    permission:
+
+  coordinates:
+    description: coordinates
+    usage: /<command>
+    permission:
+
+  fly:
+    description: fly
+    usage: /<command>
+    permission:
+
+  help:
+    description: help
+    usage: /<command>
+    permission:
+
+  rtp:
+    description: randomtp
+    usage: /<command>
+    permission:
+
+  ruleta:
+    description: ruleta
+    usage: /<command>
+    permission:
+
+  stats:
+    description: stats
+    usage: /<command>
+    permission:
+
+  tp:
+    description: tp
+    usage: /<command>
+    permission:
+
+  tpa:
+    description: tpa
+    usage: /<command>
+    permission:
+
+  tpaccept:
+    description: tpaccept
+    usage: /<command>
+    permission:
+
+  tpdeny:
+    description: tpdeny
+    usage: /<command>
+    permission:
+
+  tpblock:
+    description: tpblock
+    usage: /<command>
+    permission:
+
+  back:
+    description: back
+    usage: /<command>
+    permission:

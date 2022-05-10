@@ -1,0 +1,154 @@
+﻿#---------------------------------------------------------------------#
+#  |\     /|(  ____ )(  ____ \  ( \      (  ___  )( (    /|(  __  \   #
+#  | )   ( || (    )|| (    \/  | (      | (   ) ||  \  ( || (  \  )  #
+#  | (___) || (____)|| (_____   | |      | (___) ||   \ | || |   ) |  #
+#  |  ___  ||  _____)(_____  )  | |      |  ___  || (\ \) || |   | |  #
+#  | (   ) || (            ) |  | |      | (   ) || | \   || |   ) |  #
+#  | )   ( || )      /\____) |  | (____/\| )   ( || )  \  || (__/  )  #
+#  |/     \||/       \_______)  (_______/|/     \||/    )_)(______/   #
+#---------------------------------------------------------------------#
+
+# Created by: FloriXak
+
+#----------------#
+#      Join      #
+#----------------#
+join:
+  first_join_money: 250 # první money
+
+#----------------#
+#      Chat      #
+#----------------#
+chat:
+  format: "&7[%localTime%] %player% &8» &f%message%"
+
+#-----------------#
+#      Spawn      #
+#-----------------#
+spawn:
+  protection: 320
+  tp_delay: 3 # sekundy
+
+#---------------#
+#      TPA      #
+#---------------#
+tpa:
+  delay: 3
+  cooldown: 60
+
+#----------------#
+#      Home      #
+#----------------#
+home:
+  tp_delay: 3 # sekundy
+  max_homes: # maximalní počet domovů pro každou skupinu
+    hrac: 3
+    vip_low: 5
+    vip_high: 6
+    vip_highest: 9
+    admin: 12
+
+#----------------#
+#      Warp      #
+#----------------#
+warp:
+  tp_delay: 3 # sekundy
+
+#---------------------------#
+#      Random Teleport      #
+#---------------------------#
+randomtp:
+  delay: 3
+  cooldown: 180
+
+#---------------#
+#      Fly      #
+#---------------#
+fly:
+  flying_time: 7200 # v sekundach cas na letani
+  day_cooldown_time: 86400 # denni cooldown na letani, v sekundach
+  warn_time: 60 # sekundy, urcuje kdy se objevi warning
+
+#--------------------#
+#      Roulette      #
+#--------------------#
+roulette:
+  gui:
+    roulette_name: "&bHodně štěstí!"
+    menu_name: "&9Vyber čím zaplatíš:"
+  amount:
+    diamond: 1
+    money: 250
+
+#----------------#
+#      Jobs      #
+#----------------#
+jobs:
+  davky:
+    enabled: true
+    amount: 15
+    time: 300
+  salary: # peníze
+    delay: 3
+    miner: 4
+    digger: 4
+    killer: 4
+    builder: 4
+    woodcutter: 4
+    crafter: 4
+    farmer: 4
+
+#----------------#
+#      Kits      #
+#----------------#
+kits:
+  cooldowns:
+    starter: 86400
+    farmer: 86400
+    knight: 172800
+    enchanter: 604800
+    king: 172800
+    cisar: 604800
+
+#----------------------------#
+#      Blocked Commands      #
+#----------------------------#
+command_blocker: # Blockovani prikazu
+  - /pl
+  - /plugins
+  - /lp
+  - /lp help
+  - /lp editor
+  - /luckperms
+  - /luckperms editor
+  - /luckperms help
+  - /paper
+  - /plugins
+  - /paper
+  - /plugins
+  - /paper
+  - /gm
+  - /gmc
+  - /gms
+  - /gmsp
+  - /gma
+  - /gamemode
+  - /gamemode 0
+  - /gamemode 1
+  - /gamemode 2
+  - /gamemode 3
+  - /gamemode c
+  - /gamemode s
+  - /gamemode a
+  - /gamemode sp
+  - /gamemode creative
+  - /gamemode survival
+  - /gamemode adventure
+  - /gamemode spectator
+  - /gm c
+  - /gm s
+  - /gm a
+  - /gm sp
+  - /gm spec
+  - /give
+  - /kill

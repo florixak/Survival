@@ -1,0 +1,280 @@
+#---------------------------------------------------------------------#
+#  |\     /|(  ____ )(  ____ \  ( \      (  ___  )( (    /|(  __  \   #
+#  | )   ( || (    )|| (    \/  | (      | (   ) ||  \  ( || (  \  )  #
+#  | (___) || (____)|| (_____   | |      | (___) ||   \ | || |   ) |  #
+#  |  ___  ||  _____)(_____  )  | |      |  ___  || (\ \) || |   | |  #
+#  | (   ) || (            ) |  | |      | (   ) || | \   || |   ) |  #
+#  | )   ( || )      /\____) |  | (____/\| )   ( || )  \  || (__/  )  #
+#  |/     \||/       \_______)  (_______/|/     \||/    )_)(______/   #
+#---------------------------------------------------------------------#
+
+#--------------------#
+#      Messages      #
+#--------------------#
+Messages:
+
+  PREFIX: "&1HPS&9Land &8❙"
+  NO_PERM: "%prefix% &cTento příkaz neexistuje!"
+  VALID_COMMAND: "%prefix% &cTento příkaz neexistuje!"
+  NO_MONEY: "%prefix% &cNemáš dostatek peněz!"
+  NOT_PLAYER: "%prefix% &cTento příkaz může použít pouze hráč!"
+  OFFLINE_PLAYER: "%prefix% &cTento hráč je offline!"
+  FULL_INVENTORY: "%prefix% &cMáš plný inventář!"
+
+  BLOCKS:
+    CANT_PLACE: "%prefix% &cZde nemůžeš pokládat bloky!"
+    CANT_DESTROY: "%prefix% &cZde nemůžeš ničit bloky!"
+    WHEAT_GROW: "%prefix% &cMusíš počkat až wheat doroste!"
+
+  JOIN:
+    MESSAGE: "%prefix% %player% &7se připojil"
+    TITLE: "&bPokud si nebudeš vědět rady dej &f/help"
+
+  QUIT:
+    MESSAGE: "%prefix% %player% &7se odpojil"
+
+  MONEY:
+    MESSAGE: "%prefix% &fMáš %money% peněz"
+
+  CHAT:
+    COOLDOWN: "%prefix% &cNež budeš moct znovu psát musíš počkat %time_remaining%!"
+
+  PVP:
+    CANT_FIGHT: "%prefix% &cZde nemůžeš bojovat!"
+
+  DROP_ITEMS:
+    DISABLED_MESSAGE: "%prefix% &cZde nemůžeš vyhazovat itemy!"
+
+  TELEPORT:
+    TELEPORTING: "&9Teleportace &7- &f%delay% &c(Nehýbej se!)"
+    YOU_MOVED: "&cPohnul jsi se! Teleport se ruší!"
+    BLOCKED_PLAYER: "%prefix% &cTento hráč si zakázal žádosti o teleportaci!"
+    ALLOWED: "%prefix% &bPovolil jsi si žádosti o teleportaci!"
+    BLOCKED: "%prefix% &cZakázal jsi si žádosti o teleportaci!"
+    TELEPORTED: "&bTeleportoval jsi se na hráče &f%player%&b!"
+    CANNOT_TELEPORT_NOW: "%prefix %&cTeď se nemůžeš teleportovat!"
+
+  TPA:
+    USAGE: "%prefix% &bPoužij: &f/tpa <hráč> || /tpaccept || /tpdeny"
+    SENT: "%prefix% &bPoslal jsi žádost o teleport hráči &f%player%"
+    GAIN: "%prefix% &bDostal jsi žádost na teleport od hráče &f%player%"
+    NO_TP: "%prefix% &cNemáš žádnou žádost o teleport!"
+    COOLDOWN: "%prefix% &cNež se budeš moct znovu použít &f%delay%&c!"
+    DELAY: "&fZa %teleport_delay% budeš teleportován!"
+    ACCEPTED: "%prefix% &bŽádost o teleport byla přijmuta!"
+    DENIED: "%prefix% &cŽádost o teleport byla zamítnuta!"
+    CANT_TP_TO_SELF: "%prefix% &cNemůžeš poslat žádost o teleport sám sobě!"
+
+  TP:
+    USAGE: "%prefix% &bPoužij: &f/tp <hráč> || /tp <hráč> <hráč>"
+
+  RANDOMTP:
+    WAIT: "%prefix% &cNež budeš moct znovu použít RTP musíš počkat &f%cooldown%&c!"
+    NEW_COORDS: "&fNové souřadnice: &bX: &f%x%, &bY: &f%y%, &bZ: &f%z%"
+    YOU_CANT: "%prefix% &cRandom teleport nemůžeš používat ve světě &f%world%&c!"
+
+  DEATH:
+    MESSAGE:
+      KILLED: "%prefix% &cHráč &f%player% &cbyl zabit hráčem &f%killer%"
+      DEATH: "%prefix% %player% &czemřel."
+      YOU_DIED: "%prefix% &cZemřel jsi."
+      YOU_HAVE_KILLED: "%prefix% &bZabil jsi hráče %player%"
+      YOU_WERE_KILLED: "%prefix% &cZabil tě hráč %killer%"
+
+  RESPAWN:
+    NO_BED_SPAWN: "%prefix% &cNemáš nastavený respawn u postele, proto byl jsi poslán na spawn!"
+    BED_SPAWN_SET: "%prefix% &bNastaven respawn u postele!"
+
+  HELP:
+    USAGE: "%prefix% &bPoužij: &f/help 1 || 2 || 3"
+    TITLE:
+      HELP_1: "&f=============== &9HELP &31/3 &f==============="
+      HELP_2: "&f=============== &9HELP &32/3 &f==============="
+      HELP_3: "&f=============== &9HELP &33/3 &f==============="
+      ECONOMY: "&f=============== &9EKONOMIKA &f==============="
+      HOME: "&f=============== &9DOMOV &f==============="
+      WARP: "&f=============== &9WARP &f==============="
+      TPA: "&f=============== &9TPA &f==============="
+
+    HELP_1:
+      LINE1: "&f/spawn  &8-  &7Teleportneš se na spawn"
+      LINE2: "&f/help home  &8-  &7Ukáže ti vše okolo domovů"
+      LINE3: "&f/help warp  &8-  &7Ukáže ti vše okolo warpů"
+      LINE4: "&f/kits  &8-  &7Otevře pro tebe dostupné kity"
+      LINE5: "&f/stats <hráč>  &8-  &7Zobrazíš si statistiky hráče"
+    HELP_2:
+      LINE1: "&f/help economy  &8-  &7Ukáže ti vše okolo ekonomiky"
+      LINE2: "&f/help tpa  &8-  &7Ukáže vše okolo teleportu"
+      LINE3: "&f/heal buy  &8-  &7Koupíš si plné životy a najíš se do plna"
+      LINE4: "&f/prace  &8-  &7Otevře úřad práce"
+      LINE5: "&f/rtp  &8-  &7Teleportuje na náhodné místo"
+    HELP_3:
+      LINE1: "&f/ruleta  &8-  &7Otevřeš si ruletu, kde můžeš vyhrát věci"
+      LINE2: "&f/fly on  &8-  &7Podáte žádost o teleportaci"
+      LINE3: "&f/trade <hráč>  &8-  &7Podáte žádost o obchodování"
+      LINE4: " "
+      LINE5: " "
+
+    ECONOMY:
+      LINE1: "&f/money  &8-  &7Ukáže tvoje peníze"
+      LINE2: "&f/money <hráč>  &8-  &7Ukáže hráčovy peníze"
+      LINE3: "&f/pay <hráč> <částka>  &8-  &7Zaplatíš hráčovi penize"
+      LINE4: "&f/balancetop  &8-  &7Zobrazíš si TOP 10 pracháčů"
+
+    HOME:
+      LINE1: "&f/sethome <jméno_domova>  &8-  &7Nastavíš si domov"
+      LINE2: "&f/home <jméno_domova>  &8-  &7Teleportneš se na domov"
+      LINE3: "&f/delhome <jméno_domova>  &8-  &7Smažeš si domov"
+      LINE4: "&f/homes  &8-  &7Zobrazíš si své domovy"
+      LINE5: " "
+
+    WARP:
+      LINE1: "&f/warp <jméno_warpu>  &8-  &7Teleportneš se na warp"
+      LINE2: "&f/warps  &8-  &7Zobrazíš si dostupné warpy"
+      LINE3: " "
+      LINE4: " "
+      LINE5: " "
+
+    TPA:
+      LINE1: "&f/tpa <hráč>  &8-  &7Pošleš žádost o teleport"
+      LINE2: "&f/tpaccept  &8-  &7Přijmeš žádost o teleport"
+      LINE3: "&f/tpdeny  &8-  &7Odmítneš žádost o teleport"
+      LINE4: "&f/tpblock  &8-  &7Zakážeš si žádosti o teleport"
+      LINE5: " "
+
+  FLY:
+    USAGE: "%prefix% &bPoužij: &f/fly on"
+    ENABLED: "%prefix% &bFly byl aktivovaný, vyprší ti za &f%fly_delay%&a!"
+    DISABLED: "%prefix% &cFly byl deaktivovaný!"
+    WARN_MESSAGE: "%prefix% &cZa &f%warn_time% &cse ti deaktivuje fly!"
+    ALREADY_ACTIVATED: "%prefix% &cJiž máš aktivovaný fly! Zbývá ti &f%time_remaining%&c!"
+    DAY_COOLDOWN_MESSAGE: "%prefix% &cFly budeš moct znovu použít za &f%day_cooldown%&c!"
+
+  HEAL:
+    USAGE: "%prefix% &fPoužij: /heal buy"
+    BOUGHT: "%prefix% &bÚspešně jsi se uzdravil za %prize% peněz!"
+    WAIT_MESSAGE: "%prefix% &cMusíš počkat &f%time_remaining%&c!"
+    FULL_HP: "%prefix% &cJiž máš plné životy!"
+
+  COORDINATES:
+    ALLOWED: "%prefix% &bZapnul jsi si COORDINATES"
+    DISABLED: "%prefix% &cVypnul jsi si COORDINATES"
+
+  SPAWN:
+    SET: "%prefix% &bSpawn byl nastaven!"
+    DELETED: "%prefix% &cSpawn byl odstraněn!"
+    ALREADY_SET: "%prefix% &cSpawn již je nastaven!"
+    TELEPORTED_MESSAGE: "&bByl jsi teleportován na spawn!"
+    NOT_EXISTS: "%prefix% &cSpawn není nastaven, prosím informuj VEDENÍ!"
+
+  STATISTICS:
+    USAGE: "%prefix% &fPoužij: /stats <jméno_hráče>"
+    TITLE: "&f=============== &9Statistiky &f==============="
+    STATS:
+      NAME: "&9Hráč: &f%player%"
+      MONEY: "&9Peníze: &f%money%"
+      PLAYER_KILLED: "&9Zabitých hráčů: &f%player_killed%"
+      MOB_KILLED: "&9Zabitých mobů: &f%mob_killed%"
+      DEATHS: "&9Úmrtí: &f%deaths%"
+
+  SHOP:
+    OPENING: "%prefix% &7Otevírám obchod..."
+    BOUGHT: "%prefix% &bZakoupil jsi si &f%item% &bza &f%prize%"
+    FULL_INVENTORY: "%prefix% &cMáš plný inventář! Proto byl tvůj zakoupený item vyhozen na zem!"
+
+  KITS:
+    USAGE: "%prefix% &bPoužij: &f/kits"
+    OPENING: "%prefix% &7Otevírám kity..."
+    BOUGHT: "%prefix% &bDostal jsi kit: &f%kit_name%"
+    COOLDOWNS: "%prefix% &cKit &f%kit_name% &cbudeš moct znovu dostat za &f%time_remaining%&c!"
+
+  WORKBENCH:
+    OPEN: "%prefix% &7Otevírám crafting table..."
+
+  ENCHANT_TABLE:
+    OPEN: "%prefix% &7Otevírám enchant table..."
+
+  ANVIL:
+    OPEN: "%prefix% &7Otevírám kovadlinu..."
+
+  ENDER_CHEST:
+    OPEN: "%prefix% &7Otevírám ender bednu..."
+
+  HOME:
+    USAGE:
+      HOME: "%prefix% &bPoužij: &f/home <jméno_domova>"
+      SETHOME: "%prefix% &bPoužij: &f/sethome <jméno_domova>"
+      DELHOME: "%prefix% &bPoužij: &f/delhome <jméno_domova>"
+    CREATED: "%prefix% &bDomov &f%home_name% &bbyl vytvořen!"
+    DELETED: "%prefix% &cDomov &f%home_name% &cbyl smazán!"
+    ALREADY_EXISTS: "%prefix% &cDomov &f%home_name% &cjiž existuje!"
+    NO_EXISTS: "%prefix% &cDomov &f%home_name% &cneexistuje!"
+    TELEPORTED: "&bByl jsi teleportován na domov &f%home_name%&b!"
+    MAX_HOMES: "%prefix% &cMůžeš mít maximálně &f%max_homes% &cdomovů!"
+    NO_HOMES: "%prefix% &cNemáš nastavený žádný domov!"
+    HOME_LIST: "%prefix% &bTvoje domovy: &f%home_list%"
+
+  WARP:
+    USAGE:
+      WARP: "%prefix% &bPoužij: &f/warp <jméno_warpu>"
+      SETWARP: "%prefix% &bPoužij: &f/setwarp <jméno_warpu>"
+      DELWARP: "%prefix% &bPoužij: &f/delwarp <jméno_warpu>"
+    CREATED: "%prefix% &bWarp &f%warp_name% &bbyl vytvořen!"
+    DELETED: "%prefix% &cWarp &f%warp_name% &cbyl smazán!"
+    TELEPORTED: "&bByl jsi teleportován na warp &f%warp_name%&b!"
+    WAIT_MESSAGE: "&fZa %teleport_delay% budeš teleportován!"
+    ALREADY_EXISTS: "%prefix% &cWarp &f%warp_name% &cjiž existuje!"
+    NOT_EXISTS: "%prefix% &cWarp &f%warp_name% &cneexistuje!"
+    NO_WARPS: "%prefix% &cNejsou nastavené žádné warpy!"
+    LIST: "%prefix% &bWarpy: &f%warp_list%"
+
+  JOBS:
+    OPENING: "%prefix% &7Otevírám Úřad práce..."
+    SELECTED: "%prefix% &bByl jsi zaměstnán jako &f%job_name%"
+    RETIRED: "%prefix% &cDal jsi výpověď z práce &f%job_name%"
+    MAX: "%prefix% &cJiž máš maximální počet zaměstnání!"
+    ALREADY: "%prefix% &cV této práci jsi již zaměstnán!"
+    NOT_WORK: "%prefix% &cNejsi zaměstnán!"
+    GAIN_MONEY: "&9Výplata: &f+%money%"
+    DAVKY: "&9Dávky: &f+%money%"
+    LEVEL_UP: "&9| &fGratuluju, tvůj level %job% se zvýšil! &9|"
+
+  ROULETTE:
+    OPENING: "%prefix% &7Otevírám Ruletu..."
+    USAGE: "%prefix% &bPoužij: &f/ruleta"
+    WINNER: "%prefix% &bVyhrál jsi &f%item%&b! :)"
+    LOSE: "%prefix% &cNevyhrál jsi nic! :("
+    NO_DIA: "%prefix% &cNa roztočení rulety potřebuješ &f%amount% &cdia v ruce!"
+    FULL_INVENTORY: "%prefix% &cMáš plný inventář! Proto byl tvůj vyhraný item vyhozen na zem!"
+
+  PVPARENA:
+    SET: "%prefix% &bNastavil jsi PVP arénu!"
+    EXIST: "%prefix% &cPVP aréna již je nastavena!"
+    NOT_EXIST: "%prefix% &cPVP aréna není nastavena!"
+    DELETED: "%prefix% &cSmazal jsi PVP arénu!"
+    ENTER: "%prefix% &bVstoupil jsi do PVP arény!"
+    LEAVE: "%prefix% &cOdcházíš z PVP arény!"
+
+  GAMEMODE:
+    CHANGED: "%prefix% &fZměnil jsi si GAMEMODE na %gamemode%!"
+
+  CLEAR:
+    CLEARED: "%prefix% &fSmazal jsi si inventář!"
+
+  FREEZE:
+    USAGE: "%prefix% &bPoužij: &f/freeze <jméno_hráče>"
+    SPECIFY_PLAYER: "%prefix% &cUveď jméno hráče! /freeze <jméno_hráče>"
+    SUCCES_FREEZED: "%prefix% &bZamrazil jsi hráče &f%player%"
+    SUCCES_UNFREEZED: "%prefix% &aRozmrazil jsi hráče &f%player%"
+    FREEZED: "%prefix% &cByl jsi zmražen!"
+    UNFREEZED: "%prefix% &bByl jsi rozmražen!"
+    NOT_FREEZE: "%prefix% &cTento hráč není zmrazený!"
+
+  VANISH:
+    USAGE: "%prefix% &bPoužij: &f/vanish"
+    VANISHED: "%prefix% &bJsi neviditelný!"
+    UNVANISHED: "%prefix% &bUž jsi viditelný!"
+
+  RELOAD:
+    USAGE: "%prefix% &bPoužij: &f/survival reload"
+    RELOADED: "%prefix% &bSurvival plugin byl úspěšně reloadnut!"

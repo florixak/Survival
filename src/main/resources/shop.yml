@@ -1,0 +1,121 @@
+#---------------------------------------------------------------------#
+#  |\     /|(  ____ )(  ____ \  ( \      (  ___  )( (    /|(  __  \   #
+#  | )   ( || (    )|| (    \/  | (      | (   ) ||  \  ( || (  \  )  #
+#  | (___) || (____)|| (_____   | |      | (___) ||   \ | || |   ) |  #
+#  |  ___  ||  _____)(_____  )  | |      |  ___  || (\ \) || |   | |  #
+#  | (   ) || (            ) |  | |      | (   ) || | \   || |   ) |  #
+#  | )   ( || )      /\____) |  | (____/\| )   ( || )  \  || (__/  )  #
+#  |/     \||/       \_______)  (_______/|/     \||/    )_)(______/   #
+#---------------------------------------------------------------------#
+
+#----------------#
+#      Shop      #
+#----------------#
+slots: 45
+
+# Title of the GUI
+title: "Obchod"
+
+# Automatically update open inventories.
+# This can be used to update placeholders in the GUI.
+refresh:
+  enabled: false
+  rate: 40
+
+# The items inside the GUI can be listed here
+items:
+  filler:
+    material: GRAY_STAINED_GLASS_PANE
+    slot: -1 # Setting the slot to -1 will fill every empty slot, you can also do "slots: [0, 1, 2]"
+    display_name: ' '
+  blocks:
+    material: GRASS_BLOCK
+    slot: 10
+    amount: 1
+    glow: false
+    display_name: '&fBloky'
+    lore:
+      - '&7Klikni!'
+    actions:
+      - '[CLOSE]'
+      - "[MENU] blocks1"
+  tools:
+    material: IRON_PICKAXE
+    slot: 12
+    amount: 1
+    glow: false
+    display_name: '&fNástroje'
+    lore:
+      - '&7Klikni!'
+    actions:
+      - '[CLOSE]'
+      - "[MENU] tools1"
+  armor:
+    material: DIAMOND_CHESTPLATE
+    slot: 14
+    amount: 1
+    glow: false
+    display_name: '&fBrnění'
+    lore:
+      - '&7Klikni!'
+    actions:
+      - '[CLOSE]'
+      - "[MENU] armor"
+  drops:
+    material: BONE
+    slot: 16
+    amount: 1
+    glow: false
+    display_name: '&fDropy'
+    lore:
+      - '&7Klikni!'
+    actions:
+      - '[CLOSE]'
+      - "[MENU] drops"
+  food:
+    material: COOKED_BEEF
+    slot: 28
+    amount: 1
+    glow: false
+    display_name: '&fJídlo'
+    lore:
+      - '&7Klikni!'
+    actions:
+      - '[CLOSE]'
+      - "[MENU] food"
+  garden:
+    material: OAK_SAPLING
+    slot: 30
+    amount: 1
+    glow: false
+    display_name: '&fZahrádkářství'
+    lore:
+      - '&7Klikni!'
+    actions:
+      - '[CLOSE]'
+      - "[MENU] garden"
+  other:
+    material: SADDLE
+    slot: 32
+    amount: 1
+    glow: false
+    display_name: '&fOstatní'
+    lore:
+      - '&7Klikni!'
+    actions:
+      - '[CLOSE]'
+      - "[MENU] other"
+  info:
+    material: PAPER
+    slot: 22
+    amount: 1
+    glow: true
+    display_name: '&bInfo'
+    lore:
+      - '&b× &fToto je shop!'
+      - '&b× &fZde si můžeš nakoupit libovolné věci!'
+      - '&b× &fZobrazená cena za item je pouze za 1 kus,'
+      - '&fkdyž si zvolíš více kusů, musíte vynásobit'
+      - '&fcenu počtem.'
+      - '&7(Př.: 1x stone - 2 peníze, 64x stone - 128 peněz)'
+    actions:

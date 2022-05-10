@@ -1,0 +1,336 @@
+# Slots of the GUI
+slots: 54
+
+# Title of the GUI
+title: "Zahrádkářství"
+
+# Automatically update open inventories.
+# This can be used to update placeholders in the GUI.
+refresh:
+  enabled: false
+  rate: 40
+
+# The items inside the GUI can be listed here
+items:
+  filler:
+    material: GRAY_STAINED_GLASS_PANE
+    slot: -1 # Setting the slot to -1 will fill every empty slot, you can also do "slots: [0, 1, 2]"
+    display_name: ' '
+  back:
+    material: RED_BED
+    slot: 45
+    amount: 1
+    glow: false
+    display_name: '&cZpět'
+    lore:
+    actions:
+      - '[CLOSE]'
+      - "[MENU] shop"
+  1:
+    material: WHEAT_SEEDS
+    slot: 10
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 2 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 2"
+  2:
+    material: PUMPKIN_SEEDS
+    slot: 11
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 12"
+  3:
+    material: MELON_SEEDS
+    slot: 12
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 12"
+  4:
+    material: BEETROOT_SEEDS
+    slot: 13
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 6 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 6"
+  5:
+    material: VINE
+    slot: 14
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 6 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 6"
+  6:
+    material: LILY_PAD
+    slot: 15
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 6 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 6"
+  7:
+    material: GLOW_LICHEN
+    slot: 16
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 10 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 10"
+  8:
+    material: CACTUS
+    slot: 19
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 20 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 20"
+  9:
+    material: BAMBOO
+    slot: 20
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 12"
+  10:
+    material: SMALL_DRIPLEAF
+    slot: 21
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 12"
+  11:
+    material: BIG_DRIPLEAF
+    slot: 22
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 12"
+  12:
+    material: HANGING_ROOTS
+    slot: 23
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 10 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 10"
+  13:
+    material: KELP
+    slot: 24
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 4 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 4"
+  14:
+    material: SUGAR_CANE
+    slot: 25
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 4 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 4"
+  15:
+    material: TWISTING_VINES
+    slot: 28
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 25 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 25"
+  16:
+    material: WEEPING_VINES
+    slot: 29
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 25 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 25"
+  17:
+    material: NETHER_SPROUTS
+    slot: 30
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 25 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 25"
+  18:
+    material: WARPED_ROOTS
+    slot: 31
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 20 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 20"
+  19:
+    material: CRIMSON_ROOTS
+    slot: 32
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 20 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 20"
+  20:
+    material: WARPED_FUNGUS
+    slot: 33
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 20 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 20"
+  21:
+    material: CRIMSON_FUNGUS
+    slot: 34
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 20 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 20"
+  22:
+    material: RED_MUSHROOM
+    slot: 37
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 15 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 15"
+  23:
+    material: BROWN_MUSHROOM
+    slot: 38
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 15 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 15"
+  24:
+    material: SEA_PICKLE
+    slot: 39
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 15 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 15"
+  25:
+    material: SEAGRASS
+    slot: 40
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 15 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 15"
+  26:
+    material: DEAD_BUSH
+    slot: 41
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 8 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 8"
+  27:
+    material: FLOWERING_AZALEA
+    slot: 42
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 15 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 15"
+  28:
+    material: AZALEA
+    slot: 43
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 15 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 15"

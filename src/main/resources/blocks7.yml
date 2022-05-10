@@ -1,0 +1,318 @@
+# Slots of the GUI
+slots: 54
+
+# Title of the GUI
+title: "Bloky - 7"
+
+# Automatically update open inventories.
+# This can be used to update placeholders in the GUI.
+refresh:
+  enabled: false
+  rate: 40
+
+# The items inside the GUI can be listed here
+items:
+  filler:
+    material: GRAY_STAINED_GLASS_PANE
+    slot: -1 # Setting the slot to -1 will fill every empty slot, you can also do "slots: [0, 1, 2]"
+    display_name: ' '
+  back:
+    material: RED_BED
+    slot: 45
+    amount: 1
+    glow: false
+    display_name: '&cZpět'
+    lore:
+    actions:
+      - '[CLOSE]'
+      - "[MENU] blocks6"
+#  next:
+#    material: LIME_BED
+#    slot: 53
+#    amount: 1
+#    glow: false
+#    display_name: '&aDalší'
+#    lore:
+#    actions:
+#      - '[CLOSE]'
+#      - "[MENU] shop"
+  169:
+    material: OAK_STAIRS
+    slot: 10
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 8 peněz'
+    actions:
+      - "[SHOP] 8"
+  170:
+    material: OAK_WOOD
+    slot: 11
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 15 peněz'
+    actions:
+      - "[SHOP] 15"
+  171:
+    material: SPRUCE_LOG
+    slot: 12
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 15 peněz'
+    actions:
+      - "[SHOP] 15"
+  172:
+    material: SPRUCE_PLANKS
+    slot: 13
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 4 peněz'
+    actions:
+      - "[SHOP] 4"
+  173:
+    material: SPRUCE_SLAB
+    slot: 14
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 8 peněz'
+    actions:
+      - "[SHOP] 8"
+  174:
+    material: SPRUCE_STAIRS
+    slot: 15
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 8 peněz'
+    actions:
+      - "[SHOP] 8"
+  175:
+    material: SPRUCE_WOOD
+    slot: 16
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 15 peněz'
+    actions:
+      - "[SHOP] 15"
+  176:
+    material: WARPED_HYPHAE
+    slot: 19
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 25 peněz'
+    actions:
+      - "[SHOP] 25"
+  177:
+    material: WARPED_PLANKS
+    slot: 20
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 6 peněz'
+    actions:
+      - "[SHOP] 6"
+  178:
+    material: WARPED_SLAB
+    slot: 21
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 8 peněz'
+    actions:
+      - "[SHOP] 8"
+  179:
+    material: WARPED_STAIRS
+    slot: 22
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 8 peněz'
+    actions:
+      - "[SHOP] 8"
+  180:
+    material: WARPED_STEM
+    slot: 23
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 25 peněz'
+    actions:
+      - "[SHOP] 25"
+  181:
+    material: BLACK_WOOL
+    slot: 24
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  182:
+    material: BLUE_WOOL
+    slot: 25
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  183:
+    material: BROWN_WOOL
+    slot: 28
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  184:
+    material: CYAN_WOOL
+    slot: 29
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  185:
+    material: GRAY_WOOL
+    slot: 30
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  186:
+    material: GREEN_WOOL
+    slot: 31
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  187:
+    material: LIGHT_BLUE_WOOL
+    slot: 32
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  188:
+    material: LIGHT_GRAY_WOOL
+    slot: 33
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  189:
+    material: LIME_WOOL
+    slot: 34
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  190:
+    material: MAGENTA_WOOL
+    slot: 37
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  191:
+    material: ORANGE_WOOL
+    slot: 38
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  192:
+    material: PINK_WOOL
+    slot: 39
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  193:
+    material: PURPLE_WOOL
+    slot: 40
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  194:
+    material: RED_WOOL
+    slot: 41
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  195:
+    material: WHITE_WOOL
+    slot: 42
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  196:
+    material: YELLOW_WOOL
+    slot: 43
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"

@@ -1,0 +1,218 @@
+# Slots of the GUI
+slots: 54
+
+# Title of the GUI
+title: "Dropy"
+
+# Automatically update open inventories.
+# This can be used to update placeholders in the GUI.
+refresh:
+  enabled: false
+  rate: 40
+
+# The items inside the GUI can be listed here
+items:
+  filler:
+    material: GRAY_STAINED_GLASS_PANE
+    slot: -1 # Setting the slot to -1 will fill every empty slot, you can also do "slots: [0, 1, 2]"
+    display_name: ' '
+  back:
+    material: RED_BED
+    slot: 45
+    amount: 1
+    glow: false
+    display_name: '&cZpět'
+    lore:
+    actions:
+      - '[CLOSE]'
+      - "[MENU] shop"
+  1:
+    material: BONE
+    slot: 10
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 9 peněz'
+    actions:
+      - "[SHOP] 9"
+  2:
+    material: LEATHER
+    slot: 11
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  3:
+    material: ROTTEN_FLESH
+    slot: 12
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 5 peněz'
+    actions:
+      - "[SHOP] 5"
+  4:
+    material: ARROW
+    slot: 13
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 20 peněz'
+    actions:
+      - "[SHOP] 20"
+  5:
+    material: STRING
+    slot: 14
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 10 peněz'
+    actions:
+      - "[SHOP] 10"
+  6:
+    material: GUNPOWDER
+    slot: 15
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  7:
+    material: FEATHER
+    slot: 16
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 5 peněz'
+    actions:
+      - "[SHOP] 5"
+  8:
+    material: FLINT
+    slot: 19
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 15 peněz'
+    actions:
+      - "[SHOP] 15"
+  9:
+    material: BLAZE_ROD
+    slot: 20
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 150 peněz'
+    actions:
+      - "[SHOP] 150"
+  10:
+    material: ENDER_PEARL
+    slot: 21
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 200 peněz'
+    actions:
+      - "[SHOP] 200"
+  11:
+    material: ENDER_EYE
+    slot: 22
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 250 peněz'
+    actions:
+      - "[SHOP] 250"
+  12:
+    material: SLIME_BALL
+    slot: 23
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 25 peněz'
+    actions:
+      - "[SHOP] 25"
+  13:
+    material: EGG
+    slot: 24
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 4 peněz'
+    actions:
+      - "[SHOP] 4"
+  14:
+    material: INK_SAC
+    slot: 25
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 10 peněz'
+    actions:
+      - "[SHOP] 10"
+  15:
+    material: GLOW_INK_SAC
+    slot: 28
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"
+  16:
+    material: NAUTILUS_SHELL
+    slot: 29
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 3 peněz'
+    actions:
+      - "[SHOP] 3"
+  17:
+    material: NETHER_STAR
+    slot: 30
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 5000 peněz'
+    actions:
+      - "[SHOP] 5000"
+  18:
+    material: NETHER_WART
+    slot: 31
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 45 peněz'
+    actions:
+      - "[SHOP] 45"
+  19:
+    material: GLOWSTONE_DUST
+    slot: 32
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 12 peněz'
+    actions:
+      - "[SHOP] 12"

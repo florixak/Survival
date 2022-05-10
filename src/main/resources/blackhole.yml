@@ -1,0 +1,63 @@
+#---------------------------------------------------------------------#
+#  |\     /|(  ____ )(  ____ \  ( \      (  ___  )( (    /|(  __  \   #
+#  | )   ( || (    )|| (    \/  | (      | (   ) ||  \  ( || (  \  )  #
+#  | (___) || (____)|| (_____   | |      | (___) ||   \ | || |   ) |  #
+#  |  ___  ||  _____)(_____  )  | |      |  ___  || (\ \) || |   | |  #
+#  | (   ) || (            ) |  | |      | (   ) || | \   || |   ) |  #
+#  | )   ( || )      /\____) |  | (____/\| )   ( || )  \  || (__/  )  #
+#  |/     \||/       \_______)  (_______/|/     \||/    )_)(______/   #
+#---------------------------------------------------------------------#
+
+#----------------#
+#      Kits      #
+#----------------#
+slots: 27
+
+# Title of the GUI
+title: "Kity - Astronaut"
+
+# Automatically update open inventories.
+# This can be used to update placeholders in the GUI.
+refresh:
+  enabled: false
+  rate: 40
+
+# The items inside the GUI can be listed here
+items:
+  filler:
+    material: GRAY_STAINED_GLASS_PANE
+    slot: -1 # Setting the slot to -1 will fill every empty slot, you can also do "slots: [0, 1, 2]"
+    display_name: ' '
+  back:
+    material: RED_BED
+    slot: 18
+    amount: 1
+    glow: false
+    display_name: '&fZpět'
+    lore:
+    actions:
+      - '[CLOSE]'
+      - "[MENU] kits"
+  0:
+    material: NETHERITE_HELMET
+    slot: 10
+    amount: 1
+    glow: false
+    display_name: '&fCísař'
+    lore:
+      - '&f'
+      - '&fCooldown: %cisar_cooldown%'
+      - '&f'
+      - '&8» &fNetherite Sword &7(Sh1,Unb2)'
+      - '&8» &fNetherite Pickaxe &7(Effi1,Unb2)'
+      - '&8» &fNetherite Axe &7(Effi1,Unb2)'
+      - '&8» &fNetherite Shovel &7(Effi1,Unb2)'
+      - '&8» &f12x Golden Apple'
+      - '&8» &f6x Enchanted Golden Apple'
+      - '&8» &fNetherite Helmet &7(Prot1,Unb2)'
+      - '&8» &fNetherite Chestplate &7(Prot1,Unb2)'
+      - '&8» &fNetherite Leggings &7(Prot1,Unb2)'
+      - '&8» &fNetherite Boots &7(Prot1,Unb2)'
+    actions:
+      - '[CLOSE]'
+      - "[KITS] cisar"

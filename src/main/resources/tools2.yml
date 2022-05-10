@@ -1,0 +1,116 @@
+# Slots of the GUI
+slots: 54
+
+# Title of the GUI
+title: "Nástroje - 2"
+
+# Automatically update open inventories.
+# This can be used to update placeholders in the GUI.
+refresh:
+  enabled: false
+  rate: 40
+
+# The items inside the GUI can be listed here
+items:
+  filler:
+    material: GRAY_STAINED_GLASS_PANE
+    slot: -1 # Setting the slot to -1 will fill every empty slot, you can also do "slots: [0, 1, 2]"
+    display_name: ' '
+  back:
+    material: RED_BED
+    slot: 45
+    amount: 1
+    glow: false
+    display_name: '&cZpět'
+    lore:
+    actions:
+      - '[CLOSE]'
+      - "[MENU] tools1"
+  21:
+    material: WOODEN_HOE
+    slot: 11
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 15 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 15"
+  22:
+    material: STONE_HOE
+    slot: 12
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 35 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 35"
+  23:
+    material: GOLDEN_HOE
+    slot: 13
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 75 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 75"
+  24:
+    material: IRON_HOE
+    slot: 14
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 100 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 100"
+  25:
+    material: DIAMOND_HOE
+    slot: 15
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 150 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 150"
+  26:
+    material: FISHING_ROD
+    slot: 20
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 35 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 35"
+  27:
+    material: SHEARS
+    slot: 21
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 50 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 50"
+  28:
+    material: BOW
+    slot: 22
+    amount: 1
+    glow: false
+    display_name:
+    lore:
+      - '&6Cena: 50 peněz'
+    actions:
+      - '[CLOSE]'
+      - "[SHOP] 50"
