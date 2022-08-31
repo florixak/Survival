@@ -141,7 +141,11 @@ public final class Survival extends JavaPlugin {
     }
 
     @Override
-    public void onDisable() { SQL.disconnect(); }
+    public void onDisable() {
+        this.SQL = new MySQL();
+        this.data = new SQLGetter(this);
+        SQL.disconnect();
+    }
 
     private boolean setupEconomy() {
         if (getServer().getPluginManager().getPlugin("Vault") == null) {

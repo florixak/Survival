@@ -35,6 +35,10 @@ public class SQLGetter {
     }
 
     public void createPlayer(Player player) {
+        createPlayerStatistics(player);
+        createPlayerJobs(player);
+    }
+    public void createPlayerStatistics(Player player) {
         UUID uuid = player.getUniqueId();
         try {
             PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("SELECT * FROM statistics WHERE UUID=?");
@@ -53,6 +57,9 @@ public class SQLGetter {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    public void createPlayerJobs(Player player) {
+        UUID uuid = player.getUniqueId();
 
         try {
             PreparedStatement ps3 = plugin.SQL.getConnection().prepareStatement("SELECT * FROM jobs WHERE UUID=?");
@@ -182,7 +189,6 @@ public class SQLGetter {
         }
     }
 
-
     public int getMinerBlocks(UUID uuid) {
         try {
             PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("SELECT MINER_MINED FROM jobs WHERE UUID=?");
@@ -306,9 +312,6 @@ public class SQLGetter {
     }
 
 
-
-
-
     public void emptyStatsTable() {
         try {
             PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("TRUNCATE statistics");
@@ -317,7 +320,6 @@ public class SQLGetter {
             e.printStackTrace();
         }
     }
-
     public void emptyJobsTable() {
         try {
             PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("TRUNCATE jobs");

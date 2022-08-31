@@ -8,9 +8,9 @@ public class MySQL {
 
     private String host = "167.86.104.34";
     private String port = "3306";
-    private String database = "s26_Survival";
-    private String username = "u26_Mh1oR75EQX";
-    private String password = "^Mxz1szMDf+wKgGBNrVYtW+Q";
+    private String database = "s90_Survival";
+    private String username = "u90_m0ew1zRx3J";
+    private String password = "vBdWmwoJ=C7U@DO1qS^a@+4+";
 
 //    private String host = config.getString("data.host");
 //    private String port = config.getString("data.port");
