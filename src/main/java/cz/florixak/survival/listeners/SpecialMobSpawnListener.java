@@ -5,6 +5,7 @@ import cz.florixak.survival.config.ConfigType;
 import cz.florixak.survival.manager.ItemManager;
 import cz.florixak.survival.manager.SpawnManager;
 import cz.florixak.survival.utility.TextUtil;
+import cz.florixak.survival.utility.XSeries.XMaterial;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -22,18 +23,19 @@ import java.util.Random;
 
 public class SpecialMobSpawnListener implements Listener {
 
+    private SpawnManager spawnManager;
+    private ItemManager itemManager;
+
     private int protection;
 
-    FileConfiguration config;
+    public SpecialMobSpawnListener(Survival plugin) {
+        this.spawnManager = plugin.getSpawnManager();
+        this.itemManager = plugin.getItemManager();
+        this.protection = spawnManager.getSpawnProtection();
+    }
 
     @EventHandler
     public void onMobSpawn(CreatureSpawnEvent event){
-
-        config = Survival.plugin.getConfigManager().getFile(ConfigType.SETTINGS).getConfig();
-
-        protection = config.getInt("spawn.protection");
-
-        SpawnManager spawnManager = new SpawnManager();
 
         if (event.getEntity().getWorld().equals("world")
                 && spawnManager.exist()
@@ -132,8 +134,6 @@ public class SpecialMobSpawnListener implements Listener {
     @EventHandler
     public void onModKilled(EntityDeathEvent event){
 
-        ItemManager itemManager = Survival.plugin.getItemManager();
-
         if (event.getEntity() instanceof Zombie){
             Zombie zombie = (Zombie) event.getEntity();
 
@@ -154,7 +154,7 @@ public class SpecialMobSpawnListener implements Listener {
                         event.getDrops().add(new ItemStack(Material.IRON_INGOT));
                         break;
                     case 2:
-                        event.getDrops().add(new ItemStack(Material.COPPER_INGOT));
+                        event.getDrops().add(new ItemStack(XMaterial.COPPER_INGOT.parseMaterial()));
                         break;
                     case 3:
                         event.getDrops().add(new ItemStack(Material.COAL));
@@ -169,7 +169,7 @@ public class SpecialMobSpawnListener implements Listener {
                 event.getDrops().clear();
 
                 if (choice < 5){
-                    event.getDrops().add(new ItemStack(Material.NETHERITE_SCRAP));
+                    event.getDrops().add(new ItemStack(XMaterial.NETHERITE_SCRAP.parseMaterial()));
                 } else if (choice < 15){
                     event.getDrops().add(new ItemStack(Material.DIAMOND));
                 } else if (choice < 30){

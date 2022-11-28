@@ -15,19 +15,19 @@ public class ScoreboardManager {
 
     private Map<UUID, ScoreHelper> players;
 
-    FileConfiguration config;
+    private FileConfiguration config;
 
     private String title;
     private List<String> sb;
 
-    Survival plugin;
+    private Survival plugin;
 
     public ScoreboardManager(Survival plugin){
         this.plugin = plugin;
 
         players = new HashMap<>();
 
-        config = Survival.plugin.getConfigManager().getFile(ConfigType.SCOREBOARD).getConfig();
+        this.config = plugin.getConfigManager().getFile(ConfigType.SCOREBOARD).getConfig();
 
         title = config.getString("scoreboard.title");
         sb = config.getStringList("scoreboard.lines");

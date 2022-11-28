@@ -1,8 +1,7 @@
 package cz.florixak.survival.utility;
 
 import cz.florixak.survival.Survival;
-import cz.florixak.survival.inventory.InventoryListener;
-import cz.florixak.survival.inventory.InventoryManager;
+import cz.florixak.survival.utility.placeholderapi.PlaceholderUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Material;

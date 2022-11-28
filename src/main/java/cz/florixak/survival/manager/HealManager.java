@@ -1,6 +1,7 @@
 package cz.florixak.survival.manager;
 
 import cz.florixak.survival.Survival;
+import cz.florixak.survival.config.ConfigType;
 import cz.florixak.survival.utility.TextUtil;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
@@ -18,17 +19,15 @@ public class HealManager {
     private int delay;
     private int prize;
 
-    public HealManager(){}
+    public HealManager(Survival plugin) {
+        this.config = plugin.getConfigManager().getFile(ConfigType.SETTINGS).getConfig();
+        this.prize = config.getInt("heal.prize");
+        this.heal_menu_name = config.getString("heal.gui.name");
+        this.heal_menu_slots = config.getInt("heal.gui.slots");
+    }
+
 
     public void openHealMenu(Player p) {
-
-        Economy economy = Survival.getEconomy();
-
-        prize = config.getInt("heal.prize");
-
-        heal_menu_name = config.getString("heal.gui.name");
-        heal_menu_slots = config.getInt("heal.gui.slots");
-
         Inventory heal_menu = Bukkit.createInventory(null, heal_menu_slots, TextUtil.color(heal_menu_name));
 
     }

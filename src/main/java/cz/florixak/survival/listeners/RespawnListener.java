@@ -35,10 +35,10 @@ public class RespawnListener implements Listener {
             Material.PINK_BED,
             Material.WHITE_BED);
 
-    Survival plugin;
+    private SpawnManager spawnManager;
 
     public RespawnListener(Survival plugin){
-        this.plugin = plugin;
+        this.spawnManager = plugin.getSpawnManager();
     }
 
     @EventHandler
@@ -46,7 +46,6 @@ public class RespawnListener implements Listener {
 
         Player p = event.getPlayer();
         Location bed = p.getBedSpawnLocation();
-        SpawnManager spawnManager = new SpawnManager();
 
         if (bed == null){
             event.setRespawnLocation(spawnManager.getLocation());
@@ -55,7 +54,6 @@ public class RespawnListener implements Listener {
             p.sendMessage(Messages.RESPAWN_NO_BED_SPAWN.toString());
 
         } else {
-
             p.teleport(bed);
         }
     }

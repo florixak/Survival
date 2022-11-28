@@ -11,16 +11,15 @@ import org.bukkit.entity.Player;
 import java.util.Set;
 
 public class WarpManager {
-
+    private Survival plugin;
     private FileConfiguration config;
 
-    public WarpManager(){
-        config = Survival.plugin.getConfigManager().getFile(ConfigType.WARPS).getConfig();
+    public WarpManager(Survival plugin){
+        this.plugin = plugin;
+        this.config = plugin.getConfigManager().getFile(ConfigType.WARPS).getConfig();
     }
 
     public void addWarp(Location loc, String name){
-
-        config = Survival.plugin.getConfigManager().getFile(ConfigType.WARPS).getConfig();
 
         config.set("warps." + name + ".world", loc.getWorld().getName());
         config.set("warps." + name + ".x", loc.getX());
@@ -29,48 +28,39 @@ public class WarpManager {
         config.set("warps." + name + ".yaw", loc.getYaw());
         config.set("warps." + name + ".pitch", loc.getPitch());
 
-        Survival.plugin.getConfigManager().getFile(ConfigType.WARPS).save();
+        plugin.getConfigManager().getFile(ConfigType.WARPS).save();
     }
 
     public boolean exist(String name){
-        config = Survival.plugin.getConfigManager().getFile(ConfigType.WARPS).getConfig();
         return config.get("warps." + name) != null;
     }
 
     public void warpsList(Player p){
 
-        config = Survival.plugin.getConfigManager().getFile(ConfigType.WARPS).getConfig();
-
-        if (warpIsNull()){
-
+        if (warpIsNull()) {
             p.sendMessage(Messages.WARP_NO_WARPS.toString());
-
-        } else {
-
-            String out = "";
-            for (String s : config.getConfigurationSection("warps").getKeys(false)){
-                out = s + "§f, " + out;
-            }
-            out = out.trim();
-
-            if (!(config.getConfigurationSection("warps").getKeys(false).size() <= 0)){
-                p.sendMessage(Messages.WARP_LIST.toString()
-                        .replace("%warp_list%", out));
-            } else {
-                p.sendMessage(Messages.WARP_NO_WARPS.toString());
-            }
+            return;
         }
+
+        String out = "";
+        for (String s : config.getConfigurationSection("warps").getKeys(false)){
+            out = s + "§f, " + out;
+        }
+        out = out.trim();
+        if (!(config.getConfigurationSection("warps").getKeys(false).size() <= 0)){
+            p.sendMessage(Messages.WARP_LIST.toString()
+                    .replace("%warp_list%", out));
+        } else {
+            p.sendMessage(Messages.WARP_NO_WARPS.toString());
+        }
+
     }
 
     public Set<String> getWarps(){
-        config = Survival.plugin.getConfigManager().getFile(ConfigType.WARPS).getConfig();
-
         return config.getKeys(false);
     }
 
     public Location getLocation(String name){
-        config = Survival.plugin.getConfigManager().getFile(ConfigType.WARPS).getConfig();
-
         return new Location(
                 Bukkit.getWorld(config.getString("warps." + name + ".world")),
                 config.getDouble("warps." + name + ".x"),
@@ -81,14 +71,11 @@ public class WarpManager {
     }
 
     public void delWarp(String name){
-        config = Survival.plugin.getConfigManager().getFile(ConfigType.WARPS).getConfig();
-
         config.set("warps." + name, null);
-        Survival.plugin.getConfigManager().getFile(ConfigType.WARPS).save();
+        plugin.getConfigManager().getFile(ConfigType.WARPS).save();
     }
 
     public boolean warpIsNull(){
-        config = Survival.plugin.getConfigManager().getFile(ConfigType.WARPS).getConfig();
         return config.getConfigurationSection("warps") == null;
     }
 

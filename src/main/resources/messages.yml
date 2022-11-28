@@ -14,12 +14,12 @@
 Messages:
 
   PREFIX: "&1HPS&9Land &8❙"
-  NO_PERM: "%prefix% &cTento příkaz neexistuje!"
-  VALID_COMMAND: "%prefix% &cTento příkaz neexistuje!"
-  NO_MONEY: "%prefix% &cNemáš dostatek peněz!"
-  NOT_PLAYER: "%prefix% &cTento příkaz může použít pouze hráč!"
-  OFFLINE_PLAYER: "%prefix% &cTento hráč je offline!"
-  FULL_INVENTORY: "%prefix% &cMáš plný inventář!"
+  NO_PERM: "%prefix% &cInvalid command!"
+  VALID_COMMAND: "%prefix% &cInvalid command!"
+  NO_MONEY: "%prefix% &cYou do not have enough money!"
+  NOT_PLAYER: "%prefix% &cThis command can use only player!"
+  OFFLINE_PLAYER: "%prefix% &cThis player is offline!"
+  FULL_INVENTORY: "%prefix% &cYou have full inventory!"
 
   BLOCKS:
     CANT_PLACE: "%prefix% &cZde nemůžeš pokládat bloky!"
@@ -86,61 +86,60 @@ Messages:
     BED_SPAWN_SET: "%prefix% &bNastaven respawn u postele!"
 
   HELP:
-    USAGE: "%prefix% &bPoužij: &f/help 1 || 2 || 3"
-    TITLE:
-      HELP_1: "&f=============== &9HELP &31/3 &f==============="
-      HELP_2: "&f=============== &9HELP &32/3 &f==============="
-      HELP_3: "&f=============== &9HELP &33/3 &f==============="
-      ECONOMY: "&f=============== &9EKONOMIKA &f==============="
-      HOME: "&f=============== &9DOMOV &f==============="
-      WARP: "&f=============== &9WARP &f==============="
-      TPA: "&f=============== &9TPA &f==============="
+    USAGE: "%prefix% &bUsage: &f/help 1 || 2 || 3"
 
-    HELP_1:
-      LINE1: "&f/spawn  &8-  &7Teleportneš se na spawn"
-      LINE2: "&f/help home  &8-  &7Ukáže ti vše okolo domovů"
-      LINE3: "&f/help warp  &8-  &7Ukáže ti vše okolo warpů"
-      LINE4: "&f/kits  &8-  &7Otevře pro tebe dostupné kity"
-      LINE5: "&f/stats <hráč>  &8-  &7Zobrazíš si statistiky hráče"
-    HELP_2:
-      LINE1: "&f/help economy  &8-  &7Ukáže ti vše okolo ekonomiky"
-      LINE2: "&f/help tpa  &8-  &7Ukáže vše okolo teleportu"
-      LINE3: "&f/heal buy  &8-  &7Koupíš si plné životy a najíš se do plna"
-      LINE4: "&f/prace  &8-  &7Otevře úřad práce"
-      LINE5: "&f/rtp  &8-  &7Teleportuje na náhodné místo"
-    HELP_3:
-      LINE1: "&f/ruleta  &8-  &7Otevřeš si ruletu, kde můžeš vyhrát věci"
-      LINE2: "&f/fly on  &8-  &7Podáte žádost o teleportaci"
-      LINE3: "&f/trade <hráč>  &8-  &7Podáte žádost o obchodování"
-      LINE4: " "
-      LINE5: " "
+    HELP:
+      - "&f=============== &9HELP &31/3 &f==============="
+      - "&f/spawn  &8-  &7Teleportneš se na spawn"
+      - "&f/help home  &8-  &7Ukáže ti vše okolo domovů"
+      - "&f/help warp  &8-  &7Ukáže ti vše okolo warpů"
+      - "&f/kits  &8-  &7Otevře pro tebe dostupné kity"
+      - "&f/stats <hráč>  &8-  &7Zobrazíš si statistiky hráče"
+
+      - "&f=============== &9HELP &32/3 &f==============="
+      - "&f/help economy  &8-  &7Ukáže ti vše okolo ekonomiky"
+      - "&f/help tpa  &8-  &7Ukáže vše okolo teleportu"
+      - "&f/heal buy  &8-  &7Koupíš si plné životy a najíš se do plna"
+      - "&f/prace  &8-  &7Otevře úřad práce"
+      - "&f/rtp  &8-  &7Teleportuje na náhodné místo"
+
+      - "&f=============== &9HELP &33/3 &f==============="
+      - "&f/ruleta  &8-  &7Otevřeš si ruletu, kde můžeš vyhrát věci"
+      - "&f/fly on  &8-  &7Podáte žádost o teleportaci"
+      - "&f/trade <hráč>  &8-  &7Podáte žádost o obchodování"
+      - " "
+      - " "
 
     ECONOMY:
-      LINE1: "&f/money  &8-  &7Ukáže tvoje peníze"
-      LINE2: "&f/money <hráč>  &8-  &7Ukáže hráčovy peníze"
-      LINE3: "&f/pay <hráč> <částka>  &8-  &7Zaplatíš hráčovi penize"
-      LINE4: "&f/balancetop  &8-  &7Zobrazíš si TOP 10 pracháčů"
+      - "&f=============== &9ECONOMY &f==============="
+      - "&f/money  &8-  &7Ukáže tvoje peníze"
+      - "&f/money <hráč>  &8-  &7Ukáže hráčovy peníze"
+      - "&f/pay <hráč> <částka>  &8-  &7Zaplatíš hráčovi penize"
+      - "&f/balancetop  &8-  &7Zobrazíš si TOP 10 pracháčů"
 
     HOME:
-      LINE1: "&f/sethome <jméno_domova>  &8-  &7Nastavíš si domov"
-      LINE2: "&f/home <jméno_domova>  &8-  &7Teleportneš se na domov"
-      LINE3: "&f/delhome <jméno_domova>  &8-  &7Smažeš si domov"
-      LINE4: "&f/homes  &8-  &7Zobrazíš si své domovy"
-      LINE5: " "
+      - "&f=============== &9HOMES &f==============="
+      - "&f/sethome <jméno_domova>  &8-  &7Nastavíš si domov"
+      - "&f/home <jméno_domova>  &8-  &7Teleportneš se na domov"
+      - "&f/delhome <jméno_domova>  &8-  &7Smažeš si domov"
+      - "&f/homes  &8-  &7Zobrazíš si své domovy"
+      - " "
 
     WARP:
-      LINE1: "&f/warp <jméno_warpu>  &8-  &7Teleportneš se na warp"
-      LINE2: "&f/warps  &8-  &7Zobrazíš si dostupné warpy"
-      LINE3: " "
-      LINE4: " "
-      LINE5: " "
+      - "&f=============== &9WARP &f==============="
+      - "&f/warp <jméno_warpu>  &8-  &7Teleportneš se na warp"
+      - "&f/warps  &8-  &7Zobrazíš si dostupné warpy"
+      - " "
+      - " "
+      - " "
 
     TPA:
-      LINE1: "&f/tpa <hráč>  &8-  &7Pošleš žádost o teleport"
-      LINE2: "&f/tpaccept  &8-  &7Přijmeš žádost o teleport"
-      LINE3: "&f/tpdeny  &8-  &7Odmítneš žádost o teleport"
-      LINE4: "&f/tpblock  &8-  &7Zakážeš si žádosti o teleport"
-      LINE5: " "
+      - "&f=============== &9TPA &f==============="
+      - "&f/tpa <hráč>  &8-  &7Pošleš žádost o teleport"
+      - "&f/tpaccept  &8-  &7Přijmeš žádost o teleport"
+      - "&f/tpdeny  &8-  &7Odmítneš žádost o teleport"
+      - "&f/tpblock  &8-  &7Zakážeš si žádosti o teleport"
+      - " "
 
   FLY:
     USAGE: "%prefix% &bPoužij: &f/fly on"

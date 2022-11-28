@@ -33,21 +33,19 @@ public class DamageListener implements Listener {
 
     private int arenaSize;
 
-    private FileConfiguration config;
-    private FileConfiguration pvpArena;
+    private SpawnManager spawnManager;
+    private PvPArenaManager arenaManager;
+
+    public DamageListener(Survival plugin){
+        this.spawnManager = plugin.getSpawnManager();
+        this.arenaManager = plugin.getArenaManager();
+
+        this.protection = spawnManager.getSpawnProtection();
+        this.arenaSize = arenaManager.getArenaSize();
+    }
 
     @EventHandler
     public void onHitOnSpawn(EntityDamageByEntityEvent event){
-
-        config = Survival.plugin.getConfigManager().getFile(ConfigType.SETTINGS).getConfig();
-        pvpArena = Survival.plugin.getConfigManager().getFile(ConfigType.PVPARENA).getConfig();
-
-        arenaSize = pvpArena.getInt("arena.size");
-
-        protection = config.getInt("spawn.protection");
-
-        SpawnManager spawnManager = new SpawnManager();
-        PvPArenaManager arenaManager = new PvPArenaManager();
 
         if (event.getDamager().getWorld().getName().equalsIgnoreCase("world")) {
             if (event.getEntity() instanceof Player) {
@@ -89,21 +87,11 @@ public class DamageListener implements Listener {
     @EventHandler
     public void onEntityDamage(EntityDamageEvent event) {
 
-        config = Survival.plugin.getConfigManager().getFile(ConfigType.SETTINGS).getConfig();
-
-        protection = config.getInt("spawn.protection");
-
-        SpawnManager spawnManager = new SpawnManager();
-
         if (event.getEntity() instanceof Player) {
-
             Player p = (Player) event.getEntity();
-
             if (p.getLocation().getWorld().equals("world")) {
-
                 if (spawnManager.exist()
                         && p.getLocation().distance(spawnManager.getLocation()) < protection) {
-
                     if (event.getCause() == EntityDamageEvent.DamageCause.FIRE_TICK
                             || event.getCause() == EntityDamageEvent.DamageCause.FIRE
                             || event.getCause() == EntityDamageEvent.DamageCause.LAVA) {

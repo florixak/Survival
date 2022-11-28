@@ -1,211 +1,72 @@
 name: Survival
 version: '${project.version}'
 main: cz.florixak.survival.Survival
-api-version: 1.18
+api-version: 1.19
 authors: [ FloriXak ]
+softdepend: [ Vault, LuckPerms, PlaceholderAPI ]
 
 commands:
-  clear:
-    description: clear
-    usage: /<command>
-    permission:
-
-  game:
-    description: gamemode
-    usage: /<command>
-    permission:
-
   survival:
-    description: reload
-    usage: /<command>
-    permission:
-
+  clear:
+  gamemode:
+  gm:
+  game:
   heal:
-    description: heal
-    usage: /<command>
-    permission:
-
+  doctor:
   home:
-    description: home
-    usage: /<command>
-    permission:
-
   sethome:
-    description: home
-    usage: /<command>
-    permission:
-
   delhome:
-    description: home
-    usage: /<command>
-    permission:
-
   homes:
-    description: home
-    usage: /<command>
-    permission:
-
   anvil:
-    description: anvil
-    usage: /<command>
-    permission:
-
+  anv:
   wb:
-    description: workbench
-    usage: /<command>
-    permission:
-
+  workbench:
+  ct:
+  craftingtable:
   ec:
-    description: enderchest
-    usage: /<command>
-    permission:
-
+  enderchest:
+  echest:
   jobs:
-    description: jobs
-    usage: /<command>
-    permission:
-
   prace:
-    description: prace
-    usage: /<command>
-    permission:
-
+  job:
   kit:
-    description: kit
-    usage: /<command>
-    permission:
-
   kits:
-    description: kits
-    usage: /<command>
-    permission:
-
   money:
-    description: money
-    usage: /<command>
-    permission:
-
   coins:
-    description: coins
-    usage: /<command>
-    permission:
-
   cash:
-    description: cash
-    usage: /<command>
-    permission:
-
   balance:
-    description: balance
-    usage: /<command>
-    permission:
-
+  bank:
+  arena:
   pvparena:
-    description: pvparena
-    usage: /<command>
-    permission:
-
   shop:
-    description: shop
-    usage: /<command>
-    permission:
-
   obchod:
-    description: obchod
-    usage: /<command>
-    permission:
-
+  store:
+  market:
   spawn:
-    description: spawn
-    usage: /<command>
-    permission:
-
   setspawn:
-    description: setspawn
-    usage: /<command>
-    permission:
-
   delspawn:
-    description: delspawn
-    usage: /<command>
-    permission:
-
   warp:
-    description: warp
-    usage: /<command>
-    permission:
-
   warps:
-    description: warps
-    usage: /<command>
-    permission:
-
   setwarp:
-    description: setwarp
-    usage: /<command>
-    permission:
-
   delwarp:
-    description: delwarp
-    usage: /<command>
-    permission:
-
+  coord:
+  coords:
   coordinates:
-    description: coordinates
-    usage: /<command>
-    permission:
-
   fly:
-    description: fly
-    usage: /<command>
-    permission:
-
   help:
-    description: help
-    usage: /<command>
-    permission:
-
+  pomoc:
   rtp:
-    description: randomtp
-    usage: /<command>
-    permission:
-
+  randomtp:
+  randomteleport:
+  rteleport:
   ruleta:
-    description: ruleta
-    usage: /<command>
-    permission:
-
+  roulette:
   stats:
-    description: stats
-    usage: /<command>
-    permission:
-
+  statistics:
   tp:
-    description: tp
-    usage: /<command>
-    permission:
-
+  teleport:
   tpa:
-    description: tpa
-    usage: /<command>
-    permission:
-
   tpaccept:
-    description: tpaccept
-    usage: /<command>
-    permission:
-
   tpdeny:
-    description: tpdeny
-    usage: /<command>
-    permission:
-
   tpblock:
-    description: tpblock
-    usage: /<command>
-    permission:
-
   back:
-    description: back
-    usage: /<command>
-    permission:

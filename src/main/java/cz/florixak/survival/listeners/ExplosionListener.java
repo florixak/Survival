@@ -1,10 +1,8 @@
 package cz.florixak.survival.listeners;
 
 import cz.florixak.survival.Survival;
-import cz.florixak.survival.config.ConfigType;
 import cz.florixak.survival.manager.SpawnManager;
 import org.bukkit.block.data.type.TNT;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Creeper;
 import org.bukkit.entity.DragonFireball;
 import org.bukkit.entity.Wither;
@@ -15,18 +13,16 @@ import org.bukkit.event.entity.EntityExplodeEvent;
 
 public class ExplosionListener implements Listener {
 
+    private SpawnManager spawnManager;
     private int protection;
 
-    FileConfiguration config;
+    public ExplosionListener(Survival plugin) {
+        this.spawnManager = plugin.getSpawnManager();
+        this.protection = spawnManager.getSpawnProtection();
+    }
 
     @EventHandler
     public void onCreeperBoom(EntityExplodeEvent event){
-
-        config = Survival.plugin.getConfigManager().getFile(ConfigType.SETTINGS).getConfig();
-
-        protection = config.getInt("spawn.protection");
-
-        SpawnManager spawnManager = new SpawnManager();
 
         if (spawnManager.exist()) {
             if (event.getEntity() instanceof Creeper) {

@@ -14,37 +14,32 @@ import java.util.List;
 
 public class ValidCommand implements Listener {
 
+    private FileConfiguration config;
+
     private List<String> blockedCommands;
 
-    Survival plugin;
-
     public ValidCommand(Survival plugin){
-        this.plugin = plugin;
+        this.config = plugin.getConfigManager().getFile(ConfigType.SETTINGS).getConfig();
+        this.blockedCommands = config.getStringList("command_blocker");
     }
 
     @EventHandler
     public void onPlayerCommandProcess(PlayerCommandPreprocessEvent event){
-
-        FileConfiguration config = plugin.getConfigManager().getFile(ConfigType.SETTINGS).getConfig();
-
-        blockedCommands = config.getStringList("command_blocker");
 
         Player p = event.getPlayer();
         String msg = event.getMessage();
         String args[] = msg.split(" ");
 
         if (blockedCommands.contains(event.getMessage().toLowerCase())) {
-
             event.setCancelled(true);
             p.sendMessage(Messages.NO_PERM.toString());
-
+            return;
         }
 
         if (Bukkit.getServer().getHelpMap().getHelpTopic(args[0]) == null){
-
             event.setCancelled(true);
             p.sendMessage(Messages.NO_PERM.toString());
-
+            return;
         }
     }
 }

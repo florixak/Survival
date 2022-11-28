@@ -21,16 +21,19 @@ import java.util.UUID;
 
 public class ChatListener implements Listener {
 
-    private HashMap<UUID, Integer> chat_cd = new HashMap<>();
-
+    private Survival plugin;
     private FileConfiguration config;
 
+    private HashMap<UUID, Integer> chat_cd = new HashMap<>();
     private String format;
+
+    public ChatListener(Survival plugin) {
+        this.plugin = plugin;
+        this.config = plugin.getConfigManager().getFile(ConfigType.SETTINGS).getConfig();
+    }
 
     @EventHandler
     public void onChat(AsyncPlayerChatEvent event){
-
-        config = Survival.plugin.getConfigManager().getFile(ConfigType.SETTINGS).getConfig();
 
         Player p = event.getPlayer();
 
@@ -62,10 +65,6 @@ public class ChatListener implements Listener {
         if (event.getMessage().contains("zmrd")){
             event.setCancelled(true);
             p.sendMessage("nenadávej!");
-
-//            new BukkitRunnable(){
-//
-//            }
         }
 
         chat_cd.put(p.getUniqueId(), 3);
@@ -73,15 +72,13 @@ public class ChatListener implements Listener {
         new BukkitRunnable(){
             @Override
             public void run() {
-
                 if (chat_cd.get(p.getUniqueId()) == 0){
                     chat_cd.remove(p.getUniqueId());
                     cancel();
                     return;
                 }
-
                 chat_cd.put(p.getUniqueId(), chat_cd.get(p.getUniqueId())-1);
             }
-        }.runTaskTimerAsynchronously(Survival.plugin, 0L, 20L);
+        }.runTaskTimerAsynchronously(plugin, 0L, 20L);
     }
 }

@@ -1,22 +1,19 @@
 package cz.florixak.survival.sql;
 
+import cz.florixak.survival.Survival;
+import cz.florixak.survival.config.ConfigType;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class MySQL {
 
-    private String host = "167.86.104.34";
-    private String port = "3306";
-    private String database = "s90_Survival";
-    private String username = "u90_m0ew1zRx3J";
-    private String password = "vBdWmwoJ=C7U@DO1qS^a@+4+";
-
-//    private String host = config.getString("data.host");
-//    private String port = config.getString("data.port");
-//    private String database = config.getString("data.database");
-//    private String username = config.getString("data.username");
-//    private String password = config.getString("data.password");
+    private String host = Survival.plugin.getConfigManager().getFile(ConfigType.SETTINGS).getConfig().getString("database.host");
+    private String port = Survival.plugin.getConfigManager().getFile(ConfigType.SETTINGS).getConfig().getString("database.port");
+    private String database = Survival.plugin.getConfigManager().getFile(ConfigType.SETTINGS).getConfig().getString("database.database");
+    private String username = Survival.plugin.getConfigManager().getFile(ConfigType.SETTINGS).getConfig().getString("database.username");
+    private String password = Survival.plugin.getConfigManager().getFile(ConfigType.SETTINGS).getConfig().getString("database.password");
 
     private Connection connection;
 

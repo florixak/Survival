@@ -8,45 +8,49 @@ import org.bukkit.configuration.file.FileConfiguration;
 
 public class PvPArenaManager {
 
-    private FileConfiguration config;
+    private Survival plugin;
+    private FileConfiguration arena;
 
-    public PvPArenaManager(){ }
+    private int arenaSize;
+
+    public PvPArenaManager(Survival plugin){
+        this.plugin = plugin;
+        this.arena = plugin.getConfigManager().getFile(ConfigType.PVPARENA).getConfig();
+        this.arenaSize = 50;
+    }
 
     public void addArena(Location loc){
 
-        config = Survival.plugin.getConfigManager().getFile(ConfigType.PVPARENA).getConfig();
+        arena.set("arena" + ".location" + ".world", loc.getWorld().getName());
+        arena.set("arena" + ".location" + ".x", loc.getX());
+        arena.set("arena" + ".location" + ".y", loc.getY());
+        arena.set("arena" + ".location" + ".z", loc.getZ());
+        arena.set("arena" + ".location" + ".yaw", loc.getYaw());
+        arena.set("arena" + ".location" + ".pitch", loc.getPitch());
 
-        config.set("arena" + ".location" + ".world", loc.getWorld().getName());
-        config.set("arena" + ".location" + ".x", loc.getX());
-        config.set("arena" + ".location" + ".y", loc.getY());
-        config.set("arena" + ".location" + ".z", loc.getZ());
-        config.set("arena" + ".location" + ".yaw", loc.getYaw());
-        config.set("arena" + ".location" + ".pitch", loc.getPitch());
-
-        Survival.plugin.getConfigManager().getFile(ConfigType.PVPARENA).save();
+        plugin.getConfigManager().getFile(ConfigType.PVPARENA).save();
     }
 
     public boolean exist(){
-        config = Survival.plugin.getConfigManager().getFile(ConfigType.PVPARENA).getConfig();
-        return config.getConfigurationSection("arena" + ".location") != null;
+        return arena.getConfigurationSection("arena" + ".location") != null;
     }
 
     public Location getLocation(){
-        config = Survival.plugin.getConfigManager().getFile(ConfigType.PVPARENA).getConfig();
-
         return new Location(
-                Bukkit.getWorld(config.getString("arena" + ".location" + ".world")),
-                config.getDouble("arena" + ".location" + ".x"),
-                config.getDouble("arena" + ".location" + ".y"),
-                config.getDouble("arena" + ".location" + ".z"),
-                (float) config.getDouble("arena" + ".location" + ".yaw"),
-                (float) config.getDouble("arena" + ".location" + ".pitch"));
+                Bukkit.getWorld(arena.getString("arena" + ".location" + ".world")),
+                arena.getDouble("arena" + ".location" + ".x"),
+                arena.getDouble("arena" + ".location" + ".y"),
+                arena.getDouble("arena" + ".location" + ".z"),
+                (float) arena.getDouble("arena" + ".location" + ".yaw"),
+                (float) arena.getDouble("arena" + ".location" + ".pitch"));
     }
 
     public void delArena(){
-        config = Survival.plugin.getConfigManager().getFile(ConfigType.PVPARENA).getConfig();
+        arena.set("arena" + ".location", null);
+        plugin.getConfigManager().getFile(ConfigType.PVPARENA).save();
+    }
 
-        config.set("arena" + ".location", null);
-        Survival.plugin.getConfigManager().getFile(ConfigType.PVPARENA).save();
+    public int getArenaSize() {
+        return arenaSize;
     }
 }

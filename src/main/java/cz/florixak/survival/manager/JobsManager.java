@@ -51,18 +51,18 @@ public class JobsManager {
 
     public JobsManager(Survival plugin) {
         this.plugin = plugin;
-        config = plugin.getConfigManager().getFile(ConfigType.SETTINGS).getConfig();
+        this.config = plugin.getConfigManager().getFile(ConfigType.SETTINGS).getConfig();
     }
 
     public static String getJob(Player p) {
-        if (isMiner(p.getUniqueId())) return "&fHorník - " + getJobLevel(p.getUniqueId()) + " lvl";
-        if (isKiller(p.getUniqueId())) return "&fZabiják - " + getJobLevel(p.getUniqueId()) + " lvl";
-        if (isDigger(p.getUniqueId())) return "&fKopáč - " + getJobLevel(p.getUniqueId()) + " lvl";
-        if (isBuilder(p.getUniqueId())) return "&fStavitel - " + getJobLevel(p.getUniqueId()) + " lvl";
-        if (isWoodcutter(p.getUniqueId())) return "&fDřeborubec - " + getJobLevel(p.getUniqueId()) + " lvl";
-        if (isCrafter(p.getUniqueId())) return "&fŘemeslník - " + getJobLevel(p.getUniqueId()) + " lvl";
-        if (isFarmer(p.getUniqueId())) return "&fFarmář - " + getJobLevel(p.getUniqueId()) + " lvl";
-        return "&fNezaměstnaný";
+        if (isMiner(p.getUniqueId())) return "&fMiner - " + getJobLevel(p.getUniqueId()) + " lvl";
+        if (isKiller(p.getUniqueId())) return "&fKiller - " + getJobLevel(p.getUniqueId()) + " lvl";
+        if (isDigger(p.getUniqueId())) return "&fDigger - " + getJobLevel(p.getUniqueId()) + " lvl";
+        if (isBuilder(p.getUniqueId())) return "&fBuilder - " + getJobLevel(p.getUniqueId()) + " lvl";
+        if (isWoodcutter(p.getUniqueId())) return "&fWoodcutter - " + getJobLevel(p.getUniqueId()) + " lvl";
+        if (isCrafter(p.getUniqueId())) return "&fCrafter - " + getJobLevel(p.getUniqueId()) + " lvl";
+        if (isFarmer(p.getUniqueId())) return "&fFarmer - " + getJobLevel(p.getUniqueId()) + " lvl";
+        return "&funemployed";
     }
 
     public static String getJobLevel(UUID uuid) {

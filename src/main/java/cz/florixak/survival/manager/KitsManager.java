@@ -18,129 +18,15 @@ import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 public class KitsManager {
 
-    public KitsManager(){ }
+    private Survival plugin;
+    private ItemManager itemManager;
 
-//    public void openKits(Player p){
-//
-//        Inventory kits_hrac = Bukkit.createInventory(p, gui_size_hrac, TextUtil.color(gui_name));
-//        Inventory kits_astronaut = Bukkit.createInventory(p, gui_size_astronaut, TextUtil.color(gui_name));
-//        Inventory kits_galactic = Bukkit.createInventory(p, gui_size_galactic, TextUtil.color(gui_name));
-//        Inventory kits_blackhole = Bukkit.createInventory(p, gui_size_blackhole, TextUtil.color(gui_name));
-//
-//
-//        ItemStack vypln = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
-//
-//        ItemStack hrac = new ItemStack(Material.COAL);
-//        ItemStack astronaut = new ItemStack(Material.ENDER_PEARL);
-//        ItemStack galactic = new ItemStack(Material.END_CRYSTAL);
-//        ItemStack blackhole = new ItemStack(Material.ENDER_EYE);
-//
-//        ItemStack starter = new ItemStack(Material.STONE_SWORD);
-//        ItemStack knight = new ItemStack(Material.IRON_SWORD);
-//        ItemStack god = new ItemStack(Material.ENCHANTED_GOLDEN_APPLE);
-//        ItemStack farmer = new ItemStack(Material.STONE_HOE);
-//        ItemStack enchanter = new ItemStack(Material.ENCHANTED_BOOK);
-//        ItemStack cisar = new ItemStack(Material.NETHERITE_HELMET);
-//
-//        ItemMeta vypln_meta = vypln.getItemMeta();
-//        vypln_meta.setDisplayName(" ");
-//        vypln.setItemMeta(vypln_meta);
-//
-//        ItemMeta hrac_meta = hrac.getItemMeta();
-//        hrac_meta.setDisplayName(TextUtil.color("&fPro Hráče:"));
-//        hrac.setItemMeta(hrac_meta);
-//
-//        ItemMeta astronaut_meta = astronaut.getItemMeta();
-//        astronaut_meta.setDisplayName(TextUtil.color("&fPro VIP Astronaut:"));
-//        astronaut.setItemMeta(astronaut_meta);
-//
-//        ItemMeta galactic_meta = galactic.getItemMeta();
-//        galactic_meta.setDisplayName(TextUtil.color("&fPro VIP Galactic:"));
-//        galactic.setItemMeta(galactic_meta);
-//
-//        ItemMeta blackhole_meta = blackhole.getItemMeta();
-//        blackhole_meta.setDisplayName(TextUtil.color("&fPro VIP BlackHole:"));
-//        blackhole.setItemMeta(blackhole_meta);
-//
-//        ItemMeta starter_meta = starter.getItemMeta();
-//        starter_meta.setDisplayName(TextUtil.color(starter_name));
-//        starter.setItemMeta(starter_meta);
-//
-//        ItemMeta knight_meta = knight.getItemMeta();
-//        knight_meta.setDisplayName(TextUtil.color(knight_name));
-//        knight.setItemMeta(knight_meta);
-//
-//        ItemMeta god_meta = god.getItemMeta();
-//        god_meta.setDisplayName(TextUtil.color(god_name));
-//        god.setItemMeta(god_meta);
-//
-//        ItemMeta farmer_meta = farmer.getItemMeta();
-//        farmer_meta.setDisplayName(TextUtil.color(farmer_name));
-//        farmer.setItemMeta(farmer_meta);
-//
-//        ItemMeta enchanter_meta = enchanter.getItemMeta();
-//        enchanter_meta.setDisplayName(TextUtil.color(enchanter_name));
-//        enchanter.setItemMeta(enchanter_meta);
-//
-//        ItemMeta cisar_meta = cisar.getItemMeta();
-//        cisar_meta.setDisplayName(TextUtil.color(cisar_name));
-//        cisar.setItemMeta(cisar_meta);
-//
-//        if (p.hasPermission("kits.blackhole")) {
-//            ItemStack[] menu_items = {
-//                    vypln, vypln, vypln, vypln, vypln, vypln, vypln, vypln, vypln,
-//                    hrac, vypln, starter, farmer, vypln, vypln, vypln, vypln, vypln,
-//                    astronaut, vypln, knight, enchanter, vypln, vypln, vypln, vypln, vypln,
-//                    galactic, vypln, god, vypln, vypln, vypln, vypln, vypln, vypln,
-//                    blackhole, vypln, cisar, vypln, vypln, vypln, vypln, vypln, vypln,
-//                    vypln, vypln, vypln, vypln, vypln, vypln, vypln, vypln, vypln
-//            };
-//            kits_blackhole.setContents(menu_items);
-//            p.sendMessage(Messages.KITS_OPENING.toString());
-//            p.openInventory(kits_blackhole);
-//            return;
-//        }
-//
-//        if (p.hasPermission("kits.galactic")) {
-//            ItemStack[] menu_items = {
-//                    vypln, vypln, vypln, vypln, vypln, vypln, vypln, vypln, vypln,
-//                    hrac, vypln, starter, farmer, vypln, vypln, vypln, vypln, vypln,
-//                    astronaut, vypln, knight, enchanter, vypln, vypln, vypln, vypln, vypln,
-//                    galactic, vypln, god, vypln, vypln, vypln, vypln, vypln, vypln,
-//                    vypln, vypln, vypln, vypln, vypln, vypln, vypln, vypln, vypln
-//            };
-//            kits_galactic.setContents(menu_items);
-//            p.sendMessage(Messages.KITS_OPENING.toString());
-//            p.openInventory(kits_galactic);
-//            return;
-//        }
-//
-//        if (p.hasPermission("kits.astronaut")) {
-//            ItemStack[] menu_items = {
-//                    vypln, vypln, vypln, vypln, vypln, vypln, vypln, vypln, vypln,
-//                    hrac, vypln, starter, farmer, vypln, vypln, vypln, vypln, vypln,
-//                    astronaut, vypln, knight, enchanter, vypln, vypln, vypln, vypln, vypln,
-//                    vypln, vypln, vypln, vypln, vypln, vypln, vypln, vypln, vypln
-//            };
-//            kits_astronaut.setContents(menu_items);
-//            p.sendMessage(Messages.KITS_OPENING.toString());
-//            p.openInventory(kits_astronaut);
-//            return;
-//        }
-//
-//        ItemStack[] menu_items = {
-//                vypln, vypln, vypln, vypln, vypln, vypln, vypln, vypln, vypln,
-//                hrac, vypln, starter, farmer, vypln, vypln, vypln, vypln, vypln,
-//                vypln, vypln, vypln, vypln, vypln, vypln, vypln, vypln, vypln
-//        };
-//        kits_hrac.setContents(menu_items);
-//        p.sendMessage(Messages.KITS_OPENING.toString());
-//        p.openInventory(kits_hrac);
-//    }
+    public KitsManager(Survival plugin) {
+        this.plugin = plugin;
+        this.itemManager = plugin.getItemManager();
+    }
 
     public void starterToInv(Player p){
-
-        ItemManager itemManager = Survival.plugin.getItemManager();
 
         ItemStack starter_sword = new ItemStack(Material.STONE_SWORD);
         ItemStack starter_pick = new ItemStack(Material.STONE_PICKAXE);
@@ -178,8 +64,6 @@ public class KitsManager {
     }
 
     public void farmerToInv(Player p){
-
-        ItemManager itemManager = Survival.plugin.getItemManager();
 
         ItemStack farmer_axe = new ItemStack(Material.STONE_AXE);
         ItemStack farmer_hoe = new ItemStack(Material.STONE_HOE);
@@ -222,8 +106,6 @@ public class KitsManager {
     }
 
     public void knightToInv(Player p){
-
-        ItemManager itemManager = Survival.plugin.getItemManager();
 
         ItemStack knight_sword = new ItemStack(Material.IRON_SWORD);
         ItemStack knight_pick = new ItemStack(Material.IRON_PICKAXE);
@@ -281,8 +163,6 @@ public class KitsManager {
 
     public void enchToInv(Player p){
 
-        ItemManager itemManager = Survival.plugin.getItemManager();
-
         ItemStack ench_sharp = new ItemStack(Material.ENCHANTED_BOOK);
         ItemStack ench_effi = new ItemStack(Material.ENCHANTED_BOOK);
         ItemStack ench_prot = new ItemStack(Material.ENCHANTED_BOOK);
@@ -313,8 +193,6 @@ public class KitsManager {
     }
 
     public void kingToInv(Player p){
-
-        ItemManager itemManager = Survival.plugin.getItemManager();
 
         ItemStack king_sword = new ItemStack(Material.DIAMOND_SWORD);
         ItemStack king_pick = new ItemStack(Material.DIAMOND_PICKAXE);
@@ -374,8 +252,6 @@ public class KitsManager {
     }
 
     public void cisarToInv(Player p){
-
-        ItemManager itemManager = Survival.plugin.getItemManager();
 
         ItemStack cisar_sword = new ItemStack(Material.NETHERITE_SWORD);
         ItemStack cisar_pick = new ItemStack(Material.NETHERITE_PICKAXE);

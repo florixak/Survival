@@ -1,6 +1,6 @@
 package cz.florixak.survival.manager.scoreboardManager;
 
-import cz.florixak.survival.utility.PlaceholderUtil;
+import cz.florixak.survival.utility.placeholderapi.PlaceholderUtil;
 import cz.florixak.survival.utility.TextUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

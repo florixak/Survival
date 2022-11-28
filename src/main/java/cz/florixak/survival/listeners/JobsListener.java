@@ -5,8 +5,7 @@ import cz.florixak.survival.config.ConfigType;
 import cz.florixak.survival.config.Messages;
 import cz.florixak.survival.manager.JobsManager;
 import cz.florixak.survival.manager.SpawnManager;
-import net.md_5.bungee.api.ChatMessageType;
-import net.md_5.bungee.api.chat.TextComponent;
+import cz.florixak.survival.utility.Utils;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -47,6 +46,13 @@ public class JobsListener implements Listener {
     private HashMap<UUID, Integer> jobMoney = new HashMap<>();
 
     private Survival plugin;
+    private SpawnManager spawnManager;
+    private Economy economy;
+
+    private FileConfiguration config;
+
+    private Random ran;
+    private DecimalFormat format;
 
     private int jobMoneyDelay;
 
@@ -55,19 +61,18 @@ public class JobsListener implements Listener {
 
     private int protection;
 
-    private SpawnManager spawnManager;
-    private Economy economy;
-
-    private FileConfiguration config;
-
     public JobsListener(Survival plugin) {
         this.plugin = plugin;
-        config = plugin.getConfigManager().getFile(ConfigType.SETTINGS).getConfig();
-        protection = config.getInt("spawn.protection");
-        min_money = 1;
-        jobMoneyDelay = 3;
-        spawnManager = new SpawnManager();
-        economy = Survival.getEconomy();
+        this.config = plugin.getConfigManager().getFile(ConfigType.SETTINGS).getConfig();
+        this.spawnManager = plugin.getSpawnManager();
+        this.protection = spawnManager.getSpawnProtection();
+        this.economy = Survival.getEconomy();
+
+        this.ran = new Random();
+        this.format = new DecimalFormat("##,###,##0.00");
+
+        this.min_money = 1;
+        this.jobMoneyDelay = 3;
     }
 
     @EventHandler
@@ -80,23 +85,21 @@ public class JobsListener implements Listener {
             for (Material material : miner) {
                 if (event.getBlock().getType().equals(material)) {
                     max_money = config.getInt("jobs.salary.miner");
-                    Random ran = new Random();
                     double amount = min_money + ran.nextDouble() * (max_money - min_money);
-                    DecimalFormat format = new DecimalFormat("##,###,##0.00");
                     String formatted = format.format(amount);
 
-                    Survival.plugin.data.addMinerBlock(p.getUniqueId(), 1);
+                    plugin.data.addMinerBlock(p.getUniqueId(), 1);
 
                     if (plugin.data.getMinerBlocks(p.getUniqueId()) == 250) {
-                        p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(Messages.JOBS_LEVEL_UP.toString()));
+                        Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
                     }
                     if (plugin.data.getMinerBlocks(p.getUniqueId()) == 500) {
-                        p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(Messages.JOBS_LEVEL_UP.toString()));
+                        Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
                     }
                     if (plugin.data.getMinerBlocks(p.getUniqueId()) == 750) {
-                        p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(Messages.JOBS_LEVEL_UP.toString()));
+                        Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
                     }
 
@@ -107,8 +110,7 @@ public class JobsListener implements Listener {
                         if (JobsManager.isMiner(p.getUniqueId())) amount *= 2;
 
                         economy.depositPlayer(p, amount);
-                        p.spigot().sendMessage(ChatMessageType.ACTION_BAR,
-                                TextComponent.fromLegacyText(Messages.JOBS_GAIN_MONEY.toString().replace("%money%", "" + formatted)));
+                        Utils.sendHotbarMessage(p, Messages.JOBS_GAIN_MONEY.toString().replace("%money%", "" + formatted));
                         jobMoney.put(p.getUniqueId(), jobMoneyDelay);
 
                         new BukkitRunnable(){
@@ -121,7 +123,7 @@ public class JobsListener implements Listener {
                                 }
                                 jobMoney.put(p.getUniqueId(), jobMoney.get(p.getUniqueId())-1);
                             }
-                        }.runTaskTimerAsynchronously(Survival.plugin, 0L, 20L);
+                        }.runTaskTimerAsynchronously(plugin, 0L, 20L);
                     }
                 }
             }
@@ -131,23 +133,21 @@ public class JobsListener implements Listener {
             for (Material material : digger) {
                 if (event.getBlock().getType().equals(material)) {
                     max_money = config.getInt("jobs.salary.digger");
-                    Random ran = new Random();
                     double amount = min_money + ran.nextDouble() * (max_money - min_money);
-                    DecimalFormat format = new DecimalFormat("##,###,##0.00");
                     String formatted = format.format(amount);
 
-                    Survival.plugin.data.addDiggerBlock(p.getUniqueId(), 1);
+                    plugin.data.addDiggerBlock(p.getUniqueId(), 1);
 
                     if (plugin.data.getDiggerBlocks(p.getUniqueId()) == 250) {
-                        p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(Messages.JOBS_LEVEL_UP.toString()));
+                        Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
                     }
                     if (plugin.data.getDiggerBlocks(p.getUniqueId()) == 500) {
-                        p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(Messages.JOBS_LEVEL_UP.toString()));
+                        Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
                     }
                     if (plugin.data.getDiggerBlocks(p.getUniqueId()) == 750) {
-                        p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(Messages.JOBS_LEVEL_UP.toString()));
+                        Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
                     }
 
@@ -158,8 +158,7 @@ public class JobsListener implements Listener {
                         if (JobsManager.isDigger(p.getUniqueId())) amount *= 2;
 
                         economy.depositPlayer(p, amount);
-                        p.spigot().sendMessage(ChatMessageType.ACTION_BAR,
-                                TextComponent.fromLegacyText(Messages.JOBS_GAIN_MONEY.toString().replace("%money%", "" + formatted)));
+                        Utils.sendHotbarMessage(p, Messages.JOBS_GAIN_MONEY.toString().replace("%money%", "" + formatted));
 
                         jobMoney.put(p.getUniqueId(), jobMoneyDelay);
                         new BukkitRunnable(){
@@ -172,7 +171,7 @@ public class JobsListener implements Listener {
                                 }
                                 jobMoney.put(p.getUniqueId(), jobMoney.get(p.getUniqueId())-1);
                             }
-                        }.runTaskTimerAsynchronously(Survival.plugin, 0L, 20L);
+                        }.runTaskTimerAsynchronously(plugin, 0L, 20L);
                     }
                 }
             }
@@ -182,23 +181,21 @@ public class JobsListener implements Listener {
             for (Material material : woodcutter) {
                 if (event.getBlock().getType().equals(material)) {
                     max_money = config.getInt("jobs.salary.woodcutter");
-                    Random ran = new Random();
                     double amount = min_money + ran.nextDouble() * (max_money - min_money);
-                    DecimalFormat format = new DecimalFormat("##,###,##0.00");
                     String formatted = format.format(amount);
 
-                    Survival.plugin.data.addWoodcutterBlock(p.getUniqueId(), 1);
+                    plugin.data.addWoodcutterBlock(p.getUniqueId(), 1);
 
                     if (plugin.data.getMinerBlocks(p.getUniqueId()) == 250) {
-                        p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(Messages.JOBS_LEVEL_UP.toString()));
+                        Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
                     }
                     if (plugin.data.getMinerBlocks(p.getUniqueId()) == 500) {
-                        p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(Messages.JOBS_LEVEL_UP.toString()));
+                        Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
                     }
                     if (plugin.data.getMinerBlocks(p.getUniqueId()) == 750) {
-                        p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(Messages.JOBS_LEVEL_UP.toString()));
+                        Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
                     }
 
@@ -209,8 +206,7 @@ public class JobsListener implements Listener {
                         if (JobsManager.isWoodcutter(p.getUniqueId())) amount *= 2;
 
                         economy.depositPlayer(p, amount);
-                        p.spigot().sendMessage(ChatMessageType.ACTION_BAR,
-                                TextComponent.fromLegacyText(Messages.JOBS_GAIN_MONEY.toString().replace("%money%", "" + formatted)));
+                        Utils.sendHotbarMessage(p, Messages.JOBS_GAIN_MONEY.toString().replace("%money%", "" + formatted));
 
                         jobMoney.put(p.getUniqueId(), jobMoneyDelay);
                         new BukkitRunnable(){
@@ -223,7 +219,7 @@ public class JobsListener implements Listener {
                                 }
                                 jobMoney.put(p.getUniqueId(), jobMoney.get(p.getUniqueId())-1);
                             }
-                        }.runTaskTimerAsynchronously(Survival.plugin, 0L, 20L);
+                        }.runTaskTimerAsynchronously(plugin, 0L, 20L);
                     }
                 }
             }
@@ -233,23 +229,21 @@ public class JobsListener implements Listener {
             for (Material material : farmer) {
                 if (event.getBlock().getType() == material) {
                     max_money = config.getInt("jobs.salary.farmer");
-                    Random ran = new Random();
                     double amount = min_money + ran.nextDouble() * (max_money - min_money);
-                    DecimalFormat format = new DecimalFormat("##,###,##0.00");
                     String formatted = format.format(amount);
 
-                    Survival.plugin.data.addFarmerBlock(p.getUniqueId(), 1);
+                    plugin.data.addFarmerBlock(p.getUniqueId(), 1);
 
                     if (plugin.data.getFarmerBlocks(p.getUniqueId()) == 250) {
-                        p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(Messages.JOBS_LEVEL_UP.toString()));
+                        Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
                     }
                     if (plugin.data.getFarmerBlocks(p.getUniqueId()) == 500) {
-                        p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(Messages.JOBS_LEVEL_UP.toString()));
+                        Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
                     }
                     if (plugin.data.getFarmerBlocks(p.getUniqueId()) == 750) {
-                        p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(Messages.JOBS_LEVEL_UP.toString()));
+                        Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
                     }
 
@@ -260,8 +254,7 @@ public class JobsListener implements Listener {
                         if (JobsManager.isFarmer(p.getUniqueId())) amount *= 2;
 
                         economy.depositPlayer(p, amount);
-                        p.spigot().sendMessage(ChatMessageType.ACTION_BAR,
-                                TextComponent.fromLegacyText(Messages.JOBS_GAIN_MONEY.toString().replace("%money%", "" + formatted)));
+                        Utils.sendHotbarMessage(p, Messages.JOBS_GAIN_MONEY.toString().replace("%money%", "" + formatted));
 
                         jobMoney.put(p.getUniqueId(), jobMoneyDelay);
                         new BukkitRunnable() {
@@ -274,7 +267,7 @@ public class JobsListener implements Listener {
                                 }
                                 jobMoney.put(p.getUniqueId(), jobMoney.get(p.getUniqueId()) - 1);
                             }
-                        }.runTaskTimerAsynchronously(Survival.plugin, 0L, 20L);
+                        }.runTaskTimerAsynchronously(plugin, 0L, 20L);
                     }
                 }
             }
@@ -289,23 +282,21 @@ public class JobsListener implements Listener {
 
         if (JobsManager.isBuilder(p.getUniqueId())) {
             max_money = config.getInt("jobs.salary.builder");
-            Random ran = new Random();
             double amount = min_money + ran.nextDouble() * (max_money - min_money);
-            DecimalFormat format = new DecimalFormat("## ### ##0.00");
             String formatted = format.format(amount);
 
-            Survival.plugin.data.addBuilderBlock(p.getUniqueId(), 1);
+            plugin.data.addBuilderBlock(p.getUniqueId(), 1);
 
             if (plugin.data.getBuilderBlocks(p.getUniqueId()) == 250) {
-                p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(Messages.JOBS_LEVEL_UP.toString()));
+                Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
             }
             if (plugin.data.getBuilderBlocks(p.getUniqueId()) == 500) {
-                p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(Messages.JOBS_LEVEL_UP.toString()));
+                Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
             }
             if (plugin.data.getBuilderBlocks(p.getUniqueId()) == 750) {
-                p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(Messages.JOBS_LEVEL_UP.toString()));
+                Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
             }
 
@@ -316,8 +307,7 @@ public class JobsListener implements Listener {
                 if (JobsManager.isBuilder(p.getUniqueId())) amount *= 2;
 
                 economy.depositPlayer(p, amount);
-                p.spigot().sendMessage(ChatMessageType.ACTION_BAR,
-                        TextComponent.fromLegacyText(Messages.JOBS_GAIN_MONEY.toString().replace("%money%", "" + formatted)));
+                Utils.sendHotbarMessage(p, Messages.JOBS_GAIN_MONEY.toString().replace("%money%", "" + formatted));
 
                 jobMoney.put(p.getUniqueId(), jobMoneyDelay);
 
@@ -331,7 +321,7 @@ public class JobsListener implements Listener {
                         }
                         jobMoney.put(p.getUniqueId(), jobMoney.get(p.getUniqueId())-1);
                     }
-                }.runTaskTimerAsynchronously(Survival.plugin, 0L, 20L);
+                }.runTaskTimerAsynchronously(plugin, 0L, 20L);
             }
         }
 
@@ -339,24 +329,21 @@ public class JobsListener implements Listener {
             for (Material material : farmer) {
                 if (event.getBlock().getType().equals(material)) {
                     max_money = config.getInt("jobs.salary.farmer");
-                    Economy economy = Survival.getEconomy();
-                    Random ran = new Random();
                     double amount = min_money + ran.nextDouble() * (max_money - min_money);
-                    DecimalFormat format = new DecimalFormat("## ### ##0.00");
                     String formatted = format.format(amount);
 
-                    Survival.plugin.data.addFarmerBlock(p.getUniqueId(), 1);
+                    plugin.data.addFarmerBlock(p.getUniqueId(), 1);
 
                     if (plugin.data.getFarmerBlocks(p.getUniqueId()) >= 250) {
-                        p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(Messages.JOBS_LEVEL_UP.toString()));
+                        Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
                     }
                     if (plugin.data.getFarmerBlocks(p.getUniqueId()) >= 500) {
-                        p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(Messages.JOBS_LEVEL_UP.toString()));
+                        Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
                     }
                     if (plugin.data.getFarmerBlocks(p.getUniqueId()) >= 750) {
-                        p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(Messages.JOBS_LEVEL_UP.toString()));
+                        Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
                     }
 
@@ -367,8 +354,7 @@ public class JobsListener implements Listener {
                         if (JobsManager.isFarmer(p.getUniqueId())) amount *= 2;
 
                         economy.depositPlayer(p, amount);
-                        p.spigot().sendMessage(ChatMessageType.ACTION_BAR,
-                                TextComponent.fromLegacyText(Messages.JOBS_GAIN_MONEY.toString().replace("%money%", "" + formatted)));
+                        Utils.sendHotbarMessage(p, Messages.JOBS_GAIN_MONEY.toString().replace("%money%", "" + formatted));
 
                         jobMoney.put(p.getUniqueId(), jobMoneyDelay);
                         new BukkitRunnable(){
@@ -381,7 +367,7 @@ public class JobsListener implements Listener {
                                 }
                                 jobMoney.put(p.getUniqueId(), jobMoney.get(p.getUniqueId())-1);
                             }
-                        }.runTaskTimerAsynchronously(Survival.plugin, 0L, 20L);
+                        }.runTaskTimerAsynchronously(plugin, 0L, 20L);
                     }
                 }
             }
@@ -397,23 +383,21 @@ public class JobsListener implements Listener {
         if (p.getLocation().distance(spawnManager.getLocation()) < protection) return;
 
         if (JobsManager.isKiller(p.getUniqueId())) {
-            Random ran = new Random();
             double amount = min_money + ran.nextDouble() * (max_money - min_money);
-            DecimalFormat format = new DecimalFormat("##,###,##0.00");
             String formatted = format.format(amount);
 
             plugin.data.addKillerKill(p.getUniqueId(), 1);
 
             if (plugin.data.getKillerKills(p.getUniqueId()) == 250) {
-                p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(Messages.JOBS_LEVEL_UP.toString()));
+                Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
             }
             if (plugin.data.getKillerKills(p.getUniqueId()) == 500) {
-                p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(Messages.JOBS_LEVEL_UP.toString()));
+                Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
             }
             if (plugin.data.getKillerKills(p.getUniqueId()) == 750) {
-                p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(Messages.JOBS_LEVEL_UP.toString()));
+                Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
             }
 
@@ -424,8 +408,7 @@ public class JobsListener implements Listener {
                 if (JobsManager.isKiller(p.getUniqueId())) amount *= 2;
 
                 economy.depositPlayer(p, amount);
-                p.spigot().sendMessage(ChatMessageType.ACTION_BAR,
-                        TextComponent.fromLegacyText(Messages.JOBS_GAIN_MONEY.toString().replace("%money%", "" + formatted)));
+                Utils.sendHotbarMessage(p, Messages.JOBS_GAIN_MONEY.toString().replace("%money%", "" + formatted));
 
                 jobMoney.put(p.getUniqueId(), jobMoneyDelay);
                 new BukkitRunnable() {
@@ -438,7 +421,7 @@ public class JobsListener implements Listener {
                         }
                         jobMoney.put(p.getUniqueId(), jobMoney.get(p.getUniqueId()) - 1);
                     }
-                }.runTaskTimerAsynchronously(Survival.plugin, 0L, 20L);
+                }.runTaskTimerAsynchronously(plugin, 0L, 20L);
             }
         }
     }
@@ -451,23 +434,21 @@ public class JobsListener implements Listener {
 
         if (JobsManager.isCrafter(p.getUniqueId())){
             max_money = config.getInt("jobs.salary.crafter");
-            Random ran = new Random();
             double amount = min_money + ran.nextDouble() * (max_money - min_money);
-            DecimalFormat format = new DecimalFormat("##,###,##0.00");
             String formatted = format.format(amount);
 
-            Survival.plugin.data.addCrafterItem(p.getUniqueId(), 1);
+            plugin.data.addCrafterItem(p.getUniqueId(), 1);
 
             if (plugin.data.getCrafterItems(p.getUniqueId()) == 250) {
-                p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(Messages.JOBS_LEVEL_UP.toString()));
+                Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
             }
             if (plugin.data.getCrafterItems(p.getUniqueId()) == 500) {
-                p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(Messages.JOBS_LEVEL_UP.toString()));
+                Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
             }
             if (plugin.data.getCrafterItems(p.getUniqueId()) == 750) {
-                p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(Messages.JOBS_LEVEL_UP.toString()));
+                Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
             }
 
@@ -478,8 +459,7 @@ public class JobsListener implements Listener {
                 if (JobsManager.getJobLevel(p.getUniqueId()) == "3") amount *= 2;
 
                 economy.depositPlayer(p, amount);
-                p.spigot().sendMessage(ChatMessageType.ACTION_BAR,
-                        TextComponent.fromLegacyText(Messages.JOBS_GAIN_MONEY.toString().replace("%money%", "" + formatted)));
+                Utils.sendHotbarMessage(p, Messages.JOBS_GAIN_MONEY.toString().replace("%money%", "" + formatted));
 
                 jobMoney.put(p.getUniqueId(), jobMoneyDelay);
                 new BukkitRunnable(){
@@ -492,7 +472,7 @@ public class JobsListener implements Listener {
                         }
                         jobMoney.put(p.getUniqueId(), jobMoney.get(p.getUniqueId())-1);
                     }
-                }.runTaskTimerAsynchronously(Survival.plugin, 0L, 20L);
+                }.runTaskTimerAsynchronously(plugin, 0L, 20L);
             }
         }
     }

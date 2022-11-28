@@ -3,6 +3,7 @@ package cz.florixak.survival.manager;
 import cz.florixak.survival.Survival;
 import cz.florixak.survival.config.Messages;
 import cz.florixak.survival.utility.TextUtil;
+import hps.land.hpscore.utility.universal.XMaterial;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Material;
@@ -19,7 +20,7 @@ import java.util.List;
 
 public class ItemManager {
 
-    Survival plugin;
+    private Survival plugin;
 
     public ItemManager(Survival plugin){
         this.plugin = plugin;
@@ -96,7 +97,7 @@ public class ItemManager {
                         || item.getType().equals(Material.GOLDEN_HELMET)
                         || item.getType().equals(Material.IRON_HELMET)
                         || item.getType().equals(Material.DIAMOND_HELMET)
-                        || item.getType().equals(Material.NETHERITE_HELMET)
+                        || item.getType().equals(XMaterial.NETHERITE_HELMET.parseMaterial())
                 ) {
                     p.getInventory().setHelmet(item);
                     p.updateInventory();
@@ -109,7 +110,7 @@ public class ItemManager {
                         || item.getType().equals(Material.GOLDEN_CHESTPLATE)
                         || item.getType().equals(Material.IRON_CHESTPLATE)
                         || item.getType().equals(Material.DIAMOND_CHESTPLATE)
-                        || item.getType().equals(Material.NETHERITE_CHESTPLATE)
+                        || item.getType().equals(XMaterial.NETHERITE_CHESTPLATE.parseMaterial())
                 ) {
                     p.getInventory().setChestplate(item);
                     p.updateInventory();
@@ -117,12 +118,12 @@ public class ItemManager {
                 }
             }
             if (p.getInventory().getLeggings() == null) {
-                if (item.getType().equals(Material.LEATHER_LEGGINGS)
-                        || item.getType().equals(Material.CHAINMAIL_LEGGINGS)
-                        || item.getType().equals(Material.GOLDEN_LEGGINGS)
-                        || item.getType().equals(Material.IRON_LEGGINGS)
-                        || item.getType().equals(Material.DIAMOND_LEGGINGS)
-                        || item.getType().equals(Material.NETHERITE_LEGGINGS)
+                if (item.getType().equals(XMaterial.LEATHER_LEGGINGS.parseMaterial())
+                        || item.getType().equals(XMaterial.CHAINMAIL_LEGGINGS.parseMaterial())
+                        || item.getType().equals(XMaterial.GOLDEN_LEGGINGS.parseMaterial())
+                        || item.getType().equals(XMaterial.IRON_LEGGINGS.parseMaterial())
+                        || item.getType().equals(XMaterial.DIAMOND_LEGGINGS.parseMaterial())
+                        || item.getType().equals(XMaterial.NETHERITE_LEGGINGS.parseMaterial())
                 ) {
                     p.getInventory().setLeggings(item);
                     p.updateInventory();
@@ -135,7 +136,7 @@ public class ItemManager {
                         || item.getType().equals(Material.GOLDEN_BOOTS)
                         || item.getType().equals(Material.IRON_BOOTS)
                         || item.getType().equals(Material.DIAMOND_BOOTS)
-                        || item.getType().equals(Material.NETHERITE_BOOTS)
+                        || item.getType().equals(XMaterial.NETHERITE_BOOTS.parseMaterial())
                 ) {
                     p.getInventory().setBoots(item);
                     p.updateInventory();

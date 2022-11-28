@@ -1,6 +1,5 @@
 package cz.florixak.survival.listeners;
 
-import cz.florixak.survival.utility.XMaterial;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;

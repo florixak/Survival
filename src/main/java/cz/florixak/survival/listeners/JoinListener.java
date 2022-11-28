@@ -11,23 +11,21 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 public class JoinListener implements Listener {
 
-    private boolean davky;
+    private Survival plugin;
+//    private FileConfiguration config;
 
-    FileConfiguration config;
-
-    Survival plugin;
+//    private boolean davky;
 
     public JoinListener(Survival plugin){
         this.plugin = plugin;
-        config = plugin.getConfigManager().getFile(ConfigType.SETTINGS).getConfig();
+//        this.config = plugin.getConfigManager().getFile(ConfigType.SETTINGS).getConfig();
+//        this.davky = config.getBoolean("jobs.davky.enabled");
     }
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event){
 
-        davky = config.getBoolean("jobs.davky.enabled");
-
-        JoinManager joinManager = new JoinManager();
+        JoinManager joinManager = plugin.getJoinManager();
         Player p = event.getPlayer();
 
         event.setJoinMessage(null);
@@ -35,8 +33,8 @@ public class JoinListener implements Listener {
         plugin.data.createPlayer(p);
         joinManager.playerJoin(p);
         joinManager.setScoreboard(p);
-        if (davky == true) {
-            joinManager.setDavky(p);
-        }
+//        if (davky == true) {
+//            joinManager.setDavky(p);
+//        }
     }
 }

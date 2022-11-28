@@ -1,35 +1,33 @@
 package cz.florixak.survival;
 
 import cz.florixak.survival.action.ActionManager;
-import cz.florixak.survival.commands.Roulette;
-import cz.florixak.survival.commands.home.Home;
-import cz.florixak.survival.commands.tpa.TpaCommand;
+import cz.florixak.survival.command.CommandManager;
+import cz.florixak.survival.command.commands.home.Home;
+import cz.florixak.survival.command.commands.tpa.Tpa;
 import cz.florixak.survival.config.ConfigManager;
 import cz.florixak.survival.inventory.InventoryManager;
 import cz.florixak.survival.listeners.*;
-import cz.florixak.survival.manager.ItemManager;
-import cz.florixak.survival.manager.JobsManager;
-import cz.florixak.survival.manager.KitsManager;
-import cz.florixak.survival.manager.commandManager.PluginCommand;
+import cz.florixak.survival.manager.*;
 import cz.florixak.survival.manager.scoreboardManager.ScoreboardManager;
 import cz.florixak.survival.sql.MySQL;
 import cz.florixak.survival.sql.SQLGetter;
 import cz.florixak.survival.utility.TeleportUtil;
 import cz.florixak.survival.utility.TextUtil;
+import cz.florixak.survival.utility.placeholderapi.PlaceholderExp;
+import hps.land.hpscore.HpsCore;
 import net.luckperms.api.LuckPerms;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.reflections.Reflections;
 
-import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 
 public final class Survival extends JavaPlugin {
 
     private static Economy econ = null;
+    private HpsCore hpsCore;
     public MySQL SQL;
     public SQLGetter data;
     private ConfigManager configManager;
@@ -41,6 +39,17 @@ public final class Survival extends JavaPlugin {
     private InventoryManager inventoryManager;
     private JobsManager jobsManager;
     private KitsManager kitsManager;
+    private JoinManager joinManager;
+    private SpawnManager spawnManager;
+    private HomeManager homeManager;
+    private WarpManager warpManager;
+    private CommandManager commandManager;
+    private MoneyManager moneyManager;
+    private PvPArenaManager arenaManager;
+    private RouletteManager rouletteManager;
+    private HealManager healManager;
+
+    private TeleportUtil teleportUtil;
 
     @Override
     public void onEnable() {
@@ -63,21 +72,33 @@ public final class Survival extends JavaPlugin {
         // MANAGERY, UTILITY A OSTATNÍ
         plugin = this;
 
-        configManager = new ConfigManager();
-        configManager.loadFiles(this);
+        this.configManager = new ConfigManager();
+        this.configManager.loadFiles(this);
+
+        this.scoreboardManager = new ScoreboardManager(this);
+        this.itemManager = new ItemManager(this);
+        this.teleportUtil = new TeleportUtil(this);
+        this.hpsCore = (HpsCore) Bukkit.getServer().getPluginManager().getPlugin("HpsCore");
+        this.actionManager = new ActionManager(this);
+        this.inventoryManager = new InventoryManager();
+        this.inventoryManager.onEnable(this);
+        this.jobsManager = new JobsManager(this);
+        this.kitsManager = new KitsManager(this);
+        this.joinManager = new JoinManager(this);
+        this.spawnManager = new SpawnManager(this);
+        this.homeManager = new HomeManager(this);
+        this.warpManager = new WarpManager(this);
+        this.commandManager = new CommandManager(this);
+        this.moneyManager = new MoneyManager();
+        this.arenaManager = new PvPArenaManager(this);
+        this.rouletteManager = new RouletteManager(this);
+        this.healManager = new HealManager(this);
 
         this.SQL = new MySQL();
         this.data = new SQLGetter(this);
 
-        scoreboardManager = new ScoreboardManager(this);
-        itemManager = new ItemManager(this);
-        TeleportUtil yeet = new TeleportUtil(this);
-        actionManager = new ActionManager(this);
-        inventoryManager = new InventoryManager();
-        inventoryManager.onEnable(this);
-        jobsManager = new JobsManager(this);
-        kitsManager = new KitsManager();
-
+        // MYSQL PŘIPOJENÍ
+        connectToDatabase();
 
         // REGISTRACE DEPENDENCY
         if (!setupEconomy()) {
@@ -93,50 +114,30 @@ public final class Survival extends JavaPlugin {
             LuckPerms api = provider.getProvider();
         }
 
-
-        // MYSQL PŘIPOJENÍ
-        try {
-            SQL.connect();
-        } catch (ClassNotFoundException | SQLException e) {
-            Bukkit.getLogger().info(TextUtil.color("&cDatabase not connected"));
-        }
-        if (SQL.isConnected()) {
-            Bukkit.getLogger().info(TextUtil.color("&aDatabase is connected"));
-            data.createTable();
+        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            new PlaceholderExp(this).register();
         }
 
-
-        // REGISTRACE PŘÍKAZŮ/EVENTŮ
-        String packageName = getClass().getPackage().getName();
-        for (Class<? extends PluginCommand> clazz : new Reflections(packageName + ".commands").getSubTypesOf(PluginCommand.class)) {
-            try {
-                PluginCommand pluginCommand = clazz.getDeclaredConstructor().newInstance();
-                getCommand(pluginCommand.getCommandInfo().name()).setExecutor(pluginCommand);
-            } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-                e.printStackTrace();
-            }
-        }
-
-        getCommand("tpa").setExecutor(new TpaCommand());
-        getCommand("tpaccept").setExecutor(new TpaCommand());
-        getCommand("tpdeny").setExecutor(new TpaCommand());
-        getCommand("tpblock").setExecutor(new TpaCommand());
+        getCommand("tpa").setExecutor(new Tpa(this));
+        getCommand("tpaccept").setExecutor(new Tpa(this));
+        getCommand("tpdeny").setExecutor(new Tpa(this));
+        getCommand("tpblock").setExecutor(new Tpa(this));
 
         getServer().getPluginManager().registerEvents(new JoinListener(this), this);
         getServer().getPluginManager().registerEvents(new QuitListener(this), this);
         getServer().getPluginManager().registerEvents(new RespawnListener(this), this);
         getServer().getPluginManager().registerEvents(new ValidCommand(this), this);
         getServer().getPluginManager().registerEvents(new DeathListener(this), this);
-        getServer().getPluginManager().registerEvents(new BlockDestroyListener(), this);
-        getServer().getPluginManager().registerEvents(new BlockPlaceListener(), this);
-        getServer().getPluginManager().registerEvents(new SpecialMobSpawnListener(), this);
-        getServer().getPluginManager().registerEvents(new DamageListener(), this);
-        getServer().getPluginManager().registerEvents(new ExplosionListener(), this);
+        getServer().getPluginManager().registerEvents(new BlockDestroyListener(this), this);
+        getServer().getPluginManager().registerEvents(new BlockPlaceListener(this), this);
+        getServer().getPluginManager().registerEvents(new SpecialMobSpawnListener(this), this);
+        getServer().getPluginManager().registerEvents(new DamageListener(this), this);
+        getServer().getPluginManager().registerEvents(new ExplosionListener(this), this);
         getServer().getPluginManager().registerEvents(new DropItemListener(this), this);
-        getServer().getPluginManager().registerEvents(new ChatListener(), this);
-        getServer().getPluginManager().registerEvents(new Roulette(), this);
+        getServer().getPluginManager().registerEvents(new ChatListener(this), this);
+        getServer().getPluginManager().registerEvents(new RouletteManager(this), this);
         getServer().getPluginManager().registerEvents(new JobsListener(this), this);
-        getServer().getPluginManager().registerEvents(new Home(), this);
+        getServer().getPluginManager().registerEvents(new Home(this), this);
 //        getServer().getPluginManager().registerEvents(new Back(), this);
     }
 
@@ -147,6 +148,18 @@ public final class Survival extends JavaPlugin {
         SQL.disconnect();
     }
 
+    private void connectToDatabase() {
+        try {
+            SQL.connect();
+        } catch (ClassNotFoundException | SQLException e) {
+            Bukkit.getLogger().info(TextUtil.color("&cDatabase not connected"));
+            e.printStackTrace();
+        }
+        if (SQL.isConnected()) {
+            Bukkit.getLogger().info(TextUtil.color("&aDatabase is connected"));
+            data.createTable();
+        }
+    }
     private boolean setupEconomy() {
         if (getServer().getPluginManager().getPlugin("Vault") == null) {
             return false;
@@ -158,30 +171,54 @@ public final class Survival extends JavaPlugin {
         econ = rsp.getProvider();
         return econ != null;
     }
-
     public static Economy getEconomy() {
         return econ;
+    }
+    public HpsCore getHpsCore() {
+        return hpsCore;
     }
 
     public ConfigManager getConfigManager() {
         return configManager;
     }
-
     public ScoreboardManager getScoreboardManager() {
         return scoreboardManager;
     }
-
     public ItemManager getItemManager() { return itemManager; }
-
     public ActionManager getActionManager() { return actionManager; }
-
     public InventoryManager getInventoryManager() { return inventoryManager; }
-
     public JobsManager getJobsManager() {
         return jobsManager;
     }
-
     public KitsManager getKitsManager() {
         return kitsManager;
+    }
+    public JoinManager getJoinManager() {
+        return joinManager;
+    }
+    public SpawnManager getSpawnManager() {
+        return spawnManager;
+    }
+    public HomeManager getHomeManager() {
+        return homeManager;
+    }
+    public WarpManager getWarpManager() {
+        return warpManager;
+    }
+    public MoneyManager getMoneyManager() {
+        return moneyManager;
+    }
+    public PvPArenaManager getArenaManager() {
+        return arenaManager;
+    }
+    public RouletteManager getRouletteManager() {
+        return rouletteManager;
+    }
+    public HealManager getHealManager() {
+        return healManager;
+    }
+
+    public TeleportUtil getTeleportUtil() {
+        return teleportUtil;
     }
 }

@@ -16,15 +16,15 @@ import java.util.*;
 
 public class HomeManager {
 
+    private Survival plugin;
     private FileConfiguration config;
 
-    public HomeManager(){
-        config = Survival.plugin.getConfigManager().getFile(ConfigType.HOMES).getConfig();
+    public HomeManager(Survival plugin) {
+        this.plugin = plugin;
+        this.config = plugin.getConfigManager().getFile(ConfigType.HOMES).getConfig();
     }
 
     public void addHome(UUID uuid, Location loc, String name){
-
-        config = Survival.plugin.getConfigManager().getFile(ConfigType.HOMES).getConfig();
 
         config.set("homes." + uuid.toString() + "." + name + ".world", loc.getWorld().getName());
         config.set("homes." + uuid.toString() + "." + name + ".x", loc.getX());
@@ -33,16 +33,14 @@ public class HomeManager {
         config.set("homes." + uuid.toString() + "." + name + ".yaw", loc.getYaw());
         config.set("homes." + uuid.toString() + "." + name + ".pitch", loc.getPitch());
 
-        Survival.plugin.getConfigManager().getFile(ConfigType.HOMES).save();
+        plugin.getConfigManager().getFile(ConfigType.HOMES).save();
     }
 
     public boolean exist(UUID uuid, String name){
-        config = Survival.plugin.getConfigManager().getFile(ConfigType.HOMES).getConfig();
-
         return config.get("homes." + uuid.toString() + "." + name) != null;
     }
 
-    public void openHomeList(Player p){
+    public void openHomeList(Player p) {
         UUID uuid = p.getUniqueId();
         Inventory inventory = Bukkit.createInventory(p, 27, "Domovy");
         // int homes = config.getConfigurationSection("homes." + uuid.toString()).getKeys(false).size();
@@ -68,42 +66,32 @@ public class HomeManager {
 
     }
 
-    public void homesList(UUID uuid){
-
-        config = Survival.plugin.getConfigManager().getFile(ConfigType.HOMES).getConfig();
+    public void homesList(UUID uuid) {
 
         Player p = Bukkit.getPlayer(uuid);
 
         if (homeIsNull(uuid)){
-
             p.sendMessage(Messages.HOME_NO_HOMES.toString());
-
+            return;
+        }
+        String out = "";
+        for (String s : config.getConfigurationSection("homes." + uuid.toString()).getKeys(false)){
+            out = s + "§f, " + out;
+        }
+        out = out.trim();
+        if (!(config.getConfigurationSection("homes." + uuid.toString()).getKeys(false).size() <= 0)){
+            p.sendMessage(Messages.HOME_LIST.toString()
+                    .replace("%home_list%", out));
         } else {
-
-            String out = "";
-            for (String s : config.getConfigurationSection("homes." + uuid.toString()).getKeys(false)){
-                out = s + "§f, " + out;
-            }
-            out = out.trim();
-
-            if (!(config.getConfigurationSection("homes." + uuid.toString()).getKeys(false).size() <= 0)){
-                p.sendMessage(Messages.HOME_LIST.toString()
-                        .replace("%home_list%", out));
-            } else {
-                p.sendMessage(Messages.HOME_NO_HOMES.toString());
-            }
+            p.sendMessage(Messages.HOME_NO_HOMES.toString());
         }
     }
 
     public Set<String> getHomes(UUID uuid){
-        config = Survival.plugin.getConfigManager().getFile(ConfigType.HOMES).getConfig();
-
         return config.getConfigurationSection("homes." + uuid.toString()).getKeys(false);
     }
 
     public Location getLocation(UUID uuid, String name){
-        config = Survival.plugin.getConfigManager().getFile(ConfigType.HOMES).getConfig();
-
         return new Location(
                 Bukkit.getWorld(config.getString("homes." + uuid.toString() + "." + name + ".world")),
                 config.getDouble("homes." + uuid.toString() + "." + name + ".x"),
@@ -114,15 +102,11 @@ public class HomeManager {
     }
 
     public void delHome(UUID uuid, String name){
-        config = Survival.plugin.getConfigManager().getFile(ConfigType.HOMES).getConfig();
-
         config.set("homes." + uuid.toString() + "." + name, null);
-        Survival.plugin.getConfigManager().getFile(ConfigType.HOMES).save();
+        plugin.getConfigManager().getFile(ConfigType.HOMES).save();
     }
 
     public boolean homeIsNull(UUID uuid){
-        config = Survival.plugin.getConfigManager().getFile(ConfigType.HOMES).getConfig();
-
         return config.getConfigurationSection("homes." + uuid.toString()) == null;
     }
 }

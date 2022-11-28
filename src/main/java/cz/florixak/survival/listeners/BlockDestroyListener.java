@@ -1,22 +1,15 @@
 package cz.florixak.survival.listeners;
 
 import cz.florixak.survival.Survival;
-import cz.florixak.survival.config.ConfigType;
 import cz.florixak.survival.config.Messages;
-import cz.florixak.survival.manager.JobsManager;
-import cz.florixak.survival.manager.PlayerManager;
 import cz.florixak.survival.manager.SpawnManager;
-import cz.florixak.survival.utility.XMaterial;
+import cz.florixak.survival.utility.XSeries.XMaterial;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.model.group.Group;
 import net.luckperms.api.model.user.User;
-import net.md_5.bungee.api.ChatMessageType;
-import net.md_5.bungee.api.chat.TextComponent;
-import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -24,10 +17,11 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.text.DecimalFormat;
 import java.util.*;
 
 public class BlockDestroyListener implements Listener {
+
+    private SpawnManager spawnManager;
 
     private HashMap<UUID, Integer> breakWheat = new HashMap<>();
     private HashMap<UUID, Integer> breakBlock = new HashMap<>();
@@ -41,16 +35,14 @@ public class BlockDestroyListener implements Listener {
 
     private int protection;
 
-    FileConfiguration config;
+    public BlockDestroyListener(Survival plugin) {
+        this.spawnManager = plugin.getSpawnManager();
+        this.protection = spawnManager.getSpawnProtection();
+    }
 
     @EventHandler
     public void onDestroy(BlockBreakEvent event) {
 
-        config = Survival.plugin.getConfigManager().getFile(ConfigType.SETTINGS).getConfig();
-
-        protection = config.getInt("spawn.protection");
-
-        SpawnManager spawnManager = new SpawnManager();
         Player p = event.getPlayer();
         Block block = event.getBlock();
 
@@ -101,7 +93,7 @@ public class BlockDestroyListener implements Listener {
 
             if (block.getType() == Material.IRON_ORE && block.getLocation().distance(spawnManager.getLocation()) < protection) {
                 event.setCancelled(true);
-                p.getInventory().addItem(new ItemStack(Material.RAW_IRON));
+                p.getInventory().addItem(new ItemStack(XMaterial.RAW_IRON.parseMaterial()));
                 block.setType(Material.COBBLESTONE, false);
                 new BukkitRunnable() {
                     @Override
@@ -148,14 +140,14 @@ public class BlockDestroyListener implements Listener {
                 }.runTaskLater(Survival.plugin, replace_lapis*20);
                 return;
             }
-            if (block.getType() == Material.COPPER_ORE && block.getLocation().distance(spawnManager.getLocation()) < protection) {
+            if (block.getType() == XMaterial.COPPER_ORE.parseMaterial() && block.getLocation().distance(spawnManager.getLocation()) < protection) {
                 event.setCancelled(true);
-                p.getInventory().addItem(new ItemStack(Material.RAW_COPPER));
+                p.getInventory().addItem(new ItemStack(XMaterial.COPPER_ORE.parseMaterial()));
                 block.setType(Material.COBBLESTONE, false);
                 new BukkitRunnable() {
                     @Override
                     public void run() {
-                        block.setType(Material.COPPER_ORE, false);
+                        block.setType(XMaterial.COPPER_ORE.parseMaterial(), false);
                     }
                 }.runTaskLater(Survival.plugin, replace_copper*20);
                 return;

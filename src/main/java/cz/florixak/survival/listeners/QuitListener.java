@@ -14,7 +14,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 public class QuitListener implements Listener {
 
-    Survival plugin;
+    private Survival plugin;
 
     public QuitListener(Survival plugin){
         this.plugin = plugin;
@@ -25,7 +25,6 @@ public class QuitListener implements Listener {
         Player p = event.getPlayer();
 
         event.setQuitMessage(null);
-
         playerQuit(p);
     }
 

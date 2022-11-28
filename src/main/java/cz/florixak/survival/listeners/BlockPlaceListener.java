@@ -26,22 +26,21 @@ import java.util.*;
 
 public class BlockPlaceListener implements Listener {
 
-    private HashMap<UUID, Integer> placeBlock = new HashMap<>();
+    private SpawnManager spawnManager;
 
+    private HashMap<UUID, Integer> placeBlock = new HashMap<>();
     private int protection;
 
-    FileConfiguration config;
+    public BlockPlaceListener(Survival plugin) {
+        this.spawnManager = plugin.getSpawnManager();
+        this.protection = spawnManager.getSpawnProtection();
+    }
 
     @EventHandler
     public void onPlace(BlockPlaceEvent event){
 
-        SpawnManager spawnManager = new SpawnManager();
         Player p = event.getPlayer();
         Block block = event.getBlock();
-
-        config = Survival.plugin.getConfigManager().getFile(ConfigType.SETTINGS).getConfig();
-
-        protection = config.getInt("spawn.protection");
 
         if (p.getWorld().getName().equalsIgnoreCase("world")){
             User user = LuckPermsProvider.get().getUserManager().getUser(p.getUniqueId());
@@ -116,13 +115,9 @@ public class BlockPlaceListener implements Listener {
     @EventHandler
     public void onPlayerBucketEmpty(PlayerBucketEmptyEvent event) {
 
-        config = Survival.plugin.getConfigManager().getFile(ConfigType.SETTINGS).getConfig();
-        protection = config.getInt("spawn.protection");
-
         Material bucket = event.getBucket();
         Player p = event.getPlayer();
 
-        SpawnManager spawnManager = new SpawnManager();
         if (p.getLocation().distance(spawnManager.getLocation()) < protection) {
             if (bucket.toString().contains("LAVA")) {
                 event.setCancelled(true);
