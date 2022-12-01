@@ -2,6 +2,7 @@ package cz.florixak.survival.sql;
 
 import cz.florixak.survival.Survival;
 import cz.florixak.survival.config.ConfigType;
+import org.bukkit.entity.Player;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -39,5 +40,10 @@ public class MySQL {
 
     public Connection getConnection() {
         return connection;
+    }
+
+    public void signPlayerInToDatabase(Player p) {
+        Survival.plugin.statsData.createPlayer(p);
+        Survival.plugin.jobsData.createPlayer(p);
     }
 }

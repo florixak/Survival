@@ -1,4 +1,4 @@
-package cz.florixak.survival.command.commands;
+package cz.florixak.survival.command.commands.vip;
 
 import cz.florixak.survival.Survival;
 import cz.florixak.survival.command.Command;
@@ -28,7 +28,7 @@ public class Heal extends Command {
     public Heal(Survival plugin) {
         super(plugin);
         this.config = plugin.getConfigManager().getFile(ConfigType.SETTINGS).getConfig();
-        this.economy = Survival.getEconomy();
+        this.economy = plugin.getEconomy();
         this.healManager = plugin.getHealManager();
 
         this.delay = config.getInt("heal.cooldown_delay");

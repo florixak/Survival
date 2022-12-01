@@ -33,7 +33,7 @@ items:
     glow: false
     display_name:
     lore:
-      - '&6Cena: 9 peněz'
+      - '&6Price: 9 peněz'
     actions:
       - "[SHOP] 9"
   2:

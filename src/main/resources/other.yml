@@ -2,7 +2,7 @@
 slots: 54
 
 # Title of the GUI
-title: "Jiné"
+title: "Others"
 
 # Automatically update open inventories.
 # This can be used to update placeholders in the GUI.
@@ -21,7 +21,7 @@ items:
     slot: 45
     amount: 1
     glow: false
-    display_name: '&cZpět'
+    display_name: '&cBack'
     lore:
     actions:
       - '[CLOSE]'

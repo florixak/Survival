@@ -3,7 +3,7 @@ version: '${project.version}'
 main: cz.florixak.survival.Survival
 api-version: 1.19
 authors: [ FloriXak ]
-softdepend: [ Vault, LuckPerms, PlaceholderAPI ]
+softdepend: [ Vault, LuckPerms, PlaceholderAPI, HpsCore ]
 
 commands:
   survival:
@@ -70,3 +70,5 @@ commands:
   tpdeny:
   tpblock:
   back:
+  pay:
+  zaplatit:

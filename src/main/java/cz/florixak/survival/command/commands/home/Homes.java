@@ -12,7 +12,6 @@ public class Homes extends Command {
 
     public Homes(Survival plugin) {
         super(plugin);
-        this.plugin = plugin;
         this.manager = plugin.getHomeManager();
 
         this.addAlias("homes");
@@ -22,7 +21,7 @@ public class Homes extends Command {
     @Override
     public boolean execute(CommandSender sender, String[] args) throws Exception {
         Player p = (Player) sender;
-        manager.openHomeList(p);
+        manager.homesList(p.getUniqueId());
         return true;
     }
 }

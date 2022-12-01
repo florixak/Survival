@@ -2,6 +2,7 @@ package cz.florixak.survival.command;
 
 import cz.florixak.survival.Survival;
 import cz.florixak.survival.command.commands.*;
+import cz.florixak.survival.command.commands.admin.Arena;
 import cz.florixak.survival.command.commands.admin.ClearInventory;
 import cz.florixak.survival.command.commands.admin.GameMode;
 import cz.florixak.survival.command.commands.admin.Reload;
@@ -9,13 +10,11 @@ import cz.florixak.survival.command.commands.home.DelHome;
 import cz.florixak.survival.command.commands.home.Home;
 import cz.florixak.survival.command.commands.home.Homes;
 import cz.florixak.survival.command.commands.home.SetHome;
-import cz.florixak.survival.command.commands.inventories.Anvil;
-import cz.florixak.survival.command.commands.inventories.EnderChest;
-import cz.florixak.survival.command.commands.inventories.Workbench;
+import cz.florixak.survival.command.commands.tpa.*;
+import cz.florixak.survival.command.commands.vip.*;
 import cz.florixak.survival.command.commands.spawn.DelSpawn;
 import cz.florixak.survival.command.commands.spawn.SetSpawn;
 import cz.florixak.survival.command.commands.spawn.Spawn;
-import cz.florixak.survival.command.commands.tpa.Tp;
 import cz.florixak.survival.command.commands.warp.DelWarp;
 import cz.florixak.survival.command.commands.warp.SetWarp;
 import cz.florixak.survival.command.commands.warp.Warp;
@@ -68,6 +67,11 @@ public class CommandManager implements CommandExecutor {
         addCommand(new SetWarp(plugin));
         addCommand(new DelWarp(plugin));
         addCommand(new Warps(plugin));
+        addCommand(new Pay(plugin));
+        addCommand(new Tpa(plugin));
+        addCommand(new TpBlock(plugin));
+        addCommand(new Tpaccept(plugin));
+        addCommand(new Tpdeny(plugin));
 
         registerCommands();
     }

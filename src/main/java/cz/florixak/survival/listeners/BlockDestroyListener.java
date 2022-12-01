@@ -38,6 +38,13 @@ public class BlockDestroyListener implements Listener {
     public BlockDestroyListener(Survival plugin) {
         this.spawnManager = plugin.getSpawnManager();
         this.protection = spawnManager.getSpawnProtection();
+
+        this.replace_wheat = 5;
+        this.replace_iron = 15;
+        this.replace_redstone = 15;
+        this.replace_lapis = 20;
+        this.replace_copper = 10;
+        this.replace_coal = 15;
     }
 
     @EventHandler
@@ -45,13 +52,6 @@ public class BlockDestroyListener implements Listener {
 
         Player p = event.getPlayer();
         Block block = event.getBlock();
-
-        replace_wheat = 5;
-        replace_iron = 15;
-        replace_redstone = 15;
-        replace_lapis = 20;
-        replace_copper = 10;
-        replace_coal = 15;
 
         if (p.getWorld().getName().equalsIgnoreCase("world")) {
 

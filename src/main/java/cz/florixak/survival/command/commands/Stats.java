@@ -3,11 +3,11 @@ package cz.florixak.survival.command.commands;
 import cz.florixak.survival.Survival;
 import cz.florixak.survival.command.Command;
 import cz.florixak.survival.config.Messages;
+import cz.florixak.survival.manager.EconomyManager;
 import cz.florixak.survival.manager.PlayerManager;
 import cz.florixak.survival.utility.TextUtil;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.model.user.User;
-import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.Statistic;
 import org.bukkit.command.CommandSender;
@@ -15,11 +15,12 @@ import org.bukkit.entity.Player;
 
 public class Stats extends Command {
 
-    private Economy economy;
+    private EconomyManager economyManager;
 
     public Stats(Survival plugin) {
         super(plugin);
-        this.economy = Survival.getEconomy();
+        this.economyManager = plugin.getEconomyManager();
+
         this.addAlias("stats");
         this.addAlias("statistics");
     }
@@ -55,7 +56,7 @@ public class Stats extends Command {
 
             p.sendMessage(Messages.STATS_TITLE.toString());
             p.sendMessage(Messages.STATS_NAME.toString().replace("%player%", TextUtil.color(prefix) + "" + target.getName()));
-            p.sendMessage(Messages.STATS_MONEY.toString().replace("%money%", "" + economy.getBalance(target) + " peněz"));
+            p.sendMessage(Messages.STATS_MONEY.toString().replace("%money%", "" + economyManager.get(target) + " COR"));
             p.sendMessage(Messages.STATS_PLAYER_KILLED.toString().replace("%player_killed%", "" + target.getStatistic(Statistic.PLAYER_KILLS)));
             p.sendMessage(Messages.STATS_DEATHS.toString().replace("%deaths%", "" + target.getStatistic(Statistic.DEATHS)));
             p.sendMessage(Messages.STATS_MOB_KILLED.toString().replace("%mob_killed%", "" + target.getStatistic(Statistic.MOB_KILLS)));

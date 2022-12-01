@@ -1,4 +1,4 @@
-package cz.florixak.survival.command.commands.inventories;
+package cz.florixak.survival.command.commands.vip;
 
 import cz.florixak.survival.Survival;
 import cz.florixak.survival.command.Command;

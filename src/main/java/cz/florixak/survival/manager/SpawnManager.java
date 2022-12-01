@@ -32,21 +32,21 @@ public class SpawnManager {
     }
 
     public boolean exist(){
-        return config.get("spawn") != null;
+        return spawn.get("spawn") != null;
     }
 
     public Location getLocation(){
         return new Location(
-                Bukkit.getWorld(config.getString("spawn" + ".world")),
-                config.getDouble("spawn" + ".x"),
-                config.getDouble("spawn" + ".y"),
-                config.getDouble("spawn" + ".z"),
-                (float) config.getDouble("spawn" + ".yaw"),
-                (float) config.getDouble("spawn" + ".pitch"));
+                Bukkit.getWorld(spawn.getString("spawn" + ".world")),
+                spawn.getDouble("spawn" + ".x"),
+                spawn.getDouble("spawn" + ".y"),
+                spawn.getDouble("spawn" + ".z"),
+                (float) spawn.getDouble("spawn" + ".yaw"),
+                (float) spawn.getDouble("spawn" + ".pitch"));
     }
 
     public void delSpawn(){
-        config.set("spawn", null);
+        spawn.set("spawn", null);
         plugin.getConfigManager().getFile(ConfigType.SPAWN).save();
     }
 

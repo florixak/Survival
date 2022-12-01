@@ -4,6 +4,7 @@ import cz.florixak.survival.Survival;
 import cz.florixak.survival.action.ActionManager;
 import cz.florixak.survival.action.actions.KitsAction;
 import cz.florixak.survival.manager.JobsManager;
+import cz.florixak.survival.manager.EconomyManager;
 import cz.florixak.survival.utility.TextUtil;
 import cz.florixak.survival.utility.TimeConvertor;
 import cz.florixak.survival.utility.Utils;
@@ -11,12 +12,9 @@ import me.clip.placeholderapi.PlaceholderAPI;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.model.group.Group;
 import net.luckperms.api.model.user.User;
-import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
-
-import java.text.DecimalFormat;
 
 public class PlaceholderUtil {
 
@@ -24,7 +22,8 @@ public class PlaceholderUtil {
 
     public static String setPlaceholders(String text, Player player) {
 
-        Economy economy = Survival.getEconomy();
+        JobsManager jobsManager = Survival.plugin.getJobsManager();
+        EconomyManager moneyManager = Survival.plugin.getEconomyManager();
 
         User user = LuckPermsProvider.get().getUserManager().getUser(player.getUniqueId());
         String prefix = user.getCachedData().getMetaData().getPrefix();
@@ -50,7 +49,7 @@ public class PlaceholderUtil {
 //            text = text.replace("%tps%", String.valueOf(Bukkit.getServer().spigot().get));
 
         if (text.contains("%money%")) {
-            text = text.replace("%money%", String.valueOf(Utils.formatMoney(economy.getBalance(player))));
+            text = text.replace("%money%", String.valueOf(Utils.formatMoney(moneyManager.get(player))));
         }
 
         if (text.contains("%location%") && player != null) {
@@ -59,7 +58,7 @@ public class PlaceholderUtil {
         }
 
         if (text.contains("%job%"))
-            text = text.replace("%job%", TextUtil.color(JobsManager.getJob(player)));
+            text = text.replace("%job%", TextUtil.color(jobsManager.getJob(player)));
 
         if (text.contains("%cena%") && player != null)
             text = text.replace("%cena%", String.valueOf(ActionManager.cena));

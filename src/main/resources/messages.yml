@@ -13,7 +13,7 @@
 #--------------------#
 Messages:
 
-  PREFIX: "&1HPS&9Land &8❙"
+  PREFIX: "&6&lSurvival &8❙"
   NO_PERM: "%prefix% &cInvalid command!"
   VALID_COMMAND: "%prefix% &cInvalid command!"
   NO_MONEY: "%prefix% &cYou do not have enough money!"
@@ -22,55 +22,55 @@ Messages:
   FULL_INVENTORY: "%prefix% &cYou have full inventory!"
 
   BLOCKS:
-    CANT_PLACE: "%prefix% &cZde nemůžeš pokládat bloky!"
-    CANT_DESTROY: "%prefix% &cZde nemůžeš ničit bloky!"
-    WHEAT_GROW: "%prefix% &cMusíš počkat až wheat doroste!"
+    CANT_PLACE: "%prefix% &cYou can not place blocks here!"
+    CANT_DESTROY: "%prefix% &cYou can not destroy blocks here!"
+    WHEAT_GROW: "%prefix% &cYou have to wait for it to grow!"
 
   JOIN:
-    MESSAGE: "%prefix% %player% &7se připojil"
-    TITLE: "&bPokud si nebudeš vědět rady dej &f/help"
+    MESSAGE: "%prefix% %player% &ehas joined!"
+    TITLE: "&bIf you do not know what to do. Write &f/help"
 
   QUIT:
-    MESSAGE: "%prefix% %player% &7se odpojil"
+    MESSAGE: "%prefix% %player% &chas left!"
 
   MONEY:
-    MESSAGE: "%prefix% &fMáš %money% peněz"
+    MESSAGE: "%prefix% &fYou have %money% money!"
 
   CHAT:
-    COOLDOWN: "%prefix% &cNež budeš moct znovu psát musíš počkat %time_remaining%!"
+    COOLDOWN: "%prefix% &cYou need to wait %time_remaining%!"
 
   PVP:
-    CANT_FIGHT: "%prefix% &cZde nemůžeš bojovat!"
+    CANT_FIGHT: "%prefix% &cYou can not fight here!"
 
   DROP_ITEMS:
-    DISABLED_MESSAGE: "%prefix% &cZde nemůžeš vyhazovat itemy!"
+    DISABLED_MESSAGE: "%prefix% &cYou can not drop items here!"
 
   TELEPORT:
-    TELEPORTING: "&9Teleportace &7- &f%delay% &c(Nehýbej se!)"
-    YOU_MOVED: "&cPohnul jsi se! Teleport se ruší!"
-    BLOCKED_PLAYER: "%prefix% &cTento hráč si zakázal žádosti o teleportaci!"
-    ALLOWED: "%prefix% &bPovolil jsi si žádosti o teleportaci!"
-    BLOCKED: "%prefix% &cZakázal jsi si žádosti o teleportaci!"
-    TELEPORTED: "&bTeleportoval jsi se na hráče &f%player%&b!"
-    CANNOT_TELEPORT_NOW: "%prefix %&cTeď se nemůžeš teleportovat!"
+    TELEPORTING: "&eTeleporting &7- &f%delay% &c(Do not move!)"
+    YOU_MOVED: "&cYou moved! Teleport cancelled!"
+    BLOCKED_PLAYER: "%prefix% &cYou can not teleport to this player!"
+    ALLOWED: "%prefix% &eYou enabled teleporting to you!"
+    BLOCKED: "%prefix% &cYou disabled teleporting to you!"
+    TELEPORTED: "&eYou teleported to player &f%player%&b!"
+    CANNOT_TELEPORT_NOW: "%prefix %&cYou can not teleport now!"
 
   TPA:
-    USAGE: "%prefix% &bPoužij: &f/tpa <hráč> || /tpaccept || /tpdeny"
-    SENT: "%prefix% &bPoslal jsi žádost o teleport hráči &f%player%"
-    GAIN: "%prefix% &bDostal jsi žádost na teleport od hráče &f%player%"
+    USAGE: "%prefix% &6Usage: &f/tpa <hráč> || /tpaccept || /tpdeny"
+    SENT: "%prefix% &ePoslal jsi žádost o teleport hráči &f%player%"
+    GAIN: "%prefix% &eDostal jsi žádost na teleport od hráče &f%player%"
     NO_TP: "%prefix% &cNemáš žádnou žádost o teleport!"
     COOLDOWN: "%prefix% &cNež se budeš moct znovu použít &f%delay%&c!"
     DELAY: "&fZa %teleport_delay% budeš teleportován!"
-    ACCEPTED: "%prefix% &bŽádost o teleport byla přijmuta!"
+    ACCEPTED: "%prefix% &eŽádost o teleport byla přijmuta!"
     DENIED: "%prefix% &cŽádost o teleport byla zamítnuta!"
     CANT_TP_TO_SELF: "%prefix% &cNemůžeš poslat žádost o teleport sám sobě!"
 
   TP:
-    USAGE: "%prefix% &bPoužij: &f/tp <hráč> || /tp <hráč> <hráč>"
+    USAGE: "%prefix% &6Použij: &f/tp <hráč> || /tp <hráč> <hráč>"
 
   RANDOMTP:
     WAIT: "%prefix% &cNež budeš moct znovu použít RTP musíš počkat &f%cooldown%&c!"
-    NEW_COORDS: "&fNové souřadnice: &bX: &f%x%, &bY: &f%y%, &bZ: &f%z%"
+    NEW_COORDS: "&fNové souřadnice: &eX: &f%x%, &eY: &f%y%, &eZ: &f%z%"
     YOU_CANT: "%prefix% &cRandom teleport nemůžeš používat ve světě &f%world%&c!"
 
   DEATH:

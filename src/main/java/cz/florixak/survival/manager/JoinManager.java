@@ -7,7 +7,6 @@ import cz.florixak.survival.utility.TextUtil;
 import cz.florixak.survival.utility.Utils;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.model.user.User;
-import net.milkbowl.vault.economy.Economy;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -15,9 +14,9 @@ import org.bukkit.scheduler.BukkitRunnable;
 public class JoinManager {
 
     private Survival plugin;
-    private Economy economy;
     private SpawnManager spawnManager;
     private KitsManager kitsManager;
+    private EconomyManager moneyManager;
 
     private FileConfiguration config;
     private FileConfiguration scoreboard;
@@ -31,9 +30,9 @@ public class JoinManager {
         this.plugin = plugin;
         this.config = plugin.getConfigManager().getFile(ConfigType.SETTINGS).getConfig();
         this.scoreboard = plugin.getConfigManager().getFile(ConfigType.SCOREBOARD).getConfig();
-        this.economy = Survival.getEconomy();
         this.spawnManager = plugin.getSpawnManager();
         this.kitsManager = plugin.getKitsManager();
+        this.moneyManager = plugin.getEconomyManager();
 
         this.scoreboard_updater = scoreboard.getInt("scoreboard.update");
         this.first_money = config.getInt("join.first_join_money");
@@ -53,7 +52,7 @@ public class JoinManager {
             p.sendTitle(Messages.JOIN_TITLE.toString(), "", 10, 20, 10);
 
             kitsManager.starterToInv(p);
-            economy.depositPlayer(p, first_money);
+            moneyManager.deposit(p, first_money);
         }
 
         PlayerManager.players.add(p);
@@ -93,8 +92,8 @@ public class JoinManager {
                             cancel();
                             return;
                         }
-                        if (JobsManager.isNezamestnany(p.getUniqueId())){
-                            economy.depositPlayer(p, davky);
+                        if (JobsManager.isUnemployed(p.getUniqueId())){
+                            moneyManager.deposit(p, davky);
 //                            p.spigot().sendMessage(ChatMessageType.ACTION_BAR,
 //                                    TextComponent.fromLegacyText(Messages.JOBS_NO_JOB_MONEY.toString().replace("%money%", "" + davky)));
                         }

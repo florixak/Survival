@@ -14,7 +14,7 @@
 slots: 27
 
 # Title of the GUI
-title: "Kity - Astronaut"
+title: "Kits - Astronaut"
 
 # Automatically update open inventories.
 # This can be used to update placeholders in the GUI.
@@ -33,7 +33,7 @@ items:
     slot: 18
     amount: 1
     glow: false
-    display_name: '&fZpět'
+    display_name: '&fBack'
     lore:
     actions:
       - '[CLOSE]'
@@ -43,10 +43,10 @@ items:
     slot: 10
     amount: 1
     glow: false
-    display_name: '&fCísař'
+    display_name: '&fEmperor'
     lore:
       - '&f'
-      - '&fCooldown: %cisar_cooldown%'
+      - '&fCooldown: %emperor_cooldown%'
       - '&f'
       - '&8» &fNetherite Sword &7(Sh1,Unb2)'
       - '&8» &fNetherite Pickaxe &7(Effi1,Unb2)'
@@ -60,4 +60,4 @@ items:
       - '&8» &fNetherite Boots &7(Prot1,Unb2)'
     actions:
       - '[CLOSE]'
-      - "[KITS] cisar"
+      - "[KITS] emperor"

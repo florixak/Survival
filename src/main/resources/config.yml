@@ -21,6 +21,12 @@ database:
   username: "u90_m0ew1zRx3J"
   password: "vBdWmwoJ=C7U@DO1qS^a@+4+"
 
+#--------------#
+#    Add-on    #
+#--------------#
+use-Vault: false
+use-LuckPerms: true
+
 #----------------#
 #      Join      #
 #----------------#
@@ -100,14 +106,13 @@ jobs:
     amount: 15
     time: 300
   salary: # peníze
-    delay: 3
-    miner: 4
-    digger: 4
-    killer: 4
-    builder: 4
-    woodcutter: 4
-    crafter: 4
-    farmer: 4
+    miner: 1
+    digger: 1
+    killer: 1
+    builder: 1
+    woodcutter: 1
+    crafter: 1
+    farmer: 1
 
 #----------------#
 #      Kits      #

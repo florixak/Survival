@@ -12,29 +12,21 @@ import org.bukkit.event.player.PlayerJoinEvent;
 public class JoinListener implements Listener {
 
     private Survival plugin;
-//    private FileConfiguration config;
-
-//    private boolean davky;
+    private JoinManager joinManager;
 
     public JoinListener(Survival plugin){
         this.plugin = plugin;
-//        this.config = plugin.getConfigManager().getFile(ConfigType.SETTINGS).getConfig();
-//        this.davky = config.getBoolean("jobs.davky.enabled");
+        this.joinManager = plugin.getJoinManager();
     }
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event){
-
-        JoinManager joinManager = plugin.getJoinManager();
         Player p = event.getPlayer();
 
         event.setJoinMessage(null);
 
-        plugin.data.createPlayer(p);
+        plugin.SQL.signPlayerInToDatabase(p);
         joinManager.playerJoin(p);
         joinManager.setScoreboard(p);
-//        if (davky == true) {
-//            joinManager.setDavky(p);
-//        }
     }
 }

@@ -14,19 +14,19 @@
 scoreboard:
   update: 1 # sekundy
 
-  title: "&1&lSurvival"
+  title: "&6&lSurvival"
   lines:
     - ""
-    - "&9Player:"
+    - "&ePlayer:"
     - "&f%player%"
     - ""
-    - "&9Job:"
+    - "&eJob:"
     - "&f%job%"
     - ""
-    - "&9Money:"
+    - "&eCoins:"
     - "&f%money%"
     - ""
-    - "&9Ping:"
+    - "&ePing:"
     - "&f%ping%"
     - ""
     - "&7play.hpsland.eu"

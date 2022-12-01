@@ -5,7 +5,6 @@ import cz.florixak.survival.config.ConfigType;
 import cz.florixak.survival.config.Messages;
 import cz.florixak.survival.utility.TextUtil;
 import hps.land.hpscore.utility.universal.XMaterial;
-import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -30,7 +29,7 @@ public class RouletteManager implements Listener {
 
     private FileConfiguration config;
     private ItemManager itemManager;
-    private Economy economy;
+    private EconomyManager economyManager;
 
     List<Inventory> invs = new ArrayList<Inventory>();
     public static ItemStack[] contents;
@@ -42,7 +41,7 @@ public class RouletteManager implements Listener {
     public RouletteManager(Survival plugin) {
         this.config = plugin.getConfigManager().getFile(ConfigType.SETTINGS).getConfig();
         this.itemManager = plugin.getItemManager();
-        this.economy = Survival.getEconomy();
+        this.economyManager = plugin.getEconomyManager();
 
         this.gui_name = config.getString("roulette.gui.menu_name");
         this.amount = config.getInt("roulette.amount.money");
@@ -251,8 +250,8 @@ public class RouletteManager implements Listener {
 
                 event.setCancelled(true);
 
-                if (economy.getBalance(p) > amount){
-                    economy.withdrawPlayer(p, amount);
+                if (economyManager.get(p) > amount){
+                    economyManager.withdraw(p, amount);
                     spin(p);
                 } else {
                     p.closeInventory();

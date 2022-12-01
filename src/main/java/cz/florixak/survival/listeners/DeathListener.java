@@ -6,9 +6,11 @@ import cz.florixak.survival.utility.TextUtil;
 import cz.florixak.survival.utility.Utils;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.model.user.User;
+import org.bukkit.entity.Mob;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
 public class DeathListener implements Listener {
@@ -42,19 +44,30 @@ public class DeathListener implements Listener {
                     .replace("%killer%", TextUtil.color(prefix2) + "" + killer.getName()));
             killer.sendMessage(Messages.DEATH_MSG_YOU_HAVE_KILLED.toString()
                     .replace("%player%", TextUtil.color(prefix1) + "" + p.getName()));
-            plugin.data.addDeath(p.getUniqueId(), 1);
+            plugin.statsData.addDeath(p.getUniqueId(), 1);
+            plugin.statsData.addKilledPlayer(killer.getUniqueId(), 1);
 
         } else {
 
             Player p = event.getEntity().getPlayer();
 
             User dead_player = LuckPermsProvider.get().getUserManager().getUser(p.getName());
-            String prefix1 = dead_player.getCachedData().getMetaData().getPrefix();
+            String prefix = dead_player.getCachedData().getMetaData().getPrefix();
 
             Utils.broadcastMessage(Messages.DEATH_MSG.toString()
-                    .replace("%player%", TextUtil.color(prefix1) + "" + p.getName()));
+                    .replace("%player%", TextUtil.color(prefix) + "" + p.getName()));
             p.sendMessage(Messages.DEATH_YOU_DIED.toString());
-            plugin.data.addDeath(p.getUniqueId(), 1);
+            plugin.statsData.addDeath(p.getUniqueId(), 1);
+        }
+    }
+
+    @EventHandler
+    public void onMobDeath(EntityDeathEvent event){
+
+        if (event.getEntity() instanceof Mob && event.getEntity().getKiller() instanceof Player) {
+            Player killer = event.getEntity().getKiller();
+            plugin.statsData.addKilledMob(killer.getUniqueId(), 1);
+
         }
     }
 }

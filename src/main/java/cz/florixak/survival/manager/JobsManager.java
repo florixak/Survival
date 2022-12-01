@@ -1,18 +1,16 @@
 package cz.florixak.survival.manager;
 
 import cz.florixak.survival.Survival;
-import cz.florixak.survival.config.ConfigType;
 import cz.florixak.survival.config.Messages;
 import cz.florixak.survival.inventory.InventoryListener;
 import cz.florixak.survival.utility.TextUtil;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 import java.util.*;
 
 public class JobsManager {
 
-    public static ArrayList<UUID> nezamestnany = new ArrayList<UUID>();
+    public static ArrayList<UUID> unemployed = new ArrayList<UUID>();
     public static ArrayList<UUID> miner = new ArrayList<UUID>();
     public static ArrayList<UUID> digger = new ArrayList<UUID>();
     public static ArrayList<UUID> crafter = new ArrayList<UUID>();
@@ -21,8 +19,8 @@ public class JobsManager {
     public static ArrayList<UUID> farmer = new ArrayList<UUID>();
     public static ArrayList<UUID> killer = new ArrayList<UUID>();
 
-    public static boolean isNezamestnany(UUID uuid) {
-        return nezamestnany.contains(uuid);
+    public static boolean isUnemployed(UUID uuid) {
+        return unemployed.contains(uuid);
     }
     public static boolean isMiner(UUID uuid) {
         return miner.contains(uuid);
@@ -47,14 +45,12 @@ public class JobsManager {
     }
 
     private Survival plugin;
-    private FileConfiguration config;
 
     public JobsManager(Survival plugin) {
         this.plugin = plugin;
-        this.config = plugin.getConfigManager().getFile(ConfigType.SETTINGS).getConfig();
     }
 
-    public static String getJob(Player p) {
+    public String getJob(Player p) {
         if (isMiner(p.getUniqueId())) return "&fMiner - " + getJobLevel(p.getUniqueId()) + " lvl";
         if (isKiller(p.getUniqueId())) return "&fKiller - " + getJobLevel(p.getUniqueId()) + " lvl";
         if (isDigger(p.getUniqueId())) return "&fDigger - " + getJobLevel(p.getUniqueId()) + " lvl";
@@ -65,9 +61,9 @@ public class JobsManager {
         return "&funemployed";
     }
 
-    public static String getJobLevel(UUID uuid) {
+    public String getJobLevel(UUID uuid) {
         if (isMiner(uuid)) {
-            int data = Survival.plugin.data.getMinerBlocks(uuid);
+            int data = plugin.jobsData.getMinerBlocks(uuid);
             if (data < 500) {
                 return "0";
             } else if (data < 1000) {
@@ -79,7 +75,7 @@ public class JobsManager {
             }
         }
         if (isBuilder(uuid)) {
-            int data = Survival.plugin.data.getBuilderBlocks(uuid);
+            int data = plugin.jobsData.getBuilderBlocks(uuid);
             if (data < 250) {
                 return "0";
             } else if (data < 500) {
@@ -91,7 +87,7 @@ public class JobsManager {
             }
         }
         if (isWoodcutter(uuid)) {
-            int data = Survival.plugin.data.getWoodcutterBlocks(uuid);
+            int data = plugin.jobsData.getWoodcutterBlocks(uuid);
             if (data < 500) {
                 return "0";
             } else if (data < 750) {
@@ -103,7 +99,7 @@ public class JobsManager {
             }
         }
         if (isDigger(uuid)) {
-            int data = Survival.plugin.data.getDiggerBlocks(uuid);
+            int data = plugin.jobsData.getDiggerBlocks(uuid);
             if (data < 500) {
                 return "0";
             } else if (data < 1000) {
@@ -115,7 +111,7 @@ public class JobsManager {
             }
         }
         if (isCrafter(uuid)) {
-            int data = Survival.plugin.data.getCrafterItems(uuid);
+            int data = plugin.jobsData.getCrafterItems(uuid);
             if (data < 250) {
                 return "0";
             } else if (data < 500) {
@@ -127,7 +123,7 @@ public class JobsManager {
             }
         }
         if (isKiller(uuid)) {
-            int data = Survival.plugin.data.getKillerKills(uuid);
+            int data = plugin.jobsData.getKillerKills(uuid);
             if (data < 250) {
                 return "0";
             } else if (data < 500) {
@@ -139,7 +135,7 @@ public class JobsManager {
             }
         }
         if (isFarmer(uuid)) {
-            int data = Survival.plugin.data.getFarmerBlocks(uuid);
+            int data = plugin.jobsData.getFarmerBlocks(uuid);
             if (data < 250) {
                 return "0";
             } else if (data < 500) {
@@ -154,7 +150,7 @@ public class JobsManager {
     }
 
     public void ifNoJob(Player p) {
-        if (!(isNezamestnany(p.getUniqueId())
+        if (!(isUnemployed(p.getUniqueId())
                 || isMiner(p.getUniqueId())
                 || isDigger(p.getUniqueId())
                 || isWoodcutter(p.getUniqueId())
@@ -162,59 +158,59 @@ public class JobsManager {
                 || isFarmer(p.getUniqueId())
                 || isCrafter(p.getUniqueId())
                 || isBuilder(p.getUniqueId()))) {
-            nezamestnany.add(p.getUniqueId());
-            plugin.data.resetJobs(p.getUniqueId(), "*");
+            unemployed.add(p.getUniqueId());
+            plugin.jobsData.resetJobs(p.getUniqueId(), "*");
         }
     }
 
     public void leaveJob(Player p) {
-        if (isNezamestnany(p.getUniqueId())) {
+        if (isUnemployed(p.getUniqueId())) {
             p.sendMessage(Messages.JOBS_NOT_WORK.toString());
             return;
         }
-        nezamestnany.add(p.getUniqueId());
+        unemployed.add(p.getUniqueId());
         p.sendMessage(Messages.JOBS_RETIRED.toString().replace("%job_name%", TextUtil.color(getJob(p))));
         if (isMiner(p.getUniqueId())) {
             if (isMiner(p.getUniqueId())) miner.remove(p.getUniqueId());
-            plugin.data.resetJobs(p.getUniqueId(), "miner");
-            plugin.data.createPlayer(p);
+            plugin.jobsData.resetJobs(p.getUniqueId(), "miner");
+            plugin.jobsData.createPlayer(p);
         }
         if (isCrafter(p.getUniqueId())) {
             crafter.remove(p.getUniqueId());
-            plugin.data.resetJobs(p.getUniqueId(), "crafter");
-            plugin.data.createPlayer(p);
+            plugin.jobsData.resetJobs(p.getUniqueId(), "crafter");
+            plugin.jobsData.createPlayer(p);
         }
         if (isKiller(p.getUniqueId())) {
             killer.remove(p.getUniqueId());
-            plugin.data.resetJobs(p.getUniqueId(), "killer");
-            plugin.data.createPlayer(p);
+            plugin.jobsData.resetJobs(p.getUniqueId(), "killer");
+            plugin.jobsData.createPlayer(p);
         }
         if (isDigger(p.getUniqueId())) {
             digger.remove(p.getUniqueId());
-            plugin.data.resetJobs(p.getUniqueId(), "digger");
-            plugin.data.createPlayer(p);
+            plugin.jobsData.resetJobs(p.getUniqueId(), "digger");
+            plugin.jobsData.createPlayer(p);
         }
         if (isWoodcutter(p.getUniqueId())) {
             woodcutter.remove(p.getUniqueId());
-            plugin.data.resetJobs(p.getUniqueId(), "woodcutter");
-            plugin.data.createPlayer(p);
+            plugin.jobsData.resetJobs(p.getUniqueId(), "woodcutter");
+            plugin.jobsData.createPlayer(p);
         }
         if (isFarmer(p.getUniqueId())) {
             farmer.remove(p.getUniqueId());
-            plugin.data.resetJobs(p.getUniqueId(), "farmer");
-            plugin.data.createPlayer(p);
+            plugin.jobsData.resetJobs(p.getUniqueId(), "farmer");
+            plugin.jobsData.createPlayer(p);
         }
         if (isBuilder(p.getUniqueId())) {
             builder.remove(p.getUniqueId());
-            plugin.data.resetJobs(p.getUniqueId(), "builder");
-            plugin.data.createPlayer(p);
+            plugin.jobsData.resetJobs(p.getUniqueId(), "builder");
+            plugin.jobsData.createPlayer(p);
         }
     }
 
     public void signAsMiner(Player p) {
         if (!(isMiner(p.getUniqueId()))) {
-            if (isNezamestnany(p.getUniqueId())) {
-                nezamestnany.remove(p.getUniqueId());
+            if (isUnemployed(p.getUniqueId())) {
+                unemployed.remove(p.getUniqueId());
                 miner.add(p.getUniqueId());
                 p.sendMessage(Messages.JOBS_SELECTED.toString().replace("%job_name%", TextUtil.color(InventoryListener.itemStack.getItemMeta().getDisplayName())));
             } else {
@@ -226,8 +222,8 @@ public class JobsManager {
     }
     public void signAsWoodcutter(Player p) {
         if (!(isWoodcutter(p.getUniqueId()))) {
-            if (isNezamestnany(p.getUniqueId())) {
-                nezamestnany.remove(p.getUniqueId());
+            if (isUnemployed(p.getUniqueId())) {
+                unemployed.remove(p.getUniqueId());
                 woodcutter.add(p.getUniqueId());
                 p.sendMessage(Messages.JOBS_SELECTED.toString().replace("%job_name%", TextUtil.color(InventoryListener.itemStack.getItemMeta().getDisplayName())));
             } else {
@@ -239,8 +235,8 @@ public class JobsManager {
     }
     public void signAsDigger(Player p) {
         if (!(isDigger(p.getUniqueId()))) {
-            if (isNezamestnany(p.getUniqueId())) {
-                nezamestnany.remove(p.getUniqueId());
+            if (isUnemployed(p.getUniqueId())) {
+                unemployed.remove(p.getUniqueId());
                 digger.add(p.getUniqueId());
                 p.sendMessage(Messages.JOBS_SELECTED.toString().replace("%job_name%", TextUtil.color(InventoryListener.itemStack.getItemMeta().getDisplayName())));
             } else {
@@ -252,8 +248,8 @@ public class JobsManager {
     }
     public void signAsKiller(Player p) {
         if (!(isKiller(p.getUniqueId()))) {
-            if (isNezamestnany(p.getUniqueId())) {
-                nezamestnany.remove(p.getUniqueId());
+            if (isUnemployed(p.getUniqueId())) {
+                unemployed.remove(p.getUniqueId());
                 killer.add(p.getUniqueId());
                 p.sendMessage(Messages.JOBS_SELECTED.toString().replace("%job_name%", TextUtil.color(InventoryListener.itemStack.getItemMeta().getDisplayName())));
             } else {
@@ -265,8 +261,8 @@ public class JobsManager {
     }
     public void signAsCrafter(Player p) {
         if (!(isCrafter(p.getUniqueId()))) {
-            if (isNezamestnany(p.getUniqueId())) {
-                nezamestnany.remove(p.getUniqueId());
+            if (isUnemployed(p.getUniqueId())) {
+                unemployed.remove(p.getUniqueId());
                 crafter.add(p.getUniqueId());
                 p.sendMessage(Messages.JOBS_SELECTED.toString().replace("%job_name%", TextUtil.color(InventoryListener.itemStack.getItemMeta().getDisplayName())));
             } else {
@@ -278,8 +274,8 @@ public class JobsManager {
     }
     public void signAsBuilder(Player p) {
         if (!(isBuilder(p.getUniqueId()))) {
-            if (isNezamestnany(p.getUniqueId())) {
-                nezamestnany.remove(p.getUniqueId());
+            if (isUnemployed(p.getUniqueId())) {
+                unemployed.remove(p.getUniqueId());
                 builder.add(p.getUniqueId());
                 p.sendMessage(Messages.JOBS_SELECTED.toString().replace("%job_name%", TextUtil.color(InventoryListener.itemStack.getItemMeta().getDisplayName())));
             } else {
@@ -291,8 +287,8 @@ public class JobsManager {
     }
     public void signAsFarmer(Player p) {
         if (!(isFarmer(p.getUniqueId()))) {
-            if (isNezamestnany(p.getUniqueId())) {
-                nezamestnany.remove(p.getUniqueId());
+            if (isUnemployed(p.getUniqueId())) {
+                unemployed.remove(p.getUniqueId());
                 farmer.add(p.getUniqueId());
                 p.sendMessage(Messages.JOBS_SELECTED.toString().replace("%job_name%", TextUtil.color(InventoryListener.itemStack.getItemMeta().getDisplayName())));
             } else {

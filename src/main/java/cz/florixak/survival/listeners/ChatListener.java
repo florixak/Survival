@@ -38,7 +38,7 @@ public class ChatListener implements Listener {
         Player p = event.getPlayer();
 
         LocalTime localTime = LocalTime.now();
-        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("HH:mm:ss");
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("HH:mm");
         String formattedTime = localTime.format(myFormatObj);
 
         User user = LuckPermsProvider.get().getUserManager().getUser(p.getName());

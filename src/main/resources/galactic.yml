@@ -14,7 +14,7 @@
 slots: 27
 
 # Title of the GUI
-title: "Kity - Galactic"
+title: "Kits - Galactic"
 
 # Automatically update open inventories.
 # This can be used to update placeholders in the GUI.
@@ -33,7 +33,7 @@ items:
     slot: 18
     amount: 1
     glow: false
-    display_name: '&fZpět'
+    display_name: '&fBack'
     lore:
     actions:
       - '[CLOSE]'
@@ -43,7 +43,7 @@ items:
     slot: 10
     amount: 1
     glow: false
-    display_name: '&fKrál'
+    display_name: '&fKing'
     lore:
       - '&f'
       - '&fCooldown: %king_cooldown%'

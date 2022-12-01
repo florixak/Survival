@@ -14,7 +14,7 @@
 slots: 45
 
 # Title of the GUI
-title: "Úřad práce"
+title: "Jobs"
 
 # Automatically update open inventories.
 # This can be used to update placeholders in the GUI.
@@ -33,58 +33,58 @@ items:
     slot: 44
     amount: 1
     glow: false
-    display_name: '&cDát výpověď'
+    display_name: '&cResignation'
     lore:
       - ' '
-      - '&fZaměstnán v: %job%'
+      - '&7Employed in: %job%'
     actions:
       - '[CLOSE]'
       - "[JOBS] leave"
   0:
-    material: WOODEN_PICKAXE
+    material: IRON_PICKAXE
     slot: 10
     amount: 1
     glow: false
-    display_name: '&fHorník'
+    display_name: '&fMiner'
     lore:
       - ' '
-      - '&fZaměstnán v: %job%'
+      - '&7Employed in: %job%'
     actions:
       - '[CLOSE]'
       - "[JOBS] miner"
   1:
-    material: WOODEN_SWORD
+    material: IRON_SWORD
     slot: 12
     amount: 1
     glow: false
-    display_name: '&fZabiják'
+    display_name: '&fKiller'
     lore:
       - ' '
-      - '&fZaměstnán v: %job%'
+      - '&7Employed in: %job%'
     actions:
       - '[CLOSE]'
       - "[JOBS] killer"
   2:
-    material: WOODEN_SHOVEL
+    material: IRON_SHOVEL
     slot: 14
     amount: 1
     glow: false
-    display_name: '&fKopáč'
+    display_name: '&fDigger'
     lore:
       - ' '
-      - '&fZaměstnán v: %job%'
+      - '&7Employed in: %job%'
     actions:
       - '[CLOSE]'
       - "[JOBS] digger"
   3:
-    material: WOODEN_AXE
+    material: IRON_AXE
     slot: 16
     amount: 1
     glow: false
-    display_name: '&fDřevorubec'
+    display_name: '&fWoodcutter'
     lore:
       - ' '
-      - '&fZaměstnán v: %job%'
+      - '&7Employed in: %job%'
     actions:
       - '[CLOSE]'
       - "[JOBS] woodcutter"
@@ -93,10 +93,10 @@ items:
     slot: 29
     amount: 1
     glow: false
-    display_name: '&fŘemeslník'
+    display_name: '&fCrafter'
     lore:
       - ' '
-      - '&fZaměstnán v: %job%'
+      - '&7Employed in: %job%'
     actions:
       - '[CLOSE]'
       - "[JOBS] crafter"
@@ -105,22 +105,22 @@ items:
     slot: 31
     amount: 1
     glow: false
-    display_name: '&fStavitel'
+    display_name: '&fBuilder'
     lore:
       - ' '
-      - '&fZaměstnán v: %job%'
+      - '&7Employed in: %job%'
     actions:
       - '[CLOSE]'
       - "[JOBS] builder"
   6:
-    material: WOODEN_HOE
+    material: IRON_HOE
     slot: 33
     amount: 1
     glow: false
-    display_name: '&fFarmář'
+    display_name: '&fFarmer'
     lore:
       - ' '
-      - '&fZaměstnán v: %job%'
+      - '&7Employed in: %job%'
     actions:
       - '[CLOSE]'
       - "[JOBS] farmer"
