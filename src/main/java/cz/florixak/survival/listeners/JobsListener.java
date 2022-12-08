@@ -86,17 +86,17 @@ public class JobsListener implements Listener {
                     double amount = min_money + ran.nextDouble() * (max_money - min_money);
                     String formatted = format.format(amount);
 
-                    plugin.jobsData.addMinerBlock(p.getUniqueId(), 1);
+                    plugin.getJobsData().addMinerBlock(p.getUniqueId(), 1);
 
-                    if (plugin.jobsData.getMinerBlocks(p.getUniqueId()) == 250) {
+                    if (plugin.getJobsData().getMinerBlocks(p.getUniqueId()) == 250) {
                         Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
                     }
-                    if (plugin.jobsData.getMinerBlocks(p.getUniqueId()) == 500) {
+                    if (plugin.getJobsData().getMinerBlocks(p.getUniqueId()) == 500) {
                         Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
                     }
-                    if (plugin.jobsData.getMinerBlocks(p.getUniqueId()) == 750) {
+                    if (plugin.getJobsData().getMinerBlocks(p.getUniqueId()) == 750) {
                         Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
                     }
@@ -118,17 +118,17 @@ public class JobsListener implements Listener {
                     double amount = min_money + ran.nextDouble() * (max_money - min_money);
                     String formatted = format.format(amount);
 
-                    plugin.jobsData.addDiggerBlock(p.getUniqueId(), 1);
+                    plugin.getJobsData().addDiggerBlock(p.getUniqueId(), 1);
 
-                    if (plugin.jobsData.getDiggerBlocks(p.getUniqueId()) == 250) {
+                    if (plugin.getJobsData().getDiggerBlocks(p.getUniqueId()) == 250) {
                         Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
                     }
-                    if (plugin.jobsData.getDiggerBlocks(p.getUniqueId()) == 500) {
+                    if (plugin.getJobsData().getDiggerBlocks(p.getUniqueId()) == 500) {
                         Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
                     }
-                    if (plugin.jobsData.getDiggerBlocks(p.getUniqueId()) == 750) {
+                    if (plugin.getJobsData().getDiggerBlocks(p.getUniqueId()) == 750) {
                         Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
                     }
@@ -151,17 +151,17 @@ public class JobsListener implements Listener {
                     double amount = min_money + ran.nextDouble() * (max_money - min_money);
                     String formatted = format.format(amount);
 
-                    plugin.jobsData.addWoodcutterBlock(p.getUniqueId(), 1);
+                    plugin.getJobsData().addWoodcutterBlock(p.getUniqueId(), 1);
 
-                    if (plugin.jobsData.getMinerBlocks(p.getUniqueId()) == 250) {
+                    if (plugin.getJobsData().getMinerBlocks(p.getUniqueId()) == 250) {
                         Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
                     }
-                    if (plugin.jobsData.getMinerBlocks(p.getUniqueId()) == 500) {
+                    if (plugin.getJobsData().getMinerBlocks(p.getUniqueId()) == 500) {
                         Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
                     }
-                    if (plugin.jobsData.getMinerBlocks(p.getUniqueId()) == 750) {
+                    if (plugin.getJobsData().getMinerBlocks(p.getUniqueId()) == 750) {
                         Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
                     }
@@ -183,17 +183,17 @@ public class JobsListener implements Listener {
                     double amount = min_money + ran.nextDouble() * (max_money - min_money);
                     String formatted = format.format(amount);
 
-                    plugin.jobsData.addFarmerBlock(p.getUniqueId(), 1);
+                    plugin.getJobsData().addFarmerBlock(p.getUniqueId(), 1);
 
-                    if (plugin.jobsData.getFarmerBlocks(p.getUniqueId()) == 250) {
+                    if (plugin.getJobsData().getFarmerBlocks(p.getUniqueId()) == 250) {
                         Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
                     }
-                    if (plugin.jobsData.getFarmerBlocks(p.getUniqueId()) == 500) {
+                    if (plugin.getJobsData().getFarmerBlocks(p.getUniqueId()) == 500) {
                         Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
                     }
-                    if (plugin.jobsData.getFarmerBlocks(p.getUniqueId()) == 750) {
+                    if (plugin.getJobsData().getFarmerBlocks(p.getUniqueId()) == 750) {
                         Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
                     }
@@ -222,17 +222,17 @@ public class JobsListener implements Listener {
             double amount = min_money + ran.nextDouble() * (max_money - min_money);
             String formatted = format.format(amount);
 
-            plugin.jobsData.addBuilderBlock(p.getUniqueId(), 1);
+            plugin.getJobsData().addBuilderBlock(p.getUniqueId(), 1);
 
-            if (plugin.jobsData.getBuilderBlocks(p.getUniqueId()) == 250) {
+            if (plugin.getJobsData().getBuilderBlocks(p.getUniqueId()) == 250) {
                 Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
             }
-            if (plugin.jobsData.getBuilderBlocks(p.getUniqueId()) == 500) {
+            if (plugin.getJobsData().getBuilderBlocks(p.getUniqueId()) == 500) {
                 Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
             }
-            if (plugin.jobsData.getBuilderBlocks(p.getUniqueId()) == 750) {
+            if (plugin.getJobsData().getBuilderBlocks(p.getUniqueId()) == 750) {
                 Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
             }
@@ -252,17 +252,17 @@ public class JobsListener implements Listener {
                     double amount = min_money + ran.nextDouble() * (max_money - min_money);
                     String formatted = format.format(amount);
 
-                    plugin.jobsData.addFarmerBlock(p.getUniqueId(), 1);
+                    plugin.getJobsData().addFarmerBlock(p.getUniqueId(), 1);
 
-                    if (plugin.jobsData.getFarmerBlocks(p.getUniqueId()) >= 250) {
+                    if (plugin.getJobsData().getFarmerBlocks(p.getUniqueId()) >= 250) {
                         Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
                     }
-                    if (plugin.jobsData.getFarmerBlocks(p.getUniqueId()) >= 500) {
+                    if (plugin.getJobsData().getFarmerBlocks(p.getUniqueId()) >= 500) {
                         Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
                     }
-                    if (plugin.jobsData.getFarmerBlocks(p.getUniqueId()) >= 750) {
+                    if (plugin.getJobsData().getFarmerBlocks(p.getUniqueId()) >= 750) {
                         Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
                     }
@@ -293,17 +293,17 @@ public class JobsListener implements Listener {
             double amount = min_money + ran.nextDouble() * (max_money - min_money);
             String formatted = format.format(amount);
 
-            plugin.jobsData.addKillerKill(p.getUniqueId(), 1);
+            plugin.getJobsData().addKillerKill(p.getUniqueId(), 1);
 
-            if (plugin.jobsData.getKillerKills(p.getUniqueId()) == 250) {
+            if (plugin.getJobsData().getKillerKills(p.getUniqueId()) == 250) {
                 Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
             }
-            if (plugin.jobsData.getKillerKills(p.getUniqueId()) == 500) {
+            if (plugin.getJobsData().getKillerKills(p.getUniqueId()) == 500) {
                 Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
             }
-            if (plugin.jobsData.getKillerKills(p.getUniqueId()) == 750) {
+            if (plugin.getJobsData().getKillerKills(p.getUniqueId()) == 750) {
                 Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
             }
@@ -330,17 +330,17 @@ public class JobsListener implements Listener {
             double amount = min_money + ran.nextDouble() * (max_money - min_money);
             String formatted = format.format(amount);
 
-            plugin.jobsData.addCrafterItem(p.getUniqueId(), 1);
+            plugin.getJobsData().addCrafterItem(p.getUniqueId(), 1);
 
-            if (plugin.jobsData.getCrafterItems(p.getUniqueId()) == 250) {
+            if (plugin.getJobsData().getCrafterItems(p.getUniqueId()) == 250) {
                 Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
             }
-            if (plugin.jobsData.getCrafterItems(p.getUniqueId()) == 500) {
+            if (plugin.getJobsData().getCrafterItems(p.getUniqueId()) == 500) {
                 Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
             }
-            if (plugin.jobsData.getCrafterItems(p.getUniqueId()) == 750) {
+            if (plugin.getJobsData().getCrafterItems(p.getUniqueId()) == 750) {
                 Utils.sendHotbarMessage(p, Messages.JOBS_LEVEL_UP.toString());
                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.2f, 0.2f);
             }

@@ -2,8 +2,6 @@ package cz.florixak.survival;
 
 import cz.florixak.survival.action.ActionManager;
 import cz.florixak.survival.command.CommandManager;
-import cz.florixak.survival.command.commands.home.Home;
-import cz.florixak.survival.command.commands.tpa.Tpa;
 import cz.florixak.survival.config.ConfigManager;
 import cz.florixak.survival.config.ConfigType;
 import cz.florixak.survival.inventory.InventoryManager;
@@ -12,13 +10,14 @@ import cz.florixak.survival.manager.*;
 import cz.florixak.survival.manager.scoreboardManager.ScoreboardManager;
 import cz.florixak.survival.sql.JobsGetter;
 import cz.florixak.survival.sql.MySQL;
+import cz.florixak.survival.sql.QuestGetter;
 import cz.florixak.survival.sql.StatsGetter;
 import cz.florixak.survival.utility.TeleportUtil;
 import cz.florixak.survival.utility.TextUtil;
+import cz.florixak.survival.utility.Utils;
 import cz.florixak.survival.utility.placeholderapi.PlaceholderExp;
 import hps.land.hpscore.HpsCore;
 import net.luckperms.api.LuckPerms;
-import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.Plugin;
@@ -32,13 +31,13 @@ public final class Survival extends JavaPlugin {
     public static Survival plugin;
     public static FileConfiguration config;
 
-    private static Economy econ = null;
     private LuckPerms luckPerms = null;
     private HpsCore hpsCore;
 
-    public MySQL SQL;
-    public StatsGetter statsData;
-    public JobsGetter jobsData;
+    private MySQL SQL;
+    private StatsGetter statsData;
+    private JobsGetter jobsData;
+    private QuestGetter questData;
 
     private ConfigManager configManager;
     private ScoreboardManager scoreboardManager;
@@ -57,6 +56,7 @@ public final class Survival extends JavaPlugin {
     private RouletteManager rouletteManager;
     private HealManager healManager;
     private TeleportManager teleportManager;
+    private QuestManager questManager;
 
     private TeleportUtil teleportUtil;
 
@@ -102,19 +102,19 @@ public final class Survival extends JavaPlugin {
         this.rouletteManager = new RouletteManager(this);
         this.healManager = new HealManager(this);
         this.teleportManager = new TeleportManager(this);
+        this.questManager = new QuestManager(this);
 
         this.commandManager = new CommandManager(this);
 
         this.SQL = new MySQL();
         this.statsData = new StatsGetter(this);
         this.jobsData = new JobsGetter(this);
+        this.questData = new QuestGetter(this);
 
         // MYSQL PŘIPOJENÍ
         connectToDatabase();
 
         // REGISTRACE DEPENDENCY
-        setupEconomy();
-        connectToEconomy();
         setupLuckPerms();
         connectToLuckPerms();
         connectToPlaceholderAPI();
@@ -135,14 +135,28 @@ public final class Survival extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new JobsListener(this), this);
 //        getServer().getPluginManager().registerEvents(new Home(this), this);
 //        getServer().getPluginManager().registerEvents(new Back(), this);
+
+//        Utils.startRestartCountdown();
     }
 
     @Override
     public void onDisable() {
-        this.SQL = new MySQL();
-        this.statsData = new StatsGetter(this);
-        this.jobsData = new JobsGetter(this);
-        SQL.disconnect();
+        getInventoryManager().onDisable();
+        getQuestManager().resetDailyQuests();
+        getDatabase().disconnect();
+    }
+
+    public MySQL getDatabase() {
+        return SQL;
+    }
+    public QuestGetter getQuestData() {
+        return questData;
+    }
+    public StatsGetter getStatsData() {
+        return statsData;
+    }
+    public JobsGetter getJobsData() {
+        return jobsData;
     }
 
     private void connectToDatabase() {
@@ -158,24 +172,11 @@ public final class Survival extends JavaPlugin {
                 getLogger().info(TextUtil.color("&aDabatase is connected!"));
                 statsData.createTable();
                 jobsData.createTable();
+                questData.createTable();
             }
         }
         else {
             getLogger().info(TextUtil.color("&cDabatase is disabled in config!"));
-        }
-    }
-
-    private void connectToEconomy() {
-        if (getConfigManager().getFile(ConfigType.SETTINGS).getConfig().getBoolean("use-Vault", true)) {
-            if (!setupEconomy()) {
-                getLogger().info(TextUtil.color("&cVault plugin not found."));
-            }
-            else {
-                getLogger().info(TextUtil.color("&aVault plugin found."));
-            }
-        }
-        else {
-            getLogger().info(TextUtil.color("&cVault is disabled in config!"));
         }
     }
     private void connectToLuckPerms() {
@@ -201,17 +202,6 @@ public final class Survival extends JavaPlugin {
         }
     }
 
-    private boolean setupEconomy() {
-        if (getServer().getPluginManager().getPlugin("Vault") == null) {
-            return false;
-        }
-        RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
-        if (rsp == null) {
-            return false;
-        }
-        econ = rsp.getProvider();
-        return econ != null;
-    }
     private boolean setupLuckPerms() {
         for (Plugin plugin : getServer().getPluginManager().getPlugins()) {
             if (plugin.getName().contains("LuckPerms")) {
@@ -229,9 +219,6 @@ public final class Survival extends JavaPlugin {
 
     public HpsCore getHpsCore() {
         return hpsCore;
-    }
-    public static Economy getEconomy() {
-        return econ;
     }
     public ConfigManager getConfigManager() {
         return configManager;
@@ -274,6 +261,9 @@ public final class Survival extends JavaPlugin {
     }
     public TeleportManager getTeleportManager() {
         return teleportManager;
+    }
+    public QuestManager getQuestManager() {
+        return questManager;
     }
 
     public TeleportUtil getTeleportUtil() {

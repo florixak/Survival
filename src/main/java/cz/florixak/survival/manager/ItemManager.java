@@ -26,6 +26,12 @@ public class ItemManager {
         this.plugin = plugin;
     }
 
+    public ItemStack getItem(Material material, int amount, String name) {
+        ItemStack item = new ItemStack(material);
+        setItemMeta(item, name, amount);
+        return item;
+    }
+
     public void setItemMeta(ItemStack item, String name, int amount){
 
         ItemMeta meta = item.getItemMeta();

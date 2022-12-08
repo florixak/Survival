@@ -19,8 +19,8 @@ public class StatsGetter {
     public void createTable(){
         PreparedStatement ps;
         try {
-            ps = plugin.SQL.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS statistics "
-                    + "(NAME VARCHAR(100),UUID VARCHAR(100),MONEY DECIMAL(10,2),PLAYER_KILLED INT(100),MOB_KILLED INT(100),DEATHS INT(100),PRIMARY KEY (NAME))");
+            ps = plugin.getDatabase().getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS statistics "
+                    + "(NAME VARCHAR(100),UUID VARCHAR(100),PLAYER_KILLED INT(100),MOB_KILLED INT(100),DEATHS INT(100),PRIMARY KEY (NAME))");
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -30,13 +30,13 @@ public class StatsGetter {
     public void createPlayer(Player player) {
         UUID uuid = player.getUniqueId();
         try {
-            PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("SELECT * FROM statistics WHERE UUID=?");
+            PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("SELECT * FROM statistics WHERE UUID=?");
             ps.setString(1, uuid.toString());
             ResultSet results = ps.executeQuery();
             results.next();
 
             if (!exists(uuid)) {
-                PreparedStatement ps2 = plugin.SQL.getConnection().prepareStatement("INSERT IGNORE INTO statistics"
+                PreparedStatement ps2 = plugin.getDatabase().getConnection().prepareStatement("INSERT IGNORE INTO statistics"
                         + " (NAME,UUID) VALUES (?,?)");
                 ps2.setString(1, player.getName());
                 ps2.setString(2, uuid.toString());
@@ -50,7 +50,7 @@ public class StatsGetter {
 
     public boolean exists(UUID uuid) {
         try {
-            PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("SELECT * FROM statistics WHERE UUID=?");
+            PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("SELECT * FROM statistics WHERE UUID=?");
             ps.setString(1, uuid.toString());
             ResultSet results = ps.executeQuery();
             if (results.next()) {
@@ -63,45 +63,45 @@ public class StatsGetter {
         return false;
     }
 
-    public void depositMoney(UUID uuid, double num){
-        try {
-            PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("UPDATE statistics SET MONEY=? WHERE UUID=?");
-            ps.setDouble(1, (getMoney(uuid) + num));
-            ps.setString(2, uuid.toString());
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-    public double getMoney(UUID uuid) {
-        try {
-            PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("SELECT MONEY FROM statistics WHERE UUID=?");
-            ps.setString(1, uuid.toString());
-            ResultSet rs = ps.executeQuery();
-            double number = 0;
-            if (rs.next()) {
-                number = rs.getDouble("MONEY");
-                return number;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return 0.0;
-    }
-    public void resetMoney(UUID uuid){
-        try {
-            PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("UPDATE statistics SET MONEY=? WHERE UUID=?");
-            ps.setDouble(1, 0.0);
-            ps.setString(2, uuid.toString());
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+//    public void depositMoney(UUID uuid, double num){
+//        try {
+//            PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("UPDATE statistics SET MONEY=? WHERE UUID=?");
+//            ps.setDouble(1, (getMoney(uuid) + num));
+//            ps.setString(2, uuid.toString());
+//            ps.executeUpdate();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//    }
+//    public double getMoney(UUID uuid) {
+//        try {
+//            PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("SELECT MONEY FROM statistics WHERE UUID=?");
+//            ps.setString(1, uuid.toString());
+//            ResultSet rs = ps.executeQuery();
+//            double number = 0;
+//            if (rs.next()) {
+//                number = rs.getDouble("MONEY");
+//                return number;
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return 0.0;
+//    }
+//    public void resetMoney(UUID uuid){
+//        try {
+//            PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("UPDATE statistics SET MONEY=? WHERE UUID=?");
+//            ps.setDouble(1, 0.0);
+//            ps.setString(2, uuid.toString());
+//            ps.executeUpdate();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     public void addKilledPlayer(UUID uuid, int num){
         try {
-            PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("UPDATE statistics SET PLAYER_KILLED=? WHERE UUID=?");
+            PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("UPDATE statistics SET PLAYER_KILLED=? WHERE UUID=?");
             ps.setInt(1, (getKilledPlayers(uuid) + num));
             ps.setString(2, uuid.toString());
             ps.executeUpdate();
@@ -112,7 +112,7 @@ public class StatsGetter {
 
     public int getKilledPlayers(UUID uuid) {
         try {
-            PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("SELECT PLAYER_KILLED FROM statistics WHERE UUID=?");
+            PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("SELECT PLAYER_KILLED FROM statistics WHERE UUID=?");
             ps.setString(1, uuid.toString());
             ResultSet rs = ps.executeQuery();
             int number = 0;
@@ -128,7 +128,7 @@ public class StatsGetter {
 
     public void addKilledMob(UUID uuid, int num){
         try {
-            PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("UPDATE statistics SET MOB_KILLED=? WHERE UUID=?");
+            PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("UPDATE statistics SET MOB_KILLED=? WHERE UUID=?");
             ps.setInt(1, (getKilledMobs(uuid) + num));
             ps.setString(2, uuid.toString());
             ps.executeUpdate();
@@ -139,7 +139,7 @@ public class StatsGetter {
 
     public int getKilledMobs(UUID uuid) {
         try {
-            PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("SELECT MOB_KILLED FROM statistics WHERE UUID=?");
+            PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("SELECT MOB_KILLED FROM statistics WHERE UUID=?");
             ps.setString(1, uuid.toString());
             ResultSet rs = ps.executeQuery();
             int number = 0;
@@ -155,7 +155,7 @@ public class StatsGetter {
 
     public void addDeath(UUID uuid, int num){
         try {
-            PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("UPDATE statistics SET DEATHS=? WHERE UUID=?");
+            PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("UPDATE statistics SET DEATHS=? WHERE UUID=?");
             ps.setInt(1, (getDeaths(uuid) + num));
             ps.setString(2, uuid.toString());
             ps.executeUpdate();
@@ -166,7 +166,7 @@ public class StatsGetter {
 
     public int getDeaths(UUID uuid) {
         try {
-            PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("SELECT DEATHS FROM statistics WHERE UUID=?");
+            PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("SELECT DEATHS FROM statistics WHERE UUID=?");
             ps.setString(1, uuid.toString());
             ResultSet rs = ps.executeQuery();
             int number = 0;
@@ -182,7 +182,7 @@ public class StatsGetter {
 
     public void emptyTable() {
         try {
-            PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("TRUNCATE statistics");
+            PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("TRUNCATE statistics");
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -191,7 +191,7 @@ public class StatsGetter {
 
     public void remove(UUID uuid) {
         try {
-            PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("DELETE FROM statistics WHERE UUID=?");
+            PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("DELETE FROM statistics WHERE UUID=?");
             ps.setString(1, uuid.toString());
             ps.executeUpdate();
         } catch (SQLException e) {

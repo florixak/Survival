@@ -5,6 +5,7 @@ import cz.florixak.survival.command.Command;
 import cz.florixak.survival.config.Messages;
 import cz.florixak.survival.manager.EconomyManager;
 import cz.florixak.survival.manager.PlayerManager;
+import cz.florixak.survival.utility.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -30,13 +31,14 @@ public class Money extends Command {
         Player p = (Player) sender;
         if (args.length == 0) {
             moneyManager.sendMessage(p);
+            Utils.restartServer();
             return true;
         }
         if (!p.hasPermission("survival.balance")) return true;
         if (args[0].equalsIgnoreCase("deposit")) {
             if (args.length == 3) {
                 Player target = Bukkit.getPlayer(args[1]);
-                double money = Double.valueOf(args[2]);
+                long money = Long.valueOf(args[2]);
                 if (!PlayerManager.isPlayers(target)) {
                     p.sendMessage(Messages.OFFLINE_PLAYER.toString());
                     return true;
@@ -53,7 +55,7 @@ public class Money extends Command {
         else if (args[0].equalsIgnoreCase("withdraw")) {
             if (args.length == 3) {
                 Player target = Bukkit.getPlayer(args[1]);
-                double money = Double.valueOf(args[2]);
+                long money = Long.valueOf(args[2]);
                 if (!PlayerManager.isPlayers(target)) {
                     p.sendMessage(Messages.OFFLINE_PLAYER.toString());
                     return true;

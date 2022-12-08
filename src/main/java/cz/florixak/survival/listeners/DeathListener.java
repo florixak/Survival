@@ -44,8 +44,8 @@ public class DeathListener implements Listener {
                     .replace("%killer%", TextUtil.color(prefix2) + "" + killer.getName()));
             killer.sendMessage(Messages.DEATH_MSG_YOU_HAVE_KILLED.toString()
                     .replace("%player%", TextUtil.color(prefix1) + "" + p.getName()));
-            plugin.statsData.addDeath(p.getUniqueId(), 1);
-            plugin.statsData.addKilledPlayer(killer.getUniqueId(), 1);
+            plugin.getStatsData().addDeath(p.getUniqueId(), 1);
+            plugin.getStatsData().addKilledPlayer(killer.getUniqueId(), 1);
 
         } else {
 
@@ -57,7 +57,7 @@ public class DeathListener implements Listener {
             Utils.broadcastMessage(Messages.DEATH_MSG.toString()
                     .replace("%player%", TextUtil.color(prefix) + "" + p.getName()));
             p.sendMessage(Messages.DEATH_YOU_DIED.toString());
-            plugin.statsData.addDeath(p.getUniqueId(), 1);
+            plugin.getStatsData().addDeath(p.getUniqueId(), 1);
         }
     }
 
@@ -66,7 +66,7 @@ public class DeathListener implements Listener {
 
         if (event.getEntity() instanceof Mob && event.getEntity().getKiller() instanceof Player) {
             Player killer = event.getEntity().getKiller();
-            plugin.statsData.addKilledMob(killer.getUniqueId(), 1);
+            plugin.getStatsData().addKilledMob(killer.getUniqueId(), 1);
 
         }
     }

@@ -61,6 +61,7 @@ commands:
   rteleport:
   ruleta:
   roulette:
+  gamble:
   stats:
   statistics:
   tp:
@@ -72,3 +73,6 @@ commands:
   back:
   pay:
   zaplatit:
+  builder:
+  stavitel:
+  build:

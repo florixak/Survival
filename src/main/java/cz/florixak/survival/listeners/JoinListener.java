@@ -25,7 +25,7 @@ public class JoinListener implements Listener {
 
         event.setJoinMessage(null);
 
-        plugin.SQL.signPlayerInToDatabase(p);
+        plugin.getDatabase().signPlayerInToDatabase(p);
         joinManager.playerJoin(p);
         joinManager.setScoreboard(p);
     }

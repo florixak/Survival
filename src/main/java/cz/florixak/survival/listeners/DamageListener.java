@@ -1,27 +1,17 @@
 package cz.florixak.survival.listeners;
 
 import cz.florixak.survival.Survival;
-import cz.florixak.survival.config.ConfigType;
 import cz.florixak.survival.config.Messages;
-import cz.florixak.survival.manager.JobsManager;
-import cz.florixak.survival.manager.PlayerManager;
 import cz.florixak.survival.manager.PvPArenaManager;
 import cz.florixak.survival.manager.SpawnManager;
-import net.md_5.bungee.api.ChatMessageType;
-import net.md_5.bungee.api.chat.TextComponent;
-import net.milkbowl.vault.economy.Economy;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.text.DecimalFormat;
 import java.util.HashMap;
-import java.util.Random;
 import java.util.UUID;
 
 public class DamageListener implements Listener {

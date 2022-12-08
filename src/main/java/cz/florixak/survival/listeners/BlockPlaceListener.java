@@ -3,7 +3,9 @@ package cz.florixak.survival.listeners;
 import cz.florixak.survival.Survival;
 import cz.florixak.survival.config.ConfigType;
 import cz.florixak.survival.config.Messages;
+import cz.florixak.survival.manager.PlayerManager;
 import cz.florixak.survival.manager.SpawnManager;
+import cz.florixak.survival.manager.WarpManager;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.model.group.Group;
 import net.luckperms.api.model.user.User;
@@ -27,6 +29,7 @@ import java.util.*;
 public class BlockPlaceListener implements Listener {
 
     private SpawnManager spawnManager;
+    private WarpManager warpManager;
 
     private HashMap<UUID, Integer> placeBlock = new HashMap<>();
     private int protection;
@@ -34,6 +37,7 @@ public class BlockPlaceListener implements Listener {
     public BlockPlaceListener(Survival plugin) {
         this.spawnManager = plugin.getSpawnManager();
         this.protection = spawnManager.getSpawnProtection();
+        this.warpManager = plugin.getWarpManager();
     }
 
     @EventHandler
@@ -43,12 +47,11 @@ public class BlockPlaceListener implements Listener {
         Block block = event.getBlock();
 
         if (p.getWorld().getName().equalsIgnoreCase("world")){
-            User user = LuckPermsProvider.get().getUserManager().getUser(p.getUniqueId());
-            Group hbuild = LuckPermsProvider.get().getGroupManager().getGroup("sr.builder");
-
-            if (user.getPrimaryGroup().equals(hbuild.getName()) || p.getName().equals("FloriXak") || p.getName().equals("Romiiiiiiiii")) return;
 
             if (block.getLocation().distance(spawnManager.getLocation()) < protection) {
+
+                if (PlayerManager.isInBuilderMode(p)) return;
+
                 event.setCancelled(true);
                 if (!placeBlock.containsKey(p.getUniqueId())) {
                     p.sendMessage(Messages.BLOCK_CANT_PLACE.toString());
@@ -119,6 +122,9 @@ public class BlockPlaceListener implements Listener {
         Player p = event.getPlayer();
 
         if (p.getLocation().distance(spawnManager.getLocation()) < protection) {
+
+            if (PlayerManager.isInBuilderMode(p)) return;
+
             if (bucket.toString().contains("LAVA")) {
                 event.setCancelled(true);
                 p.sendMessage(Messages.BLOCK_CANT_PLACE.toString());

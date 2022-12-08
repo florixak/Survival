@@ -27,6 +27,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class RouletteManager implements Listener {
 
+    private Survival plugin;
     private FileConfiguration config;
     private ItemManager itemManager;
     private EconomyManager economyManager;
@@ -35,16 +36,17 @@ public class RouletteManager implements Listener {
     public static ItemStack[] contents;
     private int itemIndex = 0;
 
-    private int amount;
+    private double amount;
     private String gui_name;
 
     public RouletteManager(Survival plugin) {
+        this.plugin = plugin;
         this.config = plugin.getConfigManager().getFile(ConfigType.SETTINGS).getConfig();
         this.itemManager = plugin.getItemManager();
         this.economyManager = plugin.getEconomyManager();
 
         this.gui_name = config.getString("roulette.gui.menu_name");
-        this.amount = config.getInt("roulette.amount.money");
+        this.amount = config.getDouble("roulette.amount.money");
     }
 
     public void openInv(Player p) {
@@ -94,13 +96,16 @@ public class RouletteManager implements Listener {
             cobweb_meta.setDisplayName(TextUtil.color("&cNothing... :("));
             cobweb.setItemMeta(cobweb_meta);
 
+            Random ran = new Random();
+            String[] coins = {"2000", "5000", "10000"};
+
             items[0] = new ItemStack(Material.DIAMOND, 3);
             items[1] = new ItemStack(Material.IRON_INGOT, 16);
             items[2] = new ItemStack(Material.GOLD_INGOT, 32);
             items[3] = new ItemStack(Material.GOLD_BLOCK, 4);
             items[4] = new ItemStack(Material.DIAMOND_PICKAXE, 1);
             items[5] = new ItemStack(Material.IRON_BLOCK, 3);
-            items[6] = new ItemStack(Material.DIAMOND_SWORD, 1);
+            items[6] = itemManager.getItem(Material.PAPER, 1, coins[ran.nextInt()] + " Coins");
             items[7] = g_sh;
             items[8] = cobweb;
 
@@ -184,6 +189,11 @@ public class RouletteManager implements Listener {
                                 if (item.getType() != Material.COBWEB){
 
                                     if (item.hasItemMeta()){
+                                        if (item.getType() == Material.PAPER) {
+                                            player.sendMessage(Messages.ROULETTE_WINNER.toString()
+                                                    .replace("%item%", item.getItemMeta().getDisplayName()));
+                                            return;
+                                        }
                                         player.sendMessage(Messages.ROULETTE_WINNER.toString()
                                                 .replace("%item%", item.getAmount() + "x + " + item.getItemMeta().getDisplayName()));
                                     } else {
@@ -192,7 +202,10 @@ public class RouletteManager implements Listener {
                                     }
                                     player.closeInventory();
                                     cancel();
-                                    if (itemManager.invFull(player)){
+                                    if (item.getType() == Material.PAPER) {
+                                        plugin.getEconomyManager().deposit(player, 2000);
+                                    }
+                                    else if (itemManager.invFull(player)){
                                         Bukkit.getWorld(player.getWorld().getName()).dropItemNaturally(player.getLocation(), item);
                                         player.sendMessage(Messages.ROULETTE_FULL_INV.toString());
                                     } else {
@@ -203,6 +216,7 @@ public class RouletteManager implements Listener {
 
 
                                 } else {
+
                                     player.closeInventory();
                                     cancel();
                                     player.updateInventory();
@@ -234,7 +248,7 @@ public class RouletteManager implements Listener {
                 amount = config.getInt("roulette.amount.diamond");
 
                 ItemStack fee = new ItemStack(Material.DIAMOND);
-                fee.setAmount(amount);
+                fee.setAmount((int) amount);
 
                 event.setCancelled(true);
 

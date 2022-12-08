@@ -19,7 +19,7 @@ public class JobsGetter {
     public void createTable(){
         PreparedStatement ps;
         try {
-            ps = plugin.SQL.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS jobs "
+            ps = plugin.getDatabase().getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS jobs "
                     + "(NAME VARCHAR(100),UUID VARCHAR(100),KILLER INT(100),MINER INT(100),BUILDER INT(100),CRAFTER INT(100),DIGGER INT(100),WOODCUTTER INT(100),FARMER INT(100),PRIMARY KEY (NAME))");
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -35,13 +35,13 @@ public class JobsGetter {
         UUID uuid = player.getUniqueId();
 
         try {
-            PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("SELECT * FROM jobs WHERE UUID=?");
+            PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("SELECT * FROM jobs WHERE UUID=?");
             ps.setString(1, uuid.toString());
             ResultSet results = ps.executeQuery();
             results.next();
 
             if (!exists(uuid)) {
-                PreparedStatement ps4 = plugin.SQL.getConnection().prepareStatement("INSERT IGNORE INTO jobs"
+                PreparedStatement ps4 = plugin.getDatabase().getConnection().prepareStatement("INSERT IGNORE INTO jobs"
                         + " (NAME,UUID) VALUES (?,?)");
                 ps4.setString(1, player.getName());
                 ps4.setString(2, uuid.toString());
@@ -53,7 +53,7 @@ public class JobsGetter {
     }
     public boolean exists(UUID uuid) {
         try {
-            PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("SELECT * FROM jobs WHERE UUID=?");
+            PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("SELECT * FROM jobs WHERE UUID=?");
             ps.setString(1, uuid.toString());
             ResultSet results = ps.executeQuery();
             if (results.next()) {
@@ -68,7 +68,7 @@ public class JobsGetter {
 
     public void addKillerKill(UUID uuid, int num) {
         try {
-            PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("UPDATE jobs SET KILLER=? WHERE UUID=?");
+            PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("UPDATE jobs SET KILLER=? WHERE UUID=?");
             ps.setInt(1, (getKillerKills(uuid) + num));
             ps.setString(2, uuid.toString());
             ps.executeUpdate();
@@ -78,7 +78,7 @@ public class JobsGetter {
     }
     public void addMinerBlock(UUID uuid, int num) {
         try {
-            PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("UPDATE jobs SET MINER=? WHERE UUID=?");
+            PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("UPDATE jobs SET MINER=? WHERE UUID=?");
             ps.setInt(1, (getMinerBlocks(uuid) + num));
             ps.setString(2, uuid.toString());
             ps.executeUpdate();
@@ -88,7 +88,7 @@ public class JobsGetter {
     }
     public void addBuilderBlock(UUID uuid, int num){
         try {
-            PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("UPDATE jobs SET BUILDER=? WHERE UUID=?");
+            PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("UPDATE jobs SET BUILDER=? WHERE UUID=?");
             ps.setInt(1, (getBuilderBlocks(uuid) + num));
             ps.setString(2, uuid.toString());
             ps.executeUpdate();
@@ -98,7 +98,7 @@ public class JobsGetter {
     }
     public void addDiggerBlock(UUID uuid, int num){
         try {
-            PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("UPDATE jobs SET DIGGER=? WHERE UUID=?");
+            PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("UPDATE jobs SET DIGGER=? WHERE UUID=?");
             ps.setInt(1, (getDiggerBlocks(uuid) + num));
             ps.setString(2, uuid.toString());
             ps.executeUpdate();
@@ -108,7 +108,7 @@ public class JobsGetter {
     }
     public void addFarmerBlock(UUID uuid, int num){
         try {
-            PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("UPDATE jobs SET FARMER=? WHERE UUID=?");
+            PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("UPDATE jobs SET FARMER=? WHERE UUID=?");
             ps.setInt(1, (getFarmerBlocks(uuid) + num));
             ps.setString(2, uuid.toString());
             ps.executeUpdate();
@@ -118,7 +118,7 @@ public class JobsGetter {
     }
     public void addWoodcutterBlock(UUID uuid, int num){
         try {
-            PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("UPDATE jobs SET WOODCUTTER=? WHERE UUID=?");
+            PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("UPDATE jobs SET WOODCUTTER=? WHERE UUID=?");
             ps.setInt(1, (getWoodcutterBlocks(uuid) + num));
             ps.setString(2, uuid.toString());
             ps.executeUpdate();
@@ -128,7 +128,7 @@ public class JobsGetter {
     }
     public void addCrafterItem(UUID uuid, int num){
         try {
-            PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("UPDATE jobs SET CRAFTER=? WHERE UUID=?");
+            PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("UPDATE jobs SET CRAFTER=? WHERE UUID=?");
             ps.setInt(1, (getCrafterItems(uuid) + num));
             ps.setString(2, uuid.toString());
             ps.executeUpdate();
@@ -139,7 +139,7 @@ public class JobsGetter {
 
     public int getMinerBlocks(UUID uuid) {
         try {
-            PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("SELECT MINER FROM jobs WHERE UUID=?");
+            PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("SELECT MINER FROM jobs WHERE UUID=?");
             ps.setString(1, uuid.toString());
             ResultSet rs = ps.executeQuery();
             int number = 0;
@@ -154,7 +154,7 @@ public class JobsGetter {
     }
     public int getDiggerBlocks(UUID uuid) {
         try {
-            PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("SELECT DIGGER FROM jobs WHERE UUID=?");
+            PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("SELECT DIGGER FROM jobs WHERE UUID=?");
             ps.setString(1, uuid.toString());
             ResultSet rs = ps.executeQuery();
             int number = 0;
@@ -169,7 +169,7 @@ public class JobsGetter {
     }
     public int getBuilderBlocks(UUID uuid) {
         try {
-            PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("SELECT BUILDER FROM jobs WHERE UUID=?");
+            PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("SELECT BUILDER FROM jobs WHERE UUID=?");
             ps.setString(1, uuid.toString());
             ResultSet rs = ps.executeQuery();
             int number = 0;
@@ -184,7 +184,7 @@ public class JobsGetter {
     }
     public int getKillerKills(UUID uuid) {
         try {
-            PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("SELECT KILLER FROM jobs WHERE UUID=?");
+            PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("SELECT KILLER FROM jobs WHERE UUID=?");
             ps.setString(1, uuid.toString());
             ResultSet rs = ps.executeQuery();
             int number = 0;
@@ -199,7 +199,7 @@ public class JobsGetter {
     }
     public int getWoodcutterBlocks(UUID uuid) {
         try {
-            PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("SELECT WOODCUTTER FROM jobs WHERE UUID=?");
+            PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("SELECT WOODCUTTER FROM jobs WHERE UUID=?");
             ps.setString(1, uuid.toString());
             ResultSet rs = ps.executeQuery();
             int number = 0;
@@ -214,7 +214,7 @@ public class JobsGetter {
     }
     public int getFarmerBlocks(UUID uuid) {
         try {
-            PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("SELECT FARMER FROM jobs WHERE UUID=?");
+            PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("SELECT FARMER FROM jobs WHERE UUID=?");
             ps.setString(1, uuid.toString());
             ResultSet rs = ps.executeQuery();
             int number = 0;
@@ -229,7 +229,7 @@ public class JobsGetter {
     }
     public int getCrafterItems(UUID uuid) {
         try {
-            PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("SELECT CRAFTER FROM jobs WHERE UUID=?");
+            PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("SELECT CRAFTER FROM jobs WHERE UUID=?");
             ps.setString(1, uuid.toString());
             ResultSet rs = ps.executeQuery();
             int number = 0;
@@ -245,7 +245,7 @@ public class JobsGetter {
 
     public void emptyTable() {
         try {
-            PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("TRUNCATE jobs");
+            PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("TRUNCATE jobs");
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -255,7 +255,7 @@ public class JobsGetter {
     public void resetJobs(UUID uuid, String job) {
         if (job.equals("miner") || job.equals("*")) {
             try {
-                PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("UPDATE jobs SET MINER=? WHERE UUID=?");
+                PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("UPDATE jobs SET MINER=? WHERE UUID=?");
                 ps.setInt(1, 0);
                 ps.setString(2, uuid.toString());
                 ps.executeUpdate();
@@ -265,7 +265,7 @@ public class JobsGetter {
         }
         if (job.equals("digger") || job.equals("*")) {
             try {
-                PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("UPDATE jobs SET DIGGER=? WHERE UUID=?");
+                PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("UPDATE jobs SET DIGGER=? WHERE UUID=?");
                 ps.setInt(1, 0);
                 ps.setString(2, uuid.toString());
                 ps.executeUpdate();
@@ -275,7 +275,7 @@ public class JobsGetter {
         }
         if (job.equals("woodcutter") || job.equals("*")) {
             try {
-                PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("UPDATE jobs SET WOODCUTTER=? WHERE UUID=?");
+                PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("UPDATE jobs SET WOODCUTTER=? WHERE UUID=?");
                 ps.setInt(1, 0);
                 ps.setString(2, uuid.toString());
                 ps.executeUpdate();
@@ -285,7 +285,7 @@ public class JobsGetter {
         }
         if (job.equals("builder") || job.equals("*")) {
             try {
-                PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("UPDATE jobs SET BUILDER=? WHERE UUID=?");
+                PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("UPDATE jobs SET BUILDER=? WHERE UUID=?");
                 ps.setInt(1, 0);
                 ps.setString(2, uuid.toString());
                 ps.executeUpdate();
@@ -295,7 +295,7 @@ public class JobsGetter {
         }
         if (job.equals("killer") || job.equals("*")) {
             try {
-                PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("UPDATE jobs SET KILLER=? WHERE UUID=?");
+                PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("UPDATE jobs SET KILLER=? WHERE UUID=?");
                 ps.setInt(1, 0);
                 ps.setString(2, uuid.toString());
                 ps.executeUpdate();
@@ -305,7 +305,7 @@ public class JobsGetter {
         }
         if (job.equals("crafter") || job.equals("*")) {
             try {
-                PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("UPDATE jobs SET CRAFTER=? WHERE UUID=?");
+                PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("UPDATE jobs SET CRAFTER=? WHERE UUID=?");
                 ps.setInt(1, 0);
                 ps.setString(2, uuid.toString());
                 ps.executeUpdate();
@@ -315,7 +315,7 @@ public class JobsGetter {
         }
         if (job.equals("farmer") || job.equals("*")) {
             try {
-                PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("UPDATE jobs SET FARMER=? WHERE UUID=?");
+                PreparedStatement ps = plugin.getDatabase().getConnection().prepareStatement("UPDATE jobs SET FARMER=? WHERE UUID=?");
                 ps.setInt(1, 0);
                 ps.setString(2, uuid.toString());
                 ps.executeUpdate();

@@ -23,7 +23,7 @@ public class PlaceholderUtil {
     public static String setPlaceholders(String text, Player player) {
 
         JobsManager jobsManager = Survival.plugin.getJobsManager();
-        EconomyManager moneyManager = Survival.plugin.getEconomyManager();
+        EconomyManager economyManager = Survival.plugin.getEconomyManager();
 
         User user = LuckPermsProvider.get().getUserManager().getUser(player.getUniqueId());
         String prefix = user.getCachedData().getMetaData().getPrefix();
@@ -49,7 +49,7 @@ public class PlaceholderUtil {
 //            text = text.replace("%tps%", String.valueOf(Bukkit.getServer().spigot().get));
 
         if (text.contains("%money%")) {
-            text = text.replace("%money%", String.valueOf(Utils.formatMoney(moneyManager.get(player))));
+            text = text.replace("%money%", String.valueOf(Utils.formatMoney(economyManager.get(player))));
         }
 
         if (text.contains("%location%") && player != null) {
@@ -109,6 +109,10 @@ public class PlaceholderUtil {
             if ((KitsAction.knight_cooldown.get(player.getUniqueId()) == null) || (KitsAction.starter_cooldown.get(player.getUniqueId()) == 0))
                 return (text = text.replace("%knight_cooldown%", TextUtil.color("&aNEAKTIVNÍ")));
             text = text.replace("%knight_cooldown%", TextUtil.color("&c" + TimeConvertor.convertDay(KitsAction.knight_cooldown.get(player.getUniqueId()))));
+        }
+
+        if (text.contains("%guild%")) {
+            text = text.replace("%guild%", "coming soon..");
         }
 
         /*try {

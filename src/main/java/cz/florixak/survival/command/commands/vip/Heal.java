@@ -5,7 +5,6 @@ import cz.florixak.survival.command.Command;
 import cz.florixak.survival.config.ConfigType;
 import cz.florixak.survival.config.Messages;
 import cz.florixak.survival.manager.HealManager;
-import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -19,7 +18,6 @@ public class Heal extends Command {
     private HashMap<UUID, Integer> heal_cd = new HashMap<>();
 
     private FileConfiguration config;
-    private Economy economy;
     private HealManager healManager;
 
     private int delay;
@@ -28,7 +26,6 @@ public class Heal extends Command {
     public Heal(Survival plugin) {
         super(plugin);
         this.config = plugin.getConfigManager().getFile(ConfigType.SETTINGS).getConfig();
-        this.economy = plugin.getEconomy();
         this.healManager = plugin.getHealManager();
 
         this.delay = config.getInt("heal.cooldown_delay");

@@ -63,7 +63,7 @@ public class JobsManager {
 
     public String getJobLevel(UUID uuid) {
         if (isMiner(uuid)) {
-            int data = plugin.jobsData.getMinerBlocks(uuid);
+            int data = plugin.getJobsData().getMinerBlocks(uuid);
             if (data < 500) {
                 return "0";
             } else if (data < 1000) {
@@ -75,7 +75,7 @@ public class JobsManager {
             }
         }
         if (isBuilder(uuid)) {
-            int data = plugin.jobsData.getBuilderBlocks(uuid);
+            int data = plugin.getJobsData().getBuilderBlocks(uuid);
             if (data < 250) {
                 return "0";
             } else if (data < 500) {
@@ -87,7 +87,7 @@ public class JobsManager {
             }
         }
         if (isWoodcutter(uuid)) {
-            int data = plugin.jobsData.getWoodcutterBlocks(uuid);
+            int data = plugin.getJobsData().getWoodcutterBlocks(uuid);
             if (data < 500) {
                 return "0";
             } else if (data < 750) {
@@ -99,7 +99,7 @@ public class JobsManager {
             }
         }
         if (isDigger(uuid)) {
-            int data = plugin.jobsData.getDiggerBlocks(uuid);
+            int data = plugin.getJobsData().getDiggerBlocks(uuid);
             if (data < 500) {
                 return "0";
             } else if (data < 1000) {
@@ -111,7 +111,7 @@ public class JobsManager {
             }
         }
         if (isCrafter(uuid)) {
-            int data = plugin.jobsData.getCrafterItems(uuid);
+            int data = plugin.getJobsData().getCrafterItems(uuid);
             if (data < 250) {
                 return "0";
             } else if (data < 500) {
@@ -123,7 +123,7 @@ public class JobsManager {
             }
         }
         if (isKiller(uuid)) {
-            int data = plugin.jobsData.getKillerKills(uuid);
+            int data = plugin.getJobsData().getKillerKills(uuid);
             if (data < 250) {
                 return "0";
             } else if (data < 500) {
@@ -135,7 +135,7 @@ public class JobsManager {
             }
         }
         if (isFarmer(uuid)) {
-            int data = plugin.jobsData.getFarmerBlocks(uuid);
+            int data = plugin.getJobsData().getFarmerBlocks(uuid);
             if (data < 250) {
                 return "0";
             } else if (data < 500) {
@@ -159,7 +159,7 @@ public class JobsManager {
                 || isCrafter(p.getUniqueId())
                 || isBuilder(p.getUniqueId()))) {
             unemployed.add(p.getUniqueId());
-            plugin.jobsData.resetJobs(p.getUniqueId(), "*");
+            plugin.getJobsData().resetJobs(p.getUniqueId(), "*");
         }
     }
 
@@ -172,38 +172,38 @@ public class JobsManager {
         p.sendMessage(Messages.JOBS_RETIRED.toString().replace("%job_name%", TextUtil.color(getJob(p))));
         if (isMiner(p.getUniqueId())) {
             if (isMiner(p.getUniqueId())) miner.remove(p.getUniqueId());
-            plugin.jobsData.resetJobs(p.getUniqueId(), "miner");
-            plugin.jobsData.createPlayer(p);
+            plugin.getJobsData().resetJobs(p.getUniqueId(), "miner");
+            plugin.getJobsData().createPlayer(p);
         }
         if (isCrafter(p.getUniqueId())) {
             crafter.remove(p.getUniqueId());
-            plugin.jobsData.resetJobs(p.getUniqueId(), "crafter");
-            plugin.jobsData.createPlayer(p);
+            plugin.getJobsData().resetJobs(p.getUniqueId(), "crafter");
+            plugin.getJobsData().createPlayer(p);
         }
         if (isKiller(p.getUniqueId())) {
             killer.remove(p.getUniqueId());
-            plugin.jobsData.resetJobs(p.getUniqueId(), "killer");
-            plugin.jobsData.createPlayer(p);
+            plugin.getJobsData().resetJobs(p.getUniqueId(), "killer");
+            plugin.getJobsData().createPlayer(p);
         }
         if (isDigger(p.getUniqueId())) {
             digger.remove(p.getUniqueId());
-            plugin.jobsData.resetJobs(p.getUniqueId(), "digger");
-            plugin.jobsData.createPlayer(p);
+            plugin.getJobsData().resetJobs(p.getUniqueId(), "digger");
+            plugin.getJobsData().createPlayer(p);
         }
         if (isWoodcutter(p.getUniqueId())) {
             woodcutter.remove(p.getUniqueId());
-            plugin.jobsData.resetJobs(p.getUniqueId(), "woodcutter");
-            plugin.jobsData.createPlayer(p);
+            plugin.getJobsData().resetJobs(p.getUniqueId(), "woodcutter");
+            plugin.getJobsData().createPlayer(p);
         }
         if (isFarmer(p.getUniqueId())) {
             farmer.remove(p.getUniqueId());
-            plugin.jobsData.resetJobs(p.getUniqueId(), "farmer");
-            plugin.jobsData.createPlayer(p);
+            plugin.getJobsData().resetJobs(p.getUniqueId(), "farmer");
+            plugin.getJobsData().createPlayer(p);
         }
         if (isBuilder(p.getUniqueId())) {
             builder.remove(p.getUniqueId());
-            plugin.jobsData.resetJobs(p.getUniqueId(), "builder");
-            plugin.jobsData.createPlayer(p);
+            plugin.getJobsData().resetJobs(p.getUniqueId(), "builder");
+            plugin.getJobsData().createPlayer(p);
         }
     }
 

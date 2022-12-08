@@ -43,7 +43,8 @@ public class MySQL {
     }
 
     public void signPlayerInToDatabase(Player p) {
-        Survival.plugin.statsData.createPlayer(p);
-        Survival.plugin.jobsData.createPlayer(p);
+        Survival.plugin.getStatsData().createPlayer(p);
+        Survival.plugin.getJobsData().createPlayer(p);
+        Survival.plugin.getQuestData().createPlayer(p);
     }
 }

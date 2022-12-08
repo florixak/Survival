@@ -27,35 +27,21 @@ database:
 use-Vault: false
 use-LuckPerms: true
 
-#----------------#
-#      Join      #
-#----------------#
+
 join:
   first_join_money: 250 # první money
 
-#----------------#
-#      Chat      #
-#----------------#
 chat:
   format: "&7[%localTime%] %player% &8» &f%message%"
 
-#-----------------#
-#      Spawn      #
-#-----------------#
 spawn:
   protection: 320
   tp_delay: 3 # sekundy
 
-#---------------#
-#      TPA      #
-#---------------#
 tpa:
   delay: 3
   cooldown: 60
 
-#----------------#
-#      Home      #
-#----------------#
 home:
   tp_delay: 3 # sekundy
   max_homes: # maximalní počet domovů pro každou skupinu
@@ -65,22 +51,13 @@ home:
     vip_highest: 9
     admin: 12
 
-#----------------#
-#      Warp      #
-#----------------#
 warp:
   tp_delay: 3 # sekundy
 
-#---------------------------#
-#      Random Teleport      #
-#---------------------------#
 randomtp:
   delay: 3
   cooldown: 180
 
-#---------------#
-#      Fly      #
-#---------------#
 fly:
   flying_time: 7200 # v sekundach cas na letani
   day_cooldown_time: 86400 # denni cooldown na letani, v sekundach
@@ -91,8 +68,8 @@ fly:
 #--------------------#
 roulette:
   gui:
-    roulette_name: "&bHodně štěstí!"
-    menu_name: "&9Vyber čím zaplatíš:"
+    roulette_name: "&6Good luck!"
+    menu_name: "&eChoose you pay:"
   amount:
     diamond: 1
     money: 250

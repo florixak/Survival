@@ -1,0 +1,78 @@
+#---------------------------------------------------------------------#
+#  |\     /|(  ____ )(  ____ \  ( \      (  ___  )( (    /|(  __  \   #
+#  | )   ( || (    )|| (    \/  | (      | (   ) ||  \  ( || (  \  )  #
+#  | (___) || (____)|| (_____   | |      | (___) ||   \ | || |   ) |  #
+#  |  ___  ||  _____)(_____  )  | |      |  ___  || (\ \) || |   | |  #
+#  | (   ) || (            ) |  | |      | (   ) || | \   || |   ) |  #
+#  | )   ( || )      /\____) |  | (____/\| )   ( || )  \  || (__/  )  #
+#  |/     \||/       \_______)  (_______/|/     \||/    )_)(______/   #
+#---------------------------------------------------------------------#
+
+#----------------#
+#      Jobs      #
+#----------------#
+slots: 27
+
+# Title of the GUI
+title: "Daily Quests"
+
+# Automatically update open inventories.
+# This can be used to update placeholders in the GUI.
+refresh:
+  enabled: false
+  rate: 40
+
+# The items inside the GUI can be listed here
+items:
+  filler:
+    material: GRAY_STAINED_GLASS_PANE
+    slot: -1 # Setting the slot to -1 will fill every empty slot, you can also do "slots: [0, 1, 2]"
+    display_name: ' '
+  daily_1:
+    material: SIGN
+    slot: 10
+    amount: 1
+    glow: false
+    display_name: '&9Log-in'
+    lore:
+      - ' '
+      - '&7Reward: %quest-reward%'
+    actions:
+      - '[CLOSE]'
+      - "[QUEST] 1"
+  daily_2:
+    material: SIGN
+    slot: 11
+    amount: 1
+    glow: false
+    display_name: '&9Kill 15 mobs'
+    lore:
+      - ' '
+      - '&7Reward: %quest-reward%'
+    actions:
+      - '[CLOSE]'
+      - "[QUEST] 2"
+  daily_3:
+    material: SIGN
+    slot: 12
+    amount: 1
+    glow: false
+    display_name: '&9Buy 20 items'
+    lore:
+      - ' '
+      - '&7Reward: %quest-reward%'
+    actions:
+      - '[CLOSE]'
+      - "[QUEST] 3"
+  daily_4:
+    material: SIGN
+    slot: 13
+    amount: 1
+    glow: false
+    display_name: '&9Play for 15 minutes'
+    lore:
+      - ' '
+      - '&7Reward: %quest-reward%'
+    actions:
+      - '[CLOSE]'
+      - "[QUEST] 4"

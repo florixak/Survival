@@ -14,6 +14,7 @@ public class PlayerManager {
     public static ArrayList<UUID> tpBlock = new ArrayList<UUID>();
     public static ArrayList<Player> noteWriter = new ArrayList<Player>();
     public static ArrayList<Player> teleporting = new ArrayList<Player>();
+    public static ArrayList<UUID> builderMode = new ArrayList<>();
 
     public static boolean isPlayers(Player p) {
         return players.contains(p);
@@ -26,6 +27,9 @@ public class PlayerManager {
     public static boolean hasTpBlock(UUID uuid){ return tpBlock.contains(uuid); }
     public static boolean isNoteWriting(Player p){ return noteWriter.contains(p); }
     public static boolean isTeleporting(Player p){ return teleporting.contains(p); }
+    public static boolean isInBuilderMode(Player p) {
+        return builderMode.contains(p.getUniqueId());
+    }
 
 
 }

@@ -17,6 +17,7 @@ public class Roulette extends Command implements Listener {
 
         this.addAlias("roulette");
         this.addAlias("ruleta");
+        this.addAlias("gamble");
         this.setOnlyPlayer(true);
     }
 
